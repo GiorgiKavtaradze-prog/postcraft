@@ -67,7 +67,10 @@ interface WelcomeEmailProps {
   verificationUrl: string;
 }
 
-export default function WelcomeEmail({ name, verificationUrl }: WelcomeEmailProps) {
+export default function WelcomeEmail({
+  name,
+  verificationUrl,
+}: WelcomeEmailProps) {
   return (
     <Html lang="en">
       <Tailwind config={{ presets: [pixelBasedPreset] }}>
@@ -104,48 +107,48 @@ WelcomeEmail.PreviewProps = {
 
 ### Layout
 
-| Component | Description |
-|---|---|
-| `Html` | Root HTML wrapper with `lang` attribute |
-| `Head` | Email head element — meta, styles, fonts |
-| `Body` | Main body wrapper |
+| Component   | Description                                                         |
+| ----------- | ------------------------------------------------------------------- |
+| `Html`      | Root HTML wrapper with `lang` attribute                             |
+| `Head`      | Email head element — meta, styles, fonts                            |
+| `Body`      | Main body wrapper                                                   |
 | `Container` | Centered content wrapper (`max-width: 37.5em`) — use once per email |
-| `Section` | Interior content block — use for grouping inside `Container` |
-| `Row` | Horizontal row for multi-column layouts |
-| `Column` | Column within a `Row` |
+| `Section`   | Interior content block — use for grouping inside `Container`        |
+| `Row`       | Horizontal row for multi-column layouts                             |
+| `Column`    | Column within a `Row`                                               |
 
 ### Content
 
-| Component | Description |
-|---|---|
-| `Preview` | Inbox preview text — always first inside `<Body>` |
-| `Heading` | h1–h6 headings |
-| `Text` | Paragraph text |
-| `Button` | Styled call-to-action button (always include `box-border`) |
-| `Link` | Inline hyperlinks |
-| `Img` | Responsive images |
-| `Hr` | Horizontal dividers (always include `border-solid`) |
+| Component | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `Preview` | Inbox preview text — always first inside `<Body>`          |
+| `Heading` | h1–h6 headings                                             |
+| `Text`    | Paragraph text                                             |
+| `Button`  | Styled call-to-action button (always include `box-border`) |
+| `Link`    | Inline hyperlinks                                          |
+| `Img`     | Responsive images                                          |
+| `Hr`      | Horizontal dividers (always include `border-solid`)        |
 
 ### Specialized
 
-| Component | Description |
-|---|---|
-| `Tailwind` | Tailwind CSS support with email-safe presets |
-| `Font` | Custom web font loading |
-| `Markdown` | Render Markdown content in emails |
-| `CodeBlock` | Syntax-highlighted code blocks |
-| `CodeInline` | Inline code snippets |
+| Component    | Description                                  |
+| ------------ | -------------------------------------------- |
+| `Tailwind`   | Tailwind CSS support with email-safe presets |
+| `Font`       | Custom web font loading                      |
+| `Markdown`   | Render Markdown content in emails            |
+| `CodeBlock`  | Syntax-highlighted code blocks               |
+| `CodeInline` | Inline code snippets                         |
 
 ## CLI Commands
 
-| Command | Description |
-|---|---|
-| `postcraft dev` | Start live preview dev server (default port: 3000) |
-| `postcraft dev --dir <path> --port <port>` | Custom directory and port |
-| `postcraft export` | Export templates to static HTML in `./out` |
-| `postcraft export --outDir <path> --pretty --plainText` | Export with options |
-| `postcraft build` | Build the preview app for production |
-| `postcraft start` | Run the production preview app |
+| Command                                                 | Description                                        |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| `postcraft dev`                                         | Start live preview dev server (default port: 3000) |
+| `postcraft dev --dir <path> --port <port>`              | Custom directory and port                          |
+| `postcraft export`                                      | Export templates to static HTML in `./out`         |
+| `postcraft export --outDir <path> --pretty --plainText` | Export with options                                |
+| `postcraft build`                                       | Build the preview app for production               |
+| `postcraft start`                                       | Run the production preview app                     |
 
 ## Rendering to HTML
 
@@ -159,9 +162,12 @@ import { WelcomeEmail } from "./emails/welcome";
 const html = await render(<WelcomeEmail name="Giorgi" verificationUrl="..." />);
 
 // Plain text version
-const text = await render(<WelcomeEmail name="Giorgi" verificationUrl="..." />, {
-  plainText: true,
-});
+const text = await render(
+  <WelcomeEmail name="Giorgi" verificationUrl="..." />,
+  {
+    plainText: true,
+  },
+);
 ```
 
 ## Linking the CLI for Development

@@ -79,7 +79,16 @@ const html = await render(<MyEmail />, {
 ## Full Example
 
 ```tsx
-import { Html, Body, Container, Heading, Text, Button, Tailwind, pixelBasedPreset } from "postcraft";
+import {
+  Html,
+  Body,
+  Container,
+  Heading,
+  Text,
+  Button,
+  Tailwind,
+  pixelBasedPreset,
+} from "postcraft";
 import { render } from "@postcraft/render";
 
 function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
@@ -92,7 +101,8 @@ function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
               Reset your password
             </Heading>
             <Text className="text-gray-600 mt-2">
-              Click the button below to reset your password. This link expires in 24 hours.
+              Click the button below to reset your password. This link expires
+              in 24 hours.
             </Text>
             <Button
               href={resetUrl}
@@ -111,13 +121,18 @@ function PasswordResetEmail({ resetUrl }: { resetUrl: string }) {
 }
 
 // Generate both HTML and plain text
-const html = await render(<PasswordResetEmail resetUrl="https://example.com/reset/token" />);
-const text = await render(<PasswordResetEmail resetUrl="https://example.com/reset/token" />, {
-  plainText: true,
-});
+const html = await render(
+  <PasswordResetEmail resetUrl="https://example.com/reset/token" />,
+);
+const text = await render(
+  <PasswordResetEmail resetUrl="https://example.com/reset/token" />,
+  {
+    plainText: true,
+  },
+);
 
-console.log(html);  // Full HTML string
-console.log(text);  // Plain text fallback
+console.log(html); // Full HTML string
+console.log(text); // Plain text fallback
 ```
 
 ## Integration with Email Providers
@@ -152,7 +167,9 @@ import nodemailer from "nodemailer";
 import { render } from "@postcraft/render";
 import { WelcomeEmail } from "./emails/welcome";
 
-const transporter = nodemailer.createTransport({ /* ... */ });
+const transporter = nodemailer.createTransport({
+  /* ... */
+});
 
 const html = await render(<WelcomeEmail name="Giorgi" />);
 const text = await render(<WelcomeEmail name="Giorgi" />, { plainText: true });
@@ -193,11 +210,11 @@ await sendgrid.send({
 
 Renders a React email component to a string.
 
-| Parameter | Type | Description |
-|---|---|---|
-| `component` | `React.ReactElement` | The email React component to render |
-| `options.plainText` | `boolean` | Output plain text instead of HTML. Default: `false` |
-| `options.pretty` | `boolean` | Pretty-print the HTML output. Default: `false` |
+| Parameter           | Type                 | Description                                         |
+| ------------------- | -------------------- | --------------------------------------------------- |
+| `component`         | `React.ReactElement` | The email React component to render                 |
+| `options.plainText` | `boolean`            | Output plain text instead of HTML. Default: `false` |
+| `options.pretty`    | `boolean`            | Pretty-print the HTML output. Default: `false`      |
 
 **Returns:** `Promise<string>`
 

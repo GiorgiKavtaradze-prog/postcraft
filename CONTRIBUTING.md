@@ -188,7 +188,7 @@ If you're editing a component in `packages/postcraft`, please also add or update
 When you're ready to open a pull request:
 
 1. **Keep it focused** — One feature or bug fix per PR makes reviews easier.
-2. **Write a clear description** — Explain *what* you changed and *why*.
+2. **Write a clear description** — Explain _what_ you changed and _why_.
 3. **Reference related issues** — Use `Closes #123` or `Fixes #456` in your description.
 4. **Add tests** — New features and bug fixes should include tests.
 5. **Update documentation** — If you change behavior, update the relevant docs.
@@ -220,17 +220,17 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 
 **Types:**
 
-| Type | Description |
-|---|---|
-| `feat` | A new feature |
-| `fix` | A bug fix |
-| `docs` | Documentation changes only |
-| `style` | Formatting, missing semicolons, etc. (no logic change) |
+| Type       | Description                                             |
+| ---------- | ------------------------------------------------------- |
+| `feat`     | A new feature                                           |
+| `fix`      | A bug fix                                               |
+| `docs`     | Documentation changes only                              |
+| `style`    | Formatting, missing semicolons, etc. (no logic change)  |
 | `refactor` | Code change that neither fixes a bug nor adds a feature |
-| `perf` | Performance improvement |
-| `test` | Adding or fixing tests |
-| `chore` | Build process, dependency updates, tooling changes |
-| `ci` | Changes to CI configuration files |
+| `perf`     | Performance improvement                                 |
+| `test`     | Adding or fixing tests                                  |
+| `chore`    | Build process, dependency updates, tooling changes      |
+| `ci`       | Changes to CI configuration files                       |
 
 **Examples:**
 
@@ -258,17 +258,18 @@ pnpm changeset
 ```
 
 This will prompt you to:
+
 1. Select which packages are affected
 2. Choose a bump type: `major`, `minor`, or `patch`
 3. Write a summary of the change (this appears in the CHANGELOG)
 
 **Bump type guide:**
 
-| Change | Bump Type |
-|---|---|
-| Breaking API change | `major` |
-| New feature (backward compatible) | `minor` |
-| Bug fix, performance improvement, documentation | `patch` |
+| Change                                          | Bump Type |
+| ----------------------------------------------- | --------- |
+| Breaking API change                             | `major`   |
+| New feature (backward compatible)               | `minor`   |
+| Bug fix, performance improvement, documentation | `patch`   |
 
 Commit the generated changeset file along with your code changes.
 

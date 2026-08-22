@@ -8,12 +8,12 @@ An interactive playground for experimenting with Postcraft components in real-ti
 
 ## When to Use the Playground
 
-| Use Case | Tool |
-|---|---|
-| Building email templates for your project | `postcraft dev` (CLI) |
-| Developing / testing core Postcraft components | This playground |
-| Experimenting with new component ideas | This playground |
-| Testing changes before publishing | This playground |
+| Use Case                                       | Tool                  |
+| ---------------------------------------------- | --------------------- |
+| Building email templates for your project      | `postcraft dev` (CLI) |
+| Developing / testing core Postcraft components | This playground       |
+| Experimenting with new component ideas         | This playground       |
+| Testing changes before publishing              | This playground       |
 
 ---
 
@@ -33,7 +33,17 @@ pnpm build
 Create a new file at `playground/emails/testing.tsx`:
 
 ```tsx
-import { Html, Head, Body, Container, Tailwind, Heading, Text, Button, pixelBasedPreset } from "postcraft";
+import {
+  Html,
+  Head,
+  Body,
+  Container,
+  Tailwind,
+  Heading,
+  Text,
+  Button,
+  pixelBasedPreset,
+} from "postcraft";
 
 export default function Testing() {
   return (
@@ -79,12 +89,12 @@ Your template will appear in the sidebar. Changes to the file are reflected imme
 
 ## Key Differences from `postcraft dev`
 
-| Feature | `postcraft dev` | Playground |
-|---|---|---|
-| Component source | Published npm package | Local source files |
-| Hot reloading | ✅ | ✅ |
-| Use case | Building templates | Developing components |
-| Template directory | Configurable | `playground/emails/` |
+| Feature            | `postcraft dev`       | Playground            |
+| ------------------ | --------------------- | --------------------- |
+| Component source   | Published npm package | Local source files    |
+| Hot reloading      | ✅                    | ✅                    |
+| Use case           | Building templates    | Developing components |
+| Template directory | Configurable          | `playground/emails/`  |
 
 ---
 

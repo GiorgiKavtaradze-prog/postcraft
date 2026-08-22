@@ -39,16 +39,16 @@ skills/postcraft/
 
 The skill is structured for efficient token usage. Agents load only what they need:
 
-| Layer | File | Size | When Loaded |
-|---|---|---|---|
-| **Metadata** | SKILL.md frontmatter | ~100 tokens | On skill discovery |
-| **Core Instructions** | SKILL.md body | ~3K tokens | When skill is activated |
-| **Component Reference** | references/COMPONENTS.md | On demand | When working with components |
-| **Styling Guide** | references/STYLING.md | On demand | When styling emails |
-| **Editor Docs** | references/EDITOR.md | On demand | When using `@postcraft/editor` |
-| **Sending Guide** | references/SENDING.md | On demand | When integrating email providers |
-| **i18n Guide** | references/I18N.md | On demand | When adding multi-language support |
-| **Patterns** | references/PATTERNS.md | On demand | When building from templates |
+| Layer                   | File                     | Size        | When Loaded                        |
+| ----------------------- | ------------------------ | ----------- | ---------------------------------- |
+| **Metadata**            | SKILL.md frontmatter     | ~100 tokens | On skill discovery                 |
+| **Core Instructions**   | SKILL.md body            | ~3K tokens  | When skill is activated            |
+| **Component Reference** | references/COMPONENTS.md | On demand   | When working with components       |
+| **Styling Guide**       | references/STYLING.md    | On demand   | When styling emails                |
+| **Editor Docs**         | references/EDITOR.md     | On demand   | When using `@postcraft/editor`     |
+| **Sending Guide**       | references/SENDING.md    | On demand   | When integrating email providers   |
+| **i18n Guide**          | references/I18N.md       | On demand   | When adding multi-language support |
+| **Patterns**            | references/PATTERNS.md   | On demand   | When building from templates       |
 
 ---
 
@@ -80,13 +80,13 @@ This skill follows the [Agent Skills specification](https://agentskills.io/speci
 
 ## Learn More
 
-| Resource | Link |
-|---|---|
-| Postcraft Documentation | [postcraft.dev/docs](https://postcraft.dev/docs) |
-| Postcraft LLM-friendly docs | [postcraft.dev/docs/llms.txt](https://postcraft.dev/docs/llms.txt) |
-| Agent Skills Specification | [agentskills.io/specification.md](https://agentskills.io/specification.md) |
-| Resend Documentation | [resend.com/docs](https://resend.com/docs) |
-| Can I Email (CSS support) | [caniemail.com](https://www.caniemail.com) |
+| Resource                    | Link                                                                       |
+| --------------------------- | -------------------------------------------------------------------------- |
+| Postcraft Documentation     | [postcraft.dev/docs](https://postcraft.dev/docs)                           |
+| Postcraft LLM-friendly docs | [postcraft.dev/docs/llms.txt](https://postcraft.dev/docs/llms.txt)         |
+| Agent Skills Specification  | [agentskills.io/specification.md](https://agentskills.io/specification.md) |
+| Resend Documentation        | [resend.com/docs](https://resend.com/docs)                                 |
+| Can I Email (CSS support)   | [caniemail.com](https://www.caniemail.com)                                 |
 
 ---
 
