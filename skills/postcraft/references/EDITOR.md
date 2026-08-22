@@ -31,7 +31,7 @@ Requires **React 18+** and a bundler that supports [package exports](https://nod
 Import the bundled default theme for the quickest start:
 
 ```tsx
-import '@postcraft/editor/themes/default.css';
+import "@postcraft/editor/themes/default.css";
 ```
 
 This includes the default color theme and built-in UI styles for bubble menus, slash commands, and the inspector.
@@ -39,32 +39,32 @@ This includes the default color theme and built-in UI styles for bubble menus, s
 To import only what you need:
 
 ```tsx
-import '@postcraft/editor/styles/bubble-menu.css';
-import '@postcraft/editor/styles/slash-command.css';
-import '@postcraft/editor/styles/inspector.css';
+import "@postcraft/editor/styles/bubble-menu.css";
+import "@postcraft/editor/styles/slash-command.css";
+import "@postcraft/editor/styles/inspector.css";
 ```
 
 ## Architecture
 
 The editor is organized into six entry points:
 
-| Import | Purpose |
-|--------|---------|
-| `@postcraft/editor` | `EmailEditor`: the all-in-one component |
-| `@postcraft/editor/core` | `composePostcraft` serialization, `EmailNode`, `EmailMark`, event bus, types |
-| `@postcraft/editor/extensions` | `StarterKit` and 35+ postcraft-aware extensions |
-| `@postcraft/editor/ui` | `BubbleMenu`, `SlashCommand`, `Inspector` |
-| `@postcraft/editor/plugins` | `EmailTheming` plugin |
-| `@postcraft/editor/utils` | Attribute helpers, style utilities |
+| Import                         | Purpose                                                                      |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `@postcraft/editor`            | `EmailEditor`: the all-in-one component                                      |
+| `@postcraft/editor/core`       | `composePostcraft` serialization, `EmailNode`, `EmailMark`, event bus, types |
+| `@postcraft/editor/extensions` | `StarterKit` and 35+ postcraft-aware extensions                              |
+| `@postcraft/editor/ui`         | `BubbleMenu`, `SlashCommand`, `Inspector`                                    |
+| `@postcraft/editor/plugins`    | `EmailTheming` plugin                                                        |
+| `@postcraft/editor/utils`      | Attribute helpers, style utilities                                           |
 
 ## EmailEditor Component
 
 The `EmailEditor` component from `@postcraft/editor` is a batteries-included component that bundles StarterKit, EmailTheming, BubbleMenus, and SlashCommands. Use it when you want the full experience with minimal setup.
 
 ```tsx
-import { EmailEditor, type EmailEditorRef } from '@postcraft/editor';
-import '@postcraft/editor/themes/default.css';
-import { useRef } from 'react';
+import { EmailEditor, type EmailEditorRef } from "@postcraft/editor";
+import "@postcraft/editor/themes/default.css";
+import { useRef } from "react";
 
 export function MyEditor() {
   const editorRef = useRef<EmailEditorRef>(null);
@@ -80,8 +80,8 @@ export function MyEditor() {
         ref={editorRef}
         content="<p>Start typing...</p>"
         theme="basic"
-        onReady={(editor) => console.log('Editor ready', editor)}
-        onChange={(editor) => console.log('Content changed')}
+        onReady={(editor) => console.log("Editor ready", editor)}
+        onChange={(editor) => console.log("Content changed")}
       />
       <button onClick={handleExport}>Export HTML</button>
     </div>
@@ -91,44 +91,44 @@ export function MyEditor() {
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `content` | `Content` | — | Initial editor content (HTML string or TipTap JSON) |
-| `onChange` | `(editor: Editor) => void` | — | Called on every content change |
-| `onUploadImage` | `UploadImageHandler` | — | Handler for pasted/dropped images |
-| `onReady` | `(editor: Editor) => void` | — | Called when editor is initialized |
-| `theme` | `'basic' \| 'minimal'` | `'basic'` | Built-in postcraft theme |
-| `editable` | `boolean` | `true` | Whether content is editable |
-| `placeholder` | `string` | — | Placeholder text for empty editor |
-| `bubbleMenu` | `{ hideWhenActiveNodes?: string[], hideWhenActiveMarks?: string[] }` | — | Configure bubble menu visibility |
-| `extensions` | `Extensions` | — | Override the default extensions entirely |
-| `className` | `string` | — | CSS class for the editor container |
+| Prop            | Type                                                                 | Default   | Description                                         |
+| --------------- | -------------------------------------------------------------------- | --------- | --------------------------------------------------- |
+| `content`       | `Content`                                                            | —         | Initial editor content (HTML string or TipTap JSON) |
+| `onChange`      | `(editor: Editor) => void`                                           | —         | Called on every content change                      |
+| `onUploadImage` | `UploadImageHandler`                                                 | —         | Handler for pasted/dropped images                   |
+| `onReady`       | `(editor: Editor) => void`                                           | —         | Called when editor is initialized                   |
+| `theme`         | `'basic' \| 'minimal'`                                               | `'basic'` | Built-in postcraft theme                            |
+| `editable`      | `boolean`                                                            | `true`    | Whether content is editable                         |
+| `placeholder`   | `string`                                                             | —         | Placeholder text for empty editor                   |
+| `bubbleMenu`    | `{ hideWhenActiveNodes?: string[], hideWhenActiveMarks?: string[] }` | —         | Configure bubble menu visibility                    |
+| `extensions`    | `Extensions`                                                         | —         | Override the default extensions entirely            |
+| `className`     | `string`                                                             | —         | CSS class for the editor container                  |
 
 ### Ref Methods (`EmailEditorRef`)
 
-| Method | Returns | Description |
-|--------|---------|-------------|
-| `export()` | `Promise<{ html: string; text: string }>` | Export postcraft-ready HTML and plain text |
-| `getJSON()` | `JSONContent` | Get editor content as TipTap JSON |
-| `getHTML()` | `string` | Get editor content as HTML |
-| `editor` | `Editor \| null` | Access the underlying TipTap editor instance |
+| Method      | Returns                                   | Description                                  |
+| ----------- | ----------------------------------------- | -------------------------------------------- |
+| `export()`  | `Promise<{ html: string; text: string }>` | Export postcraft-ready HTML and plain text   |
+| `getJSON()` | `JSONContent`                             | Get editor content as TipTap JSON            |
+| `getHTML()` | `string`                                  | Get editor content as HTML                   |
+| `editor`    | `Editor \| null`                          | Access the underlying TipTap editor instance |
 
 ## Minimal Setup (Extensions Only)
 
 For more control, use `EditorProvider` from `@tiptap/react` directly with `StarterKit`:
 
 ```tsx
-import { StarterKit } from '@postcraft/editor/extensions';
-import { EditorProvider } from '@tiptap/react';
+import { StarterKit } from "@postcraft/editor/extensions";
+import { EditorProvider } from "@tiptap/react";
 
 const extensions = [StarterKit];
 
 const content = {
-  type: 'doc',
+  type: "doc",
   content: [
     {
-      type: 'paragraph',
-      content: [{ type: 'text', text: 'Start typing or edit this text.' }],
+      type: "paragraph",
+      content: [{ type: "text", text: "Start typing or edit this text." }],
     },
   ],
 };
@@ -145,10 +145,10 @@ This gives you a content-editable area with all core extensions (paragraphs, hea
 Floating formatting toolbars that appear on text selection. Add as children of `EditorProvider`.
 
 ```tsx
-import { StarterKit } from '@postcraft/editor/extensions';
-import { BubbleMenu } from '@postcraft/editor/ui';
-import { EditorProvider } from '@tiptap/react';
-import '@postcraft/editor/themes/default.css';
+import { StarterKit } from "@postcraft/editor/extensions";
+import { BubbleMenu } from "@postcraft/editor/ui";
+import { EditorProvider } from "@tiptap/react";
+import "@postcraft/editor/themes/default.css";
 
 const extensions = [StarterKit];
 
@@ -163,17 +163,17 @@ export function MyEditor() {
 
 ### Available Bubble Menus
 
-| Component | Appears when... | Controls |
-|-----------|----------------|----------|
-| `BubbleMenu` | Text is selected | Bold, italic, underline, strike, code, uppercase, alignment, node type, link |
-| `BubbleMenu.LinkDefault` | Cursor is on a link | Edit URL, open link, unlink |
-| `BubbleMenu.ButtonDefault` | Cursor is on a button | Edit button URL, unlink |
-| `BubbleMenu.ImageDefault` | Cursor is on an image | Edit image URL |
+| Component                  | Appears when...       | Controls                                                                     |
+| -------------------------- | --------------------- | ---------------------------------------------------------------------------- |
+| `BubbleMenu`               | Text is selected      | Bold, italic, underline, strike, code, uppercase, alignment, node type, link |
+| `BubbleMenu.LinkDefault`   | Cursor is on a link   | Edit URL, open link, unlink                                                  |
+| `BubbleMenu.ButtonDefault` | Cursor is on a button | Edit button URL, unlink                                                      |
+| `BubbleMenu.ImageDefault`  | Cursor is on an image | Edit image URL                                                               |
 
 Exclude specific items from the default menu:
 
 ```tsx
-<BubbleMenu excludeItems={['strike', 'code', 'uppercase']} />
+<BubbleMenu excludeItems={["strike", "code", "uppercase"]} />
 ```
 
 When combining the text bubble menu with contextual menus for links, images, or buttons, use `hideWhenActiveMarks` on `BubbleMenu` to prevent it from appearing when a link is focused.
@@ -183,36 +183,36 @@ When combining the text bubble menu with contextual menus for links, images, or 
 Insert content blocks by typing `/` in the editor.
 
 ```tsx
-import { defaultSlashCommands, SlashCommand } from '@postcraft/editor/ui';
+import { defaultSlashCommands, SlashCommand } from "@postcraft/editor/ui";
 
 <EditorProvider extensions={extensions} content={content}>
   <SlashCommand items={defaultSlashCommands} />
-</EditorProvider>
+</EditorProvider>;
 ```
 
 ### Default Commands
 
-| Command | Category | Description |
-|---------|----------|-------------|
-| `TEXT` | Text | Plain text block |
-| `H1`, `H2`, `H3` | Text | Headings |
-| `BULLET_LIST` | Text | Unordered list |
-| `NUMBERED_LIST` | Text | Ordered list |
-| `QUOTE` | Text | Block quote |
-| `CODE` | Text | Code snippet |
-| `BUTTON` | Layout | Clickable button |
-| `DIVIDER` | Layout | Horizontal separator |
-| `SECTION` | Layout | Content section |
-| `TWO_COLUMNS` | Layout | Two column layout |
-| `THREE_COLUMNS` | Layout | Three column layout |
-| `FOUR_COLUMNS` | Layout | Four column layout |
+| Command          | Category | Description          |
+| ---------------- | -------- | -------------------- |
+| `TEXT`           | Text     | Plain text block     |
+| `H1`, `H2`, `H3` | Text     | Headings             |
+| `BULLET_LIST`    | Text     | Unordered list       |
+| `NUMBERED_LIST`  | Text     | Ordered list         |
+| `QUOTE`          | Text     | Block quote          |
+| `CODE`           | Text     | Code snippet         |
+| `BUTTON`         | Layout   | Clickable button     |
+| `DIVIDER`        | Layout   | Horizontal separator |
+| `SECTION`        | Layout   | Content section      |
+| `TWO_COLUMNS`    | Layout   | Two column layout    |
+| `THREE_COLUMNS`  | Layout   | Three column layout  |
+| `FOUR_COLUMNS`   | Layout   | Four column layout   |
 
 Cherry-pick individual commands:
 
 ```tsx
-import { BUTTON, H1, H2, TEXT } from '@postcraft/editor/ui';
+import { BUTTON, H1, H2, TEXT } from "@postcraft/editor/ui";
 
-<SlashCommand items={[TEXT, H1, H2, BUTTON]} />
+<SlashCommand items={[TEXT, H1, H2, BUTTON]} />;
 ```
 
 ## Inspector
@@ -220,11 +220,11 @@ import { BUTTON, H1, H2, TEXT } from '@postcraft/editor/ui';
 A contextual sidebar for editing document-level styles, node properties, and text formatting. Requires the `EmailTheming` plugin.
 
 ```tsx
-import { StarterKit } from '@postcraft/editor/extensions';
-import { EmailTheming } from '@postcraft/editor/plugins';
-import { Inspector } from '@postcraft/editor/ui';
-import { EditorContent, EditorContext, useEditor } from '@tiptap/react';
-import '@postcraft/editor/themes/default.css';
+import { StarterKit } from "@postcraft/editor/extensions";
+import { EmailTheming } from "@postcraft/editor/plugins";
+import { Inspector } from "@postcraft/editor/ui";
+import { EditorContent, EditorContext, useEditor } from "@tiptap/react";
+import "@postcraft/editor/themes/default.css";
 
 const extensions = [StarterKit, EmailTheming];
 
@@ -233,11 +233,13 @@ export function MyEditor() {
 
   return (
     <EditorContext.Provider value={{ editor }}>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
           <EditorContent editor={editor} />
         </div>
-        <Inspector.Root style={{ width: 240, borderLeft: '1px solid #e5e7eb', padding: 16 }}>
+        <Inspector.Root
+          style={{ width: 240, borderLeft: "1px solid #e5e7eb", padding: 16 }}
+        >
           <Inspector.Breadcrumb />
           <Inspector.Document />
           <Inspector.Node />
@@ -256,18 +258,18 @@ The inspector automatically switches between document, node, and text controls b
 Apply visual styles (typography, spacing, colors) to postcraft output. Themes are resolved during `composePostcraft` and inlined as `style` attributes.
 
 ```tsx
-import { StarterKit } from '@postcraft/editor/extensions';
-import { EmailTheming } from '@postcraft/editor/plugins';
+import { StarterKit } from "@postcraft/editor/extensions";
+import { EmailTheming } from "@postcraft/editor/plugins";
 
-const extensions = [StarterKit, EmailTheming.configure({ theme: 'basic' })];
+const extensions = [StarterKit, EmailTheming.configure({ theme: "basic" })];
 ```
 
 ### Built-in Themes
 
-| Theme | Description |
-|-------|-------------|
-| `'basic'` | Full styling: typography, spacing, borders, visual hierarchy. **Default.** |
-| `'minimal'` | Essentially no styles — blank slate for custom themes. |
+| Theme       | Description                                                                |
+| ----------- | -------------------------------------------------------------------------- |
+| `'basic'`   | Full styling: typography, spacing, borders, visual hierarchy. **Default.** |
+| `'minimal'` | Essentially no styles — blank slate for custom themes.                     |
 
 ### Switching Themes Dynamically
 
@@ -294,8 +296,8 @@ const { html, text } = await editorRef.current!.export();
 ### Via composePostcraft (lower-level)
 
 ```tsx
-import { composePostcraft } from '@postcraft/editor/core';
-import { useCurrentEditor } from '@tiptap/react';
+import { composePostcraft } from "@postcraft/editor/core";
+import { useCurrentEditor } from "@tiptap/react";
 
 function ExportPanel() {
   const { editor } = useCurrentEditor();
@@ -304,7 +306,7 @@ function ExportPanel() {
     if (!editor) return;
     const { html, text } = await composePostcraft({
       editor,
-      preview: 'Inbox preview text', // optional
+      preview: "Inbox preview text", // optional
     });
     console.log(html, text);
   };
@@ -316,6 +318,7 @@ function ExportPanel() {
 The `preview` parameter is optional — when provided, it sets the inbox preview text in the exported HTML.
 
 The export pipeline:
+
 1. Reads the editor's JSON document
 2. Traverses each node and mark
 3. Calls `renderToPostcraft()` on each `EmailNode` and `EmailMark`
@@ -327,24 +330,25 @@ The export pipeline:
 Create custom postcraft-compatible nodes using `EmailNode` (extends TipTap's `Node` with `renderToPostcraft()`):
 
 ```tsx
-import { EmailNode } from '@postcraft/editor/core';
-import { mergeAttributes } from '@tiptap/core';
+import { EmailNode } from "@postcraft/editor/core";
+import { mergeAttributes } from "@tiptap/core";
 
 const Callout = EmailNode.create({
-  name: 'callout',
-  group: 'block',
-  content: 'inline*',
+  name: "callout",
+  group: "block",
+  content: "inline*",
 
   parseHTML() {
-    return [{ tag: 'div[data-callout]' }];
+    return [{ tag: "div[data-callout]" }];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'div',
+      "div",
       mergeAttributes(HTMLAttributes, {
-        'data-callout': '',
-        style: 'padding: 12px 16px; background: #f4f4f5; border-left: 3px solid #1c1c1c;',
+        "data-callout": "",
+        style:
+          "padding: 12px 16px; background: #f4f4f5; border-left: 3px solid #1c1c1c;",
       }),
       0,
     ];
@@ -352,7 +356,14 @@ const Callout = EmailNode.create({
 
   renderToPostcraft({ children, style }) {
     return (
-      <div style={{ ...style, padding: '12px 16px', backgroundColor: '#f4f4f5', borderLeft: '3px solid #1c1c1c' }}>
+      <div
+        style={{
+          ...style,
+          padding: "12px 16px",
+          backgroundColor: "#f4f4f5",
+          borderLeft: "3px solid #1c1c1c",
+        }}
+      >
         {children}
       </div>
     );

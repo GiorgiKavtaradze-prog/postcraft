@@ -9,6 +9,7 @@ Performance benchmarks for the Postcraft `<Tailwind>` component using [`tinybenc
 The `<Tailwind>` component processes Tailwind CSS utility classes and generates inline styles compatible with email clients. This involves CSS parsing, class resolution, and inlining — which can be computationally expensive at scale.
 
 These benchmarks help us:
+
 - Measure the performance overhead of using `<Tailwind>` vs. raw inline styles
 - Compare performance across Postcraft versions
 - Generate flame graphs to identify rendering bottlenecks

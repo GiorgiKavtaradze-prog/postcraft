@@ -1,13 +1,13 @@
 # Styling Guide
 
-Comprehensive styling reference for Postcraft templates.
+Comprehensive styling reference for Postcraft email templates.
 
 ## Styling Approach
 
 Use the `Tailwind` component for styling if the project uses Tailwind CSS. Otherwise, use inline styles.
 
 ```tsx
-import { Tailwind, pixelBasedPreset } from 'postcraft';
+import { Tailwind, pixelBasedPreset } from "postcraft";
 
 <Tailwind
   config={{
@@ -15,19 +15,19 @@ import { Tailwind, pixelBasedPreset } from 'postcraft';
     theme: {
       extend: {
         colors: {
-          brand: '#007bff',
+          brand: "#007bff",
         },
       },
     },
   }}
 >
-  {/* Postcraft content */}
-</Tailwind>
+  {/* Email content */}
+</Tailwind>;
 ```
 
 ## pixelBasedPreset
 
-Postcraft clients don't support `rem` units. Always use `pixelBasedPreset` in your Tailwind configuration to convert rem-based utilities to pixels:
+Email clients don't support `rem` units. Always use `pixelBasedPreset` in your Tailwind configuration to convert rem-based utilities to pixels:
 
 ```tsx
 import { pixelBasedPreset } from 'postcraft';
@@ -35,30 +35,30 @@ import { pixelBasedPreset } from 'postcraft';
 <Tailwind config={{ presets: [pixelBasedPreset] }}>
 ```
 
-## Postcraft Client Limitations
+## Email Client Limitations
 
-Postcraft clients have significant CSS restrictions. Follow these rules:
+Email clients have significant CSS restrictions. Follow these rules:
 
 ### Unsupported Features
 
-- **SVG/WEBP images** - Use PNG or JPEG only
-- **Flexbox/Grid** - Use `Row`/`Column` components or tables
-- **Media queries** - `sm:`, `md:`, `lg:`, `xl:` prefixes don't work
-- **Theme selectors** - `dark:`, `light:` prefixes don't work
-- **rem units** - Use `pixelBasedPreset` for pixel conversion
+- **SVG/WEBP images** — Use PNG or JPEG only
+- **Flexbox/Grid** — Use `Row`/`Column` components or tables
+- **Media queries** — `sm:`, `md:`, `lg:`, `xl:` prefixes don't work
+- **Theme selectors** — `dark:`, `light:` prefixes don't work
+- **rem units** — Use `pixelBasedPreset` for pixel conversion
 
 ### Border Handling
 
 Always specify border style and reset other sides when needed:
 
 ```tsx
-// Correct - specify border style
+// Correct — specify border style
 <div className="border-solid border border-gray-300" />
 
-// Correct - single side border with reset
+// Correct — single side border with reset
 <div className="border-none border-l border-solid border-l-gray-300" />
 
-// Incorrect - missing border style
+// Incorrect — missing border style
 <div className="border border-gray-300" />
 ```
 
@@ -82,7 +82,7 @@ Always define `<Head />` inside `<Tailwind>` when using Tailwind CSS:
 Only include props that the component actually uses:
 
 ```tsx
-const Postcraft = ({ source }: { source: string }) => {
+const Email = ({ source }: { source: string }) => {
   return (
     <div>
       <a href={source}>Click here</a>
@@ -90,7 +90,7 @@ const Postcraft = ({ source }: { source: string }) => {
   );
 };
 
-Postcraft.PreviewProps = {
+Email.PreviewProps = {
   source: "https://example.com",
 };
 ```
@@ -149,7 +149,7 @@ Use consistent spacing that respects content hierarchy. Larger margins for headi
 
 - Only include if user requests
 - Content images: use responsive sizing (`w-full`, `h-auto`)
-- Small icons (24-48px): fixed dimensions are acceptable
+- Small icons (24–48px): fixed dimensions are acceptable
 - Never distort user-provided images
 - Never create SVG images
 - Always use absolute URLs
@@ -213,22 +213,22 @@ When requested, use dark backgrounds:
 
 ### Gathering Brand Colors
 
-Before creating postcraft, collect these colors from the user:
+Before creating email templates, collect these colors from the user:
 
-- **Primary**: Main brand color for buttons, links, key accents
-- **Secondary**: Supporting color for borders, backgrounds, less prominent elements
-- **Text**: Main body text color (suggest `#1a1a1a` for light backgrounds)
-- **Text muted**: Secondary text like captions, footers (suggest `#6b7280`)
-- **Background**: Postcraft body background (suggest `#f4f4f5`)
-- **Surface**: Container/card background (typically `#ffffff`)
+- **Primary** — Main brand color for buttons, links, key accents
+- **Secondary** — Supporting color for borders, backgrounds, less prominent elements
+- **Text** — Main body text color (suggest `#1a1a1a` for light backgrounds)
+- **Text muted** — Secondary text like captions, footers (suggest `#6b7280`)
+- **Background** — Email body background (suggest `#f4f4f5`)
+- **Surface** — Container/card background (typically `#ffffff`)
 
 ### Tailwind Configuration File
 
-Create a centralized Tailwind config file that all postcraft templates import. Using `satisfies TailwindConfig` provides intellisense support for all configuration options:
+Create a centralized Tailwind config file that all email templates import. Using `satisfies TailwindConfig` provides intellisense support for all configuration options:
 
 ```tsx
 // emails/tailwind.config.ts
-import { pixelBasedPreset, type TailwindConfig } from 'postcraft';
+import { pixelBasedPreset, type TailwindConfig } from "postcraft";
 
 export default {
   presets: [pixelBasedPreset],
@@ -236,8 +236,8 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#007bff',
-          secondary: '#6c757d',
+          primary: "#007bff",
+          secondary: "#6c757d",
         },
       },
     },
@@ -247,8 +247,8 @@ export default {
 // For non-Tailwind brand assets (optional)
 export const brandAssets = {
   logo: {
-    src: 'https://example.com/logo.png',
-    alt: 'Company Name',
+    src: "https://example.com/logo.png",
+    alt: "Company Name",
     width: 120,
   },
 };
@@ -256,37 +256,43 @@ export const brandAssets = {
 
 ### Using Tailwind Config
 
-Import the shared config in every postcraft template:
+Import the shared config in every email template:
 
 ```tsx
-import tailwindConfig, { brandAssets } from './tailwind.config';
+import tailwindConfig, { brandAssets } from "./tailwind.config";
 
 <Tailwind config={tailwindConfig}>
   <Body className="bg-gray-100 font-sans">
     <Container className="bg-white p-6">
-      <Img src={brandAssets.logo.src} alt={brandAssets.logo.alt} width={brandAssets.logo.width} />
+      <Img
+        src={brandAssets.logo.src}
+        alt={brandAssets.logo.alt}
+        width={brandAssets.logo.width}
+      />
       <Button className="bg-brand-primary text-white">Action</Button>
     </Container>
   </Body>
-</Tailwind>
+</Tailwind>;
 ```
 
 ### Maintaining Consistency
 
-- **Always use the brand config** - Never hardcode colors in individual templates
-- **Update config, not templates** - When colors change, update `tailwind.config.ts` only
-- **Use semantic names** - `bg-brand-primary` not `bg-[#007bff]`
-- **Ensure contrast** - Test that text is readable against backgrounds (WCAG AA: 4.5:1 ratio)
+- **Always use the brand config** — Never hardcode colors in individual templates
+- **Update config, not templates** — When colors change, update `tailwind.config.ts` only
+- **Use semantic names** — `bg-brand-primary` not `bg-[#007bff]`
+- **Ensure contrast** — Test that text is readable against backgrounds (WCAG AA: 4.5:1 ratio)
 
 ## Asset Locations
 
 Direct users to place brand assets in appropriate locations:
 
-- **Logo and images**: Host on a CDN or public URL. For local development, place in `postcraft/static/`.
-- **Custom fonts**: Use the `Font` component with a web font URL (Google Fonts, Adobe Fonts, or self-hosted).
+- **Logo and images** — Host on a CDN or public URL. For local development, place in `emails/static/`.
+- **Custom fonts** — Use the `Font` component with a web font URL (Google Fonts, Adobe Fonts, or self-hosted).
 
 **Example prompt for gathering brand info:**
-> "Before I create your postcraft template, I need some brand information to ensure consistency. Could you provide:
+
+> "Before I create your email template, I need some brand information to ensure consistency. Could you provide:
+>
 > 1. Your primary brand color (hex code, e.g., #007bff)
 > 2. Your logo URL (must be a publicly accessible PNG or JPEG)
 > 3. Any secondary colors you'd like to use
@@ -294,9 +300,8 @@ Direct users to place brand assets in appropriate locations:
 
 ## Best Practices
 
-1. **Make templates unique** - Not generic, tailored to user's request
-2. **Test across clients** - Gmail, Outlook, Apple Mail, Yahoo Mail
-3. **Keep file size under 102KB** - Gmail clips larger postcraft
-4. **Use keywords strategically** - Increase engagement in postcraft body
-5. **Inline styles as fallback** - Some clients strip `<style>` tags
-
+1. **Make templates unique** — Not generic, tailored to the user's request
+2. **Test across email clients** — Gmail, Outlook, Apple Mail, Yahoo Mail
+3. **Keep file size under 102KB** — Gmail clips larger emails
+4. **Use keywords strategically** — Increase engagement in email body
+5. **Inline styles as fallback** — Some clients strip `<style>` tags

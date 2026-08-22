@@ -12,12 +12,12 @@ If you believe you've found a security issue, please **do not open a public GitH
 
 We actively maintain and provide security updates for the following versions:
 
-| Version | Supported |
-|---|---|
-| `latest` (main branch) | ✅ Actively maintained |
-| `>= 2.0.0` | ✅ Security patches provided |
-| `1.x.x` | ⚠️ Critical fixes only |
-| `< 1.0.0` | ❌ No longer supported |
+| Version                | Supported                    |
+| ---------------------- | ---------------------------- |
+| `latest` (main branch) | ✅ Actively maintained       |
+| `>= 2.0.0`             | ✅ Security patches provided |
+| `1.x.x`                | ⚠️ Critical fixes only       |
+| `< 1.0.0`              | ❌ No longer supported       |
 
 We strongly encourage all users to keep their dependencies up to date. Running outdated versions means missing critical security patches.
 
@@ -48,12 +48,12 @@ A good security report includes:
 
 ### What to Expect
 
-| Timeline | Action |
-|---|---|
-| **Within 48 hours** | We acknowledge receipt of your report |
-| **Within 7 days** | We assess the severity and plan a fix |
-| **Within 30 days** | We aim to release a patch (complex issues may take longer) |
-| **After patching** | We coordinate public disclosure with you |
+| Timeline            | Action                                                     |
+| ------------------- | ---------------------------------------------------------- |
+| **Within 48 hours** | We acknowledge receipt of your report                      |
+| **Within 7 days**   | We assess the severity and plan a fix                      |
+| **Within 30 days**  | We aim to release a patch (complex issues may take longer) |
+| **After patching**  | We coordinate public disclosure with you                   |
 
 We follow [responsible disclosure](https://en.wikipedia.org/wiki/Coordinated_vulnerability_disclosure) principles and will credit reporters in our security advisories unless they prefer to remain anonymous.
 

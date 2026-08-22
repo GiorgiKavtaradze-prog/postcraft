@@ -29,6 +29,7 @@ npx create-postcraft@latest
 ```
 
 This will:
+
 1. Prompt you for a project name (default: `my-email-project`)
 2. Create the project directory with starter templates
 3. Install dependencies automatically
@@ -80,11 +81,11 @@ my-email-project/
 
 The scaffolded project includes three production-ready email templates:
 
-| Template | Description |
-|---|---|
-| `welcome.tsx` | User onboarding welcome email with verification CTA |
-| `password-reset.tsx` | Secure password reset email with expiry notice |
-| `notification.tsx` | General notification email with customizable content |
+| Template             | Description                                          |
+| -------------------- | ---------------------------------------------------- |
+| `welcome.tsx`        | User onboarding welcome email with verification CTA  |
+| `password-reset.tsx` | Secure password reset email with expiry notice       |
+| `notification.tsx`   | General notification email with customizable content |
 
 ---
 
@@ -106,9 +107,9 @@ npm run export
 
 ## Options
 
-| Flag | Description |
-|---|---|
-| `--no-install` | Skip automatic dependency installation |
+| Flag                     | Description                                                     |
+| ------------------------ | --------------------------------------------------------------- |
+| `--no-install`           | Skip automatic dependency installation                          |
 | `--package-manager <pm>` | Force a specific package manager (`npm`, `pnpm`, `yarn`, `bun`) |
 
 ---

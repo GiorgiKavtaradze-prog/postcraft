@@ -1,0 +1,15 @@
+# This repository is a TypeScript monorepo, not a Jekyll site.
+# GitHub Pages still runs Jekyll; skip source trees whose Markdown/MDX
+# contains JSX or Mustache `{{`, which Liquid treats as template tags.
+exclude:
+  - apps
+  - packages
+  - skills
+  - examples
+  - playground
+  - benchmarks
+  - scripts
+  - node_modules
+  - vendor
+  - .github
+  - .changeset

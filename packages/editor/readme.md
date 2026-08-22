@@ -22,18 +22,18 @@
 
 ## Features
 
-| Feature | Description |
-|---|---|
-| 🧠 **Bubble Menu** | Contextual formatting toolbar that appears on text selection |
-| 🎛️ **Inspector** | Sidebar panel for editing element properties |
-| ⚡ **Slash Commands** | Type `/` to quickly insert headings, images, buttons, columns |
-| 🎨 **Theming** | Built-in `basic` and `minimal` themes with CSS custom properties |
-| 📐 **Column Layouts** | Drag-and-drop multi-column email structures |
-| 🔗 **Link Editing** | Inline link management with popover |
-| 📤 **Email Export** | `composeEmail()` exports editor content to email-ready HTML |
-| 🖼️ **Image Upload** | Built-in image upload with drag & drop support |
-| 🧩 **35+ Extensions** | TipTap extensions tailored for email elements |
-| 📝 **Serialization** | Serializes editor content to Postcraft React component tree |
+| Feature               | Description                                                      |
+| --------------------- | ---------------------------------------------------------------- |
+| 🧠 **Bubble Menu**    | Contextual formatting toolbar that appears on text selection     |
+| 🎛️ **Inspector**      | Sidebar panel for editing element properties                     |
+| ⚡ **Slash Commands** | Type `/` to quickly insert headings, images, buttons, columns    |
+| 🎨 **Theming**        | Built-in `basic` and `minimal` themes with CSS custom properties |
+| 📐 **Column Layouts** | Drag-and-drop multi-column email structures                      |
+| 🔗 **Link Editing**   | Inline link management with popover                              |
+| 📤 **Email Export**   | `composeEmail()` exports editor content to email-ready HTML      |
+| 🖼️ **Image Upload**   | Built-in image upload with drag & drop support                   |
+| 🧩 **35+ Extensions** | TipTap extensions tailored for email elements                    |
+| 📝 **Serialization**  | Serializes editor content to Postcraft React component tree      |
 
 ---
 
@@ -115,14 +115,14 @@ packages/editor/src/
 
 The package exposes multiple granular entry points to optimize bundle size:
 
-| Import Path | Contents |
-|---|---|
-| `@postcraft/editor` | `EmailEditor` component, `EmailEditorRef`, top-level API |
-| `@postcraft/editor/core` | Serializer, types, event bus — for custom integrations |
-| `@postcraft/editor/extensions` | All 35+ TipTap extensions for email elements |
-| `@postcraft/editor/ui` | Bubble menus, slash command palette, inspector UI |
-| `@postcraft/editor/plugins` | ProseMirror plugins |
-| `@postcraft/editor/utils` | Shared utility functions |
+| Import Path                       | Contents                                                          |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `@postcraft/editor`               | `EmailEditor` component, `EmailEditorRef`, top-level API          |
+| `@postcraft/editor/core`          | Serializer, types, event bus — for custom integrations            |
+| `@postcraft/editor/extensions`    | All 35+ TipTap extensions for email elements                      |
+| `@postcraft/editor/ui`            | Bubble menus, slash command palette, inspector UI                 |
+| `@postcraft/editor/plugins`       | ProseMirror plugins                                               |
+| `@postcraft/editor/utils`         | Shared utility functions                                          |
 
 ---
 
@@ -220,7 +220,9 @@ const CustomBannerNode = EmailNode.create({
   renderHTML({ node }) {
     return [
       "table",
-      { style: `background-color: ${node.attrs.backgroundColor}; width: 100%;` },
+      {
+        style: `background-color: ${node.attrs.backgroundColor}; width: 100%;`,
+      },
       ["tr", {}, ["td", { style: "padding: 16px;" }, node.attrs.text]],
     ];
   },
