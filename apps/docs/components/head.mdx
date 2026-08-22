@@ -1,0 +1,47 @@
+---
+title: "Head"
+sidebarTitle: "Head"
+description: "Contains head components, related to the document such as style and meta elements."
+"og:image": "https://postcraft/static/covers/head.png"
+icon: "head-side"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include children tags where needed.
+
+```jsx
+import { Head } from "postcraft";
+
+const Postcraft = () => {
+  return (
+    <Head>
+      <title>My postcraft title</title>
+    </Head>
+  );
+};
+```
+
+<Support/>

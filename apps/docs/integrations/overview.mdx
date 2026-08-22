@@ -1,0 +1,34 @@
+---
+title: 'Overview'
+sidebarTitle: 'Overview'
+description: 'Leverage different postcraft service providers to send postcraft using React.'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+---
+
+import Integrations from '/snippets/integrations.mdx'
+
+In order to use Postcraft with any postcraft service provider, you'll need to convert the components made with React into a HTML string. This is done using the [render](/utilities/render) utility. Or you can integrate Postcraft into your NodeJS application by installing `@babel/preset-typescript` and adding a `.babelrc` config file:
+
+<CodeGroup>
+
+```sh npm
+npm install -D @babel/preset-typescript
+```
+
+```sh yarn
+yarn add -D @babel/preset-typescript
+```
+
+```sh pnpm
+pnpm add -D @babel/preset-typescript
+```
+
+</CodeGroup>
+
+```json .babelrc
+{
+  "presets": ["@babel/preset-typescript"]
+}
+```
+
+<Integrations/>

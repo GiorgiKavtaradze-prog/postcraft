@@ -1,0 +1,55 @@
+---
+title: "Row"
+sidebarTitle: "Row"
+description: "Display a row that separates content areas horizontally in your postcraft."
+"og:image": "https://postcraft/static/covers/row.png"
+icon: "table-rows"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Row, Column, Section } from "postcraft";
+
+const Postcraft = () => {
+  return (
+    <Section>
+      <Row>
+        <Column>A</Column>
+      </Row>
+      <Row>
+        <Column>B</Column>
+      </Row>
+      <Row>
+        <Column>C</Column>
+      </Row>
+    </Section>
+  );
+};
+```
+
+<Support/>

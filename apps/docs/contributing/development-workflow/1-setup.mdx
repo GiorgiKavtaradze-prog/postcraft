@@ -1,0 +1,43 @@
+---
+title: 'Setup'
+sidebarTitle: '1. Setup'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+description: 'Things you will need to do beforehand to setup the project'
+---
+
+Before you can start developing, you will need to get the project setup.
+
+<Info>
+To contribute to the project, you must use **Node 18** or higher.
+</Info>
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/resend/postcraft
+    ```
+  </Step>
+  <Step title={<>Enable <a href="https://pnpm.io/">pnpm</a> through <a href="https://github.com/nodejs/corepack">corepack</a></>}>
+    ```bash inside of postcraft
+    corepack enable
+    corepack prepare pnpm@latest --activate
+    ```
+  </Step>
+  <Step title="Install all the dependencies">
+    ```bash inside of postcraft
+    pnpm install
+    ```
+  </Step>
+  <Step title="Link postcraft-dev CLI globally">
+    ```bash inside of postcraft
+    pnpm link ./packages/postcraft/dev -g
+    ```
+    <Note>
+    Linking the CLI globally runs the CLI's source code when you use the `postcraft-dev` command, avoiding the need to rebuild the CLI.
+    </Note>
+  </Step>
+</Steps>
+
+If you plan to contribute to the docs, view our [Writing docs](/contributing/development-workflow/5-writing-docs) guide for additional setup.
+
+If you have any trouble, please [reach out on GitHub Discussions](https://github.com/resend/postcraft/discussions) or consider [opening up an issue on GitHub](https://github.com/resend/postcraft/issues/new?assignees=&labels=Type%3A+Bug&projects=&template=1.bug_report.yml) after reading the [issue guidelines](/contributing/opening-issues).

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "postcraft",
+      "type": "skill-md",
+      "description": "Create HTML postcraft templates with React components: welcome postcraft, password resets, notifications, order confirmations, newsletters, or transactional postcraft.",
+      "url": "https://raw.githubusercontent.com/resend/postcraft/main/skills/postcraft/SKILL.md"
+    }
+  ]
+}

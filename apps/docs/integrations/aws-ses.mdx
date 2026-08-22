@@ -1,0 +1,92 @@
+---
+title: 'Send postcraft using AWS SES'
+sidebarTitle: 'AWS SES'
+description: 'Learn how to send an postcraft using Postcraft and the AWS SES Node.js SDK.'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+---
+
+## 1. Install dependencies
+
+Get the [postcraft](https://www.npmjs.com/package/postcraft) package and the [AWS SES Node.js SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-ses/).
+
+<CodeGroup>
+
+```sh npm
+npm install @aws-sdk/client-ses postcraft
+```
+
+```sh yarn
+yarn add @aws-sdk/client-ses postcraft
+```
+
+```sh pnpm
+pnpm add @aws-sdk/client-ses postcraft
+```
+
+</CodeGroup>
+
+## 2. Create an postcraft using React
+
+Start by building your postcraft template in a `.jsx` or `.tsx` file.
+
+```tsx postcraft.tsx
+import * as React from 'react';
+import { Html, Button } from "postcraft";
+
+export function Postcraft(props) {
+  const { url } = props;
+
+  return (
+    <Html lang="en">
+      <Button href={url}>Click me</Button>
+    </Html>
+  );
+}
+```
+
+## 3. Convert to HTML and send postcraft
+
+Import the postcraft template you just built, convert into an HTML string, and use the AWS SES SDK to send it.
+
+```tsx
+import type { SendEmailCommandInput } from "@aws-sdk/client-ses";
+import { render } from 'postcraft';
+import { SES } from '@aws-sdk/client-ses';
+import { Postcraft } from './postcraft';
+
+const ses = new SES({ region: process.env.AWS_SES_REGION })
+
+const emailHtml = await render(<Postcraft url="https://example.com" />);
+
+const params: SendEmailCommandInput = {
+  Source: 'you@example.com',
+  Destination: {
+    ToAddresses: ['user@gmail.com'],
+  },
+  Message: {
+    Body: {
+      Html: {
+        Charset: 'UTF-8',
+        Data: emailHtml,
+      },
+    },
+    Subject: {
+      Charset: 'UTF-8',
+      Data: 'hello world',
+    },
+  },
+};
+
+await ses.sendEmail(params);
+```
+
+## Try it yourself
+
+<Card
+  title="AWS SES example"
+  icon='arrow-up-right-from-square'
+  iconType="duotone"
+  href="https://github.com/resend/postcraft/tree/main/examples/aws-ses"
+>
+  See the full source code.
+</Card>

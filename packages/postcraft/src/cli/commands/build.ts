@@ -1,0 +1,270 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { getPackages } from "@manypkg/get-packages";
+import logSymbols from "log-symbols";
+import { installDependencies, type PackageManagerName, runScript } from "nypm";
+import {
+  type EmailsDirectory,
+  getEmailsDirectoryMetadata,
+} from "../utils/get-postcraft-directory-metadata.js";
+import { getUiLocation } from "../utils/get-ui-location.js";
+import { registerSpinnerAutostopping } from "../utils/register-spinner-autostopping.js";
+import { createSpinner, stopSpinnerAndPersist } from "../utils/spinner.js";
+
+interface Args {
+  dir: string;
+  packageManager: PackageManagerName;
+}
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const isInPostcraftMonorepo = !dirname.includes("node_modules");
+
+const setNextEnvironmentVariablesForBuild = async (
+  emailsDirRelativePath: string,
+  builtPreviewAppPath: string,
+  usersProjectLocation: string,
+) => {
+  let rootDir = "previewServerLocation";
+  if (isInPostcraftMonorepo) {
+    rootDir = `'${await getPackages(usersProjectLocation).then((p) => p.rootDir.replaceAll("\\", "/"))}'`;
+  }
+  const nextConfigContents = `
+import path from 'path';
+const emailsDirRelativePath = path.normalize('${emailsDirRelativePath}');
+const userProjectLocation = '${process.cwd().replaceAll("\\", "/")}';
+const previewServerLocation = '${builtPreviewAppPath.replaceAll("\\", "/")}';
+const rootDir = ${rootDir};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  env: {
+    NEXT_PUBLIC_IS_BUILDING: 'true',
+    POSTCRAFT_INTERNAL_EMAILS_DIR_RELATIVE_PATH: emailsDirRelativePath,
+    POSTCRAFT_INTERNAL_EMAILS_DIR_ABSOLUTE_PATH: path.resolve(userProjectLocation, emailsDirRelativePath),
+    POSTCRAFT_INTERNAL_PREVIEW_SERVER_LOCATION: previewServerLocation,
+    POSTCRAFT_INTERNAL_USER_PROJECT_LOCATION: userProjectLocation
+  },
+  turbopack: {
+    root: rootDir,
+  },
+  outputFileTracingRoot: rootDir,
+  serverExternalPackages: ['esbuild'],
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  staticPageGenerationTimeout: 600,
+}
+
+export default nextConfig`;
+
+  await fs.promises.writeFile(
+    path.resolve(builtPreviewAppPath, "./next.config.mjs"),
+    nextConfigContents,
+    "utf8",
+  );
+};
+
+const getEmailSlugsFromEmailDirectory = (
+  emailDirectory: EmailsDirectory,
+  emailsDirectoryAbsolutePath: string,
+) => {
+  const directoryPathRelativeToEmailsDirectory = emailDirectory.absolutePath
+    .replace(emailsDirectoryAbsolutePath, "")
+    .trim();
+
+  const slugs = [] as Array<string>[];
+  for (const filename of emailDirectory.emailFilenames) {
+    slugs.push(
+      path
+        .join(directoryPathRelativeToEmailsDirectory, filename)
+        .split(path.sep)
+        // sometimes it gets empty segments due to trailing slashes
+        .filter((segment) => segment.length > 0),
+    );
+  }
+  for (const directory of emailDirectory.subDirectories) {
+    slugs.push(
+      ...getEmailSlugsFromEmailDirectory(
+        directory,
+        emailsDirectoryAbsolutePath,
+      ),
+    );
+  }
+
+  return slugs;
+};
+
+// we do this because otherwise it won't be able to find the emails
+// after build
+const forceSSGForEmailPreviews = async (
+  emailsDirPath: string,
+  builtPreviewAppPath: string,
+) => {
+  const emailDirectoryMetadata =
+    (await getEmailsDirectoryMetadata(emailsDirPath))!;
+
+  const parameters = getEmailSlugsFromEmailDirectory(
+    emailDirectoryMetadata,
+    emailsDirPath,
+  ).map((slug) => ({ slug }));
+
+  const removeForceDynamic = async (filePath: string) => {
+    const contents = await fs.promises.readFile(filePath, "utf8");
+
+    await fs.promises.writeFile(
+      filePath,
+      contents.replace("export const dynamic = 'force-dynamic';", ""),
+      "utf8",
+    );
+  };
+  await removeForceDynamic(
+    path.resolve(builtPreviewAppPath, "./src/app/layout.tsx"),
+  );
+  await removeForceDynamic(
+    path.resolve(builtPreviewAppPath, "./src/app/preview/[...slug]/page.tsx"),
+  );
+
+  await fs.promises.appendFile(
+    path.resolve(builtPreviewAppPath, "./src/app/preview/[...slug]/page.tsx"),
+    `
+
+export function generateStaticParams() { 
+  return Promise.resolve(
+    ${JSON.stringify(parameters)}
+  );
+}`,
+    "utf8",
+  );
+};
+
+const updatePackageJson = async (builtUiPath: string) => {
+  const packageJsonPath = path.resolve(builtUiPath, "./package.json");
+  const packageJson = JSON.parse(
+    await fs.promises.readFile(packageJsonPath, "utf8"),
+  ) as {
+    name: string;
+    scripts: Record<string, string>;
+    dependencies: Record<string, string>;
+    devDependencies: Record<string, string>;
+  };
+  // Turbopack has some errors with the imports in @postcraft/tailwind
+  packageJson.scripts.build =
+    'cross-env NODE_OPTIONS="--experimental-vm-modules --disable-warning=ExperimentalWarning" next build';
+  packageJson.scripts.start =
+    'cross-env NODE_OPTIONS="--experimental-vm-modules --disable-warning=ExperimentalWarning" next start';
+  delete packageJson.scripts.postbuild;
+
+  packageJson.name = "ui";
+
+  for (const [dependency, version] of Object.entries(
+    packageJson.devDependencies,
+  )) {
+    packageJson.devDependencies[dependency] = version.replace("workspace:", "");
+  }
+
+  await fs.promises.writeFile(
+    packageJsonPath,
+    JSON.stringify(packageJson),
+    "utf8",
+  );
+};
+
+export const build = async ({
+  dir: emailsDirRelativePath,
+  packageManager,
+}: Args) => {
+  try {
+    const usersProjectLocation = process.cwd();
+    const previewServerLocation = await getUiLocation();
+
+    const spinner = createSpinner({
+      text: "Starting build process...",
+      prefixText: "  ",
+    });
+    spinner.start();
+    registerSpinnerAutostopping(spinner);
+
+    spinner.setText(`Checking if ${emailsDirRelativePath} folder exists`);
+    if (!fs.existsSync(emailsDirRelativePath)) {
+      process.exit(1);
+    }
+
+    const emailsDirPath = path.join(
+      usersProjectLocation,
+      emailsDirRelativePath,
+    );
+    const staticPath = path.join(emailsDirPath, "static");
+
+    const builtPreviewAppPath = path.join(usersProjectLocation, ".postcraft");
+
+    if (fs.existsSync(builtPreviewAppPath)) {
+      spinner.setText("Deleting pre-existing `.postcraft` folder");
+      await fs.promises.rm(builtPreviewAppPath, { recursive: true });
+    }
+
+    spinner.setText("Copying preview app from CLI to `.postcraft`");
+    await fs.promises.cp(previewServerLocation, builtPreviewAppPath, {
+      recursive: true,
+      filter: (source: string) => {
+        const relativeSource = path.relative(previewServerLocation, source);
+        return (
+          !/\.next/.test(relativeSource) &&
+          !/\.turbo/.test(relativeSource) &&
+          (isInPostcraftMonorepo || !/node_modules/.test(relativeSource))
+        );
+      },
+    });
+
+    if (fs.existsSync(staticPath)) {
+      spinner.setText(
+        "Copying `static` folder into `.postcraft/public/static`",
+      );
+      const builtStaticDirectory = path.resolve(
+        builtPreviewAppPath,
+        "./public/static",
+      );
+      await fs.promises.cp(staticPath, builtStaticDirectory, {
+        recursive: true,
+      });
+    }
+
+    spinner.setText(
+      "Setting Next environment variables for preview app to work properly",
+    );
+    await setNextEnvironmentVariablesForBuild(
+      emailsDirRelativePath,
+      builtPreviewAppPath,
+      usersProjectLocation,
+    );
+
+    spinner.setText(
+      "Setting server side generation for the postcraft preview pages",
+    );
+    await forceSSGForEmailPreviews(emailsDirPath, builtPreviewAppPath);
+
+    spinner.setText("Updating package.json's build and start scripts");
+    await updatePackageJson(builtPreviewAppPath);
+
+    if (!isInPostcraftMonorepo) {
+      spinner.setText("Installing dependencies on `.postcraft`");
+      await installDependencies({
+        cwd: builtPreviewAppPath,
+        silent: true,
+        packageManager,
+      });
+    }
+
+    stopSpinnerAndPersist(spinner, {
+      text: "Successfully prepared `.postcraft` for `next build`",
+      symbol: logSymbols.success,
+    });
+
+    await runScript("build", {
+      packageManager,
+      cwd: builtPreviewAppPath,
+    });
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};

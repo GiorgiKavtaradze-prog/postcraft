@@ -1,0 +1,53 @@
+---
+title: "Link"
+sidebarTitle: "Link"
+description: "A hyperlink to web pages, postcraft addresses, or anything else a URL can address."
+"og:image": "https://postcraft/static/covers/link.png"
+icon: "link"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Link } from "postcraft";
+
+const Postcraft = () => {
+  return <Link href="https://example.com">Example</Link>;
+};
+```
+
+## Props
+
+<ResponseField name="href" type="string" required>
+  Link to be triggered when the button is clicked
+</ResponseField>
+
+<ResponseField name="target" type="string" default="_blank">
+  Specify the target attribute for the button link
+</ResponseField>
+
+<Support/>

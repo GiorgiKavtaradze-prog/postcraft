@@ -1,0 +1,9 @@
+# Postcraft
+
+Build HTML postcraft templates with React components.
+
+## Documentation
+- [Full docs](https://postcraft/docs/llms.txt)
+
+## Skills
+- [Postcraft Skill](https://raw.githubusercontent.com/resend/postcraft/main/skills/postcraft/SKILL.md)

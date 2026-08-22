@@ -1,0 +1,49 @@
+---
+title: "Column"
+sidebarTitle: "Column"
+description: "Display a column that separates content areas vertically in your postcraft. A column needs to be used in combination with a Row component."
+"og:image": "https://postcraft/static/covers/column.png"
+icon: "columns-3"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Column, Row } from "postcraft";
+
+const Postcraft = () => {
+  return (
+    <Row>
+      <Column>A</Column>
+      <Column>B</Column>
+      <Column>C</Column>
+    </Row>
+  );
+};
+```
+
+<Support />

@@ -1,0 +1,79 @@
+---
+title: "Editor"
+sidebarTitle: "Overview"
+description: "An embeddable visual editor for building Postcraft templates."
+icon: "pen-nib"
+---
+
+The Postcraft Editor is a visual editor that you can embed in your app. It's made specifically for composing Postcraft templates. 
+
+Using the power of Postcraft, it produces postcraft-ready HTML, and is built on top of [TipTap](https://tiptap.dev/) and [ProseMirror](https://prosemirror.net/).
+
+## Key features
+
+- **Rich text editing** — Paragraphs, headings, lists, code blocks, tables, and more
+- **Bubble menus** — Floating formatting toolbars that appear on text selection
+- **Slash commands** — Insert content blocks by typing `/`
+- **Multi-column layouts** — Two, three, and four-column postcraft layouts
+- **Postcraft theming** — Built-in themes with customizable CSS properties
+- **HTML export** — Convert editor content to postcraft-ready HTML and plain text
+- **Custom extensions** — Create your own postcraft-compatible nodes and marks
+
+## Architecture
+
+The editor is organized into five entry points:
+
+| Import | Purpose |
+|--------|---------|
+| `@postcraft/editor/core` | `composePostcraft` serialization, event bus, types |
+| `@postcraft/editor/extensions` | `StarterKit` and 35+ postcraft-aware extensions |
+| `@postcraft/editor/ui` | Bubble menus, slash commands |
+| `@postcraft/editor/plugins` | Postcraft theming and image upload plugins |
+| `@postcraft/editor/utils` | Attribute helpers, style utilities |
+
+<Info>
+  The editor uses [TipTap](https://tiptap.dev/) under the hood, so [TipTap](https://tiptap.dev/) and [ProseMirror](https://prosemirror.net/) concepts apply.
+  Extensions are postcraft-aware versions of TipTap nodes and marks that know how to serialize to Postcraft components.
+</Info>
+
+## Quick links
+
+<CardGroup cols={2}>
+  <Card title="Getting Started" icon="rocket" href="/editor/getting-started">
+    Set up the editor in under 5 minutes.
+  </Card>
+  <Card title="Bubble Menu" icon="message-lines" href="/editor/features/bubble-menu">
+    Add floating formatting toolbars.
+  </Card>
+  <Card title="Slash Commands" icon="slash-forward" href="/editor/features/slash-commands">
+    Insert content blocks with a command menu.
+  </Card>
+  <Card title="Postcraft Theming" icon="palette" href="/editor/features/theming">
+    Apply visual themes to your postcraft output.
+  </Card>
+  <Card title="Image Upload" icon="image" href="/editor/features/image-upload">
+    Upload images via paste, drop, or slash command.
+  </Card>
+  <Card title="Styling" icon="paintbrush" href="/editor/features/styling">
+    Customize the editor's appearance with CSS.
+  </Card>
+  <Card title="Postcraft Export" icon="file-export" href="/editor/features/postcraft-export">
+    Convert editor content to postcraft-ready HTML.
+  </Card>
+  <Card title="Custom Extensions" icon="wrench" href="/editor/advanced/custom-extensions">
+    Create your own postcraft-compatible nodes.
+  </Card>
+</CardGroup>
+
+## Examples
+
+Runnable examples are available at [postcraft/editor/examples](https://postcraft/editor/examples). Each example demonstrates a specific feature in isolation:
+
+<CardGroup cols={2}>
+  <Card title="Full Postcraft Builder" icon="code" href="https://postcraft/editor/examples/full-postcraft-builder">
+    All features combined — theming, bubble menus, slash commands, and HTML export.
+  </Card>
+  <Card title="All Examples" icon="folder-open" href="https://postcraft/editor/examples">
+    Browse the complete set of interactive examples.
+  </Card>
+</CardGroup>

@@ -1,0 +1,85 @@
+---
+title: 'Send postcraft using MailerSend'
+sidebarTitle: 'MailerSend'
+description: 'Learn how to send an postcraft using Postcraft and the MailerSend Node.js SDK.'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+---
+
+## 1. Install dependencies
+
+Get the [postcraft](https://www.npmjs.com/package/postcraft) package and the [MailerSend Node.js SDK](https://www.npmjs.com/package/mailersend).
+
+<CodeGroup>
+
+```sh npm
+npm install mailersend postcraft
+```
+
+```sh yarn
+yarn add mailersend postcraft
+```
+
+```sh pnpm
+pnpm add mailersend postcraft
+```
+
+</CodeGroup>
+
+## 2. Create an postcraft using React
+
+Start by building your postcraft template in a `.jsx` or `.tsx` file.
+
+```tsx postcraft.tsx
+import * as React from 'react';
+import { Html, Button } from "postcraft";
+
+export function Postcraft(props) {
+  const { url } = props;
+
+  return (
+    <Html lang="en">
+      <Button href={url}>Click me</Button>
+    </Html>
+  );
+}
+```
+
+## 3. Convert to HTML and send postcraft
+
+Import the postcraft template you just built, convert into an HTML string, and use the MailerSend SDK to send it.
+
+```tsx
+import { render } from 'postcraft';
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import { Postcraft } from './postcraft';
+
+const mailerSend = new MailerSend({
+  apiKey: process.env.MAILERSEND_API_KEY || '',
+});
+
+const emailHtml = await render(<Postcraft url="https://example.com" />);
+
+const sentFrom = new Sender("you@yourdomain.com", "Your name");
+const recipients = [
+  new Recipient("your@client.com", "Your Client")
+];
+
+const emailParams = new EmailParams()
+  .setFrom(sentFrom)
+  .setTo(recipients)
+  .setSubject("This is a Subject")
+  .setHtml(emailHtml)
+
+await mailerSend.postcraft.send(emailParams);
+```
+
+## Try it yourself
+
+<Card
+  title="MailerSend example"
+  icon='arrow-up-right-from-square'
+  iconType="duotone"
+  href="https://github.com/resend/postcraft/tree/main/examples/mailersend"
+>
+  See the full source code.
+</Card>

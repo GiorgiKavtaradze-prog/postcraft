@@ -1,0 +1,42 @@
+---
+title: 'Code Inline'
+sidebarTitle: 'Code Inline'
+description: 'Display a predictable inline code HTML element that works on all postcraft clients.'
+icon: 'code'
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install the component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting Started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { CodeInline } from "postcraft";
+
+const Postcraft = () => {
+    return <CodeInline>@postcraft/code-inline</CodeInline>;
+}
+```
+
+<Support/>

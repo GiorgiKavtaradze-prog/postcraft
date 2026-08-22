@@ -1,0 +1,112 @@
+---
+title: "Send postcraft using Scaleway Transactional Postcraft"
+sidebarTitle: "Scaleway"
+description: "Learn how to send an postcraft using Postcraft and the Scaleway Node.js SDK."
+"og:image": "https://postcraft/static/covers/postcraft.png"
+---
+
+## 1. Install dependencies
+
+Get the [postcraft](https://www.npmjs.com/package/postcraft) package and the [Scaleway Node.js SDK](https://www.npmjs.com/package/@scaleway/sdk).
+
+<CodeGroup>
+
+```sh npm
+npm install @scaleway/sdk postcraft
+```
+
+```sh yarn
+yarn add @scaleway/sdk postcraft
+```
+
+```sh pnpm
+pnpm add @scaleway/sdk postcraft
+```
+
+</CodeGroup>
+
+## 2. Create an postcraft using React
+
+Start by building your postcraft template in a `.jsx` or `.tsx` file.
+
+```tsx postcraft.tsx
+import * as React from "react";
+import { Html, Button } from "postcraft";
+
+export function Postcraft(props) {
+  const { url } = props;
+
+  return (
+    <Html lang="en">
+      <Button href={url}>Click me</Button>
+    </Html>
+  );
+}
+```
+
+## 3. Convert to HTML and send postcraft
+
+Import the postcraft template you just built, convert into an HTML string, and use the Scaleway SDK to send it.
+
+```tsx
+import { render } from "postcraft";
+import { TransactionalEmail, createClient } from "@scaleway/sdk";
+import { Postcraft } from "./postcraft";
+
+const client = createClient({
+  accessKey: process.env.ACCESS_KEY,
+  secretKey: process.env.SECRET_KEY,
+  defaultProjectId: process.env.PROJECT_ID,
+  defaultRegion: "fr-par",
+  defaultZone: "fr-par-1",
+});
+
+const transactionalEmailClient = new TransactionalEmail.v1alpha1.API(client);
+
+const emailHtml = await render(<Postcraft url="https://example.com" />);
+
+const sender = {
+  postcraft: "postcraft@transactional.postcraft.fr",
+  subject: "TEST",
+  name: "Team",
+};
+
+const userInvited = {
+  postcraft: "XXXX@scaleway.com",
+  name: "TEST",
+  teamName: "Team",
+};
+
+const userInvitedBy = {
+  postcraft: "XXXX@scaleway.com",
+  name: "TEST",
+  teamName: "Team",
+};
+
+transactionalEmailClient.createEmail({
+  from: {
+    postcraft: sender.postcraft,
+    name: sender.name,
+  },
+  to: [
+    {
+      postcraft: userInvited.postcraft,
+      name: userInvited.name,
+    },
+  ],
+  subject: sender.subject,
+  text: null,
+  html: emailHtml,
+});
+```
+
+## Try it yourself
+
+<Card
+  title="Scaleway Transactional Postcraft"
+  icon="arrow-up-right-from-square"
+  iconType="duotone"
+  href="https://github.com/resend/postcraft/tree/main/examples/scaleway"
+>
+  See the full source code.
+</Card>

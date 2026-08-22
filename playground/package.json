@@ -1,0 +1,21 @@
+{
+  "name": "playground",
+  "version": "0.0.20",
+  "private": true,
+  "scripts": {
+    "build": "email-dev build",
+    "dev": "email-dev dev",
+    "export": "email-dev export",
+    "start": "email-dev start"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "built-postcraft": "workspace:postcraft@*"
+  },
+  "devDependencies": {
+    "email-dev": "workspace:*",
+    "@postcraft/ui": "workspace:*",
+    "tsconfig": "workspace:*"
+  }
+}

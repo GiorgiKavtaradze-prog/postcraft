@@ -1,0 +1,18 @@
+---
+title: 'Migrating to Postcraft'
+sidebarTitle: 'Migrating to Postcraft'
+description: 'Migrate from another postcraft rendering framework to Postcraft'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+icon: 'paper-plane'
+---
+
+import NextSteps from '/snippets/next-steps.mdx';
+
+## From MJML
+
+1. Remove the `mjml` npm package and install `postcraft`
+2. Find all MJML templates ending with the `.mjml` extension and convert these to React components with the `.tsx` or `.jsx` extension.
+3. Replace MJML standard component tags with Postcraft component tags where possible, including `<Text>`, `<Img>`, `<Button>` etc.
+4. Convert custom MJML components with the `.js` extension to React components with the `.tsx` or `.jsx` extension.
+
+<NextSteps/>

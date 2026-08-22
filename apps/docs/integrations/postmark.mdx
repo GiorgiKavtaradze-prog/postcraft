@@ -1,0 +1,79 @@
+---
+title: 'Send postcraft using Postmark'
+sidebarTitle: 'Postmark'
+description: 'Learn how to send an postcraft using Postcraft and the Postmark Node.js SDK.'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+---
+
+## 1. Install dependencies
+
+Get the [postcraft](https://www.npmjs.com/package/postcraft) package and the [Postmark Node.js SDK](https://www.npmjs.com/package/postmark).
+
+<CodeGroup>
+
+```sh npm
+npm install postmark postcraft
+```
+
+```sh yarn
+yarn add postmark postcraft
+```
+
+```sh pnpm
+pnpm add postmark postcraft
+```
+
+</CodeGroup>
+
+## 2. Create an postcraft using React
+
+Start by building your postcraft template in a `.jsx` or `.tsx` file.
+
+```tsx postcraft.tsx
+import * as React from 'react';
+import { Html, Button } from "postcraft";
+
+export function Postcraft(props) {
+  const { url } = props;
+
+  return (
+    <Html lang="en">
+      <Button href={url}>Click me</Button>
+    </Html>
+  );
+}
+```
+
+## 3. Convert to HTML and send postcraft
+
+Import the postcraft template you just built, convert into an HTML string, and use the Postmark SDK to send it.
+
+```tsx
+import { render } from 'postcraft';
+import postmark from 'postmark';
+import { Postcraft } from './postcraft';
+
+const client = new postmark.ServerClient(process.env.POSTMARK_API_KEY);
+
+const emailHtml = await render(<Postcraft url="https://example.com" />);
+
+const options = {
+  From: 'you@example.com',
+  To: 'user@gmail.com',
+  Subject: 'hello world',
+  HtmlBody: emailHtml,
+};
+
+await client.sendEmail(options);
+```
+
+## Try it yourself
+
+<Card
+  title="Postmark example"
+  icon='arrow-up-right-from-square'
+  iconType="duotone"
+  href="https://github.com/resend/postcraft/tree/main/examples/postmark"
+>
+  See the full source code.
+</Card>

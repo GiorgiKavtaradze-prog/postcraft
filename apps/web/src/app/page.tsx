@@ -1,0 +1,27 @@
+import { Footer } from '@/components/footer';
+import { EditorHomepage } from '@/components/sections/editor';
+import HeroSection from '@/components/sections/hero';
+import IntegrationSection from '@/components/sections/integration';
+import PatternsSection from '@/components/sections/patterns';
+import PlaygroundSection from '@/components/sections/playground';
+import PrimitivesSection from '@/components/sections/primitives';
+import TestimonialSection from '@/components/sections/testimonial';
+import ToolsSection from '@/components/sections/tools';
+
+const Home = () => (
+  <main className="overflow-x-clip">
+    <HeroSection />
+    <div className="relative mx-auto flex flex-col justify-between px-2 md:max-w-7xl md:px-4">
+      <PlaygroundSection />
+      <TestimonialSection />
+      <PatternsSection />
+      <PrimitivesSection />
+      <ToolsSection />
+      <EditorHomepage />
+      <IntegrationSection />
+      <Footer />
+    </div>
+  </main>
+);
+
+export default Home;

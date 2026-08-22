@@ -1,0 +1,49 @@
+---
+title: "Preview"
+sidebarTitle: "Preview"
+description: "A preview text that will be displayed in the inbox of the recipient."
+"og:image": "https://postcraft/static/covers/preview.png"
+icon: "input-text"
+---
+
+import Support from '/snippets/support.mdx'
+
+<Info>
+  Postcraft clients have this concept of “preview text” which gives insight into
+  what's inside the postcraft before you open. A good practice is to keep that text
+  under 90 characters.
+</Info>
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Preview } from "postcraft";
+
+const Postcraft = () => {
+  return <Preview>Postcraft preview text</Preview>;
+};
+```
+
+<Support/>

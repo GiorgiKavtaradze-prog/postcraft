@@ -1,0 +1,112 @@
+---
+title: "Manual Setup"
+sidebarTitle: "Manual Setup"
+description: "Create a brand-new folder with packages powered by Postcraft."
+"og:image": "https://postcraft/static/covers/postcraft.png"
+icon: "hammer"
+---
+
+import NextSteps from '/snippets/next-steps.mdx'
+
+<Note>Are you using monorepos? Then we recommend you follow our [monorepos setup](/getting-started/monorepo-setup/choose-package-manager).</Note>
+
+## 1. Install dependencies
+
+Install the Postcraft packages locally.
+
+<CodeGroup>
+
+```sh npm
+npm install @postcraft/ui -D -E
+npm install postcraft react react-dom -E
+```
+
+```sh yarn
+yarn add @postcraft/ui -D -E
+yarn add postcraft react react-dom -E
+```
+
+```sh pnpm
+pnpm add @postcraft/ui -D -E
+pnpm add postcraft react react-dom -E
+```
+
+```sh bun
+bun add @postcraft/ui -D -E
+bun add postcraft react react-dom -E
+```
+
+</CodeGroup>
+
+## 2. Add scripts
+
+Include the following script in your `package.json` file.
+
+```json package.json
+{
+  "scripts": {
+    "postcraft:dev": "postcraft dev"
+  }
+}
+```
+
+## 3. Write an postcraft template
+
+Create a new folder called `postcraft`, create a file inside called `postcraft.tsx`, and add the following code:
+
+```jsx emails/postcraft.tsx
+import { Button, Html, Head, Body } from "postcraft";
+import * as React from "react";
+
+export default function Postcraft() {
+  return (
+    <Html>
+      <Head />
+      <Body>
+        <Button
+          href="https://example.com"
+          style={{ background: "#000", color: "#fff", padding: "12px 20px" }}
+        >
+          Click me
+        </Button>
+      </Body>
+    </Html>
+  );
+}
+```
+
+## 4. Run locally
+
+Start the development server.
+
+<CodeGroup>
+
+```sh npm
+npm run postcraft:dev
+```
+
+```sh yarn
+yarn postcraft:dev
+```
+
+```sh pnpm
+pnpm postcraft:dev
+```
+
+```sh bun
+bun postcraft:dev
+```
+
+</CodeGroup>
+
+## 5. See changes live
+
+Visit [localhost:3000](http://localhost:3000) and edit `postcraft.tsx` file to see the changes.
+
+<Frame>
+  <img alt="Local Development" src="/images/manual-setup-dev.png" />
+</Frame>
+
+## 6. Next steps
+
+<NextSteps/>

@@ -1,0 +1,49 @@
+import { Button, Column, Img, Row, Text } from 'postcraft';
+import { Layout } from '../_components/layout';
+
+export const component = (
+  <Row>
+    <Column align="center">
+      <Row>
+        <Text className="font-bold text-[18px] text-indigo-500 leading-[28px]">
+          Try now
+        </Text>
+        <Text className="text-gray-900">
+          The app all cheese enthusiasts have been waiting for
+        </Text>
+      </Row>
+      <Row>
+        <td align="center">
+          <table>
+            <tr>
+              <td className="pr-[16px]">
+                <Button href="https://postcraft">
+                  <Img
+                    alt="Get it on Google Play button"
+                    width={182.5}
+                    height={54}
+                    src="/static/get-it-on-google-play.png"
+                  />
+                </Button>
+              </td>
+              <td className="pl-[16px]">
+                <Button href="https://postcraft">
+                  <Img
+                    alt="Download on the App Store button"
+                    width={164}
+                    height={54}
+                    src="/static/download-on-the-app-store.png"
+                  />
+                </Button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </Row>
+    </Column>
+  </Row>
+);
+
+export default () => {
+  return <Layout>{component}</Layout>;
+};

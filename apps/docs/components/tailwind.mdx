@@ -1,0 +1,122 @@
+---
+title: "Tailwind"
+sidebarTitle: "Tailwind"
+description: "A React component to wrap postcraft with Tailwind CSS."
+"og:image": "https://postcraft/static/covers/tailwind.png"
+icon: "wind"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+<Info>The current `tailwindcss` version used for this component is `4.1.12`</Info>
+
+Add the component around your postcraft body content.
+
+```jsx
+import { Tailwind, pixelBasedPreset, Button } from "postcraft";
+
+const Postcraft = () => {
+  return (
+    <Tailwind
+      config={{
+        presets: [pixelBasedPreset],
+        theme: {
+          extend: {
+            colors: {
+              brand: "#007291",
+            },
+          },
+        },
+      }}
+    >
+      <Button
+        href="https://example.com"
+        className="bg-brand px-3 py-2 font-medium leading-4 text-white"
+      >
+        Click me
+      </Button>
+    </Tailwind>
+  );
+};
+```
+
+## Props
+
+<ResponseField name="config" type="object">
+  Customize the default theme for your project with the available properties in
+  [Tailwind docs](https://v3.tailwindcss.com/docs/theme).
+</ResponseField>
+
+<Info>
+    Most postcraft clients are style-limited and some styles may not work.
+    
+    One example of this is how Tailwind uses `rem` as its main unit for better accessibility. This
+    is not supported by [some postcraft clients](https://www.caniemail.com/features/css-unit-rem/), and
+    the `pixelBasedPreset` changes it so that the styles are based on `16px` instead.
+</Info>
+
+## Live example
+
+<Card
+  title="Tailwind Demo"
+  icon="arrow-up-right-from-square"
+  iconType="duotone"
+  href="https://demo.postcraft/preview/Community/notifications/vercel-invite-user"
+>
+  See the full demo and source code.
+</Card>
+
+<Support/>
+
+## Known limitations
+
+<AccordionGroup>
+  <Accordion title="No support for contexts inside the component">
+    Currently adding a context's provider inside of the Tailwind component, won't allow you 
+to properly call the `useContext` in any of the children of it, due to some technical limitations
+regarding on how we currently map the classNames into styles. 
+
+The current workaround for this right now is to move the context's provider higher than the Tailwind
+component, so that all children inside Tailwind can properly call `useContext` with the context.
+  </Accordion>
+  <Accordion title="No support for prose from @tailwindcss/typography">
+    We do not yet support `prose`, and beyond that, we don't yet support classes that might
+be resolved into selectors that are relatively complex. That is, selectors with more
+than a class lookup.
+
+This is because we optimistically look into the selectors for class names
+and look these up later on the elements, and since `prose`, by using more complicated selectors, 
+cannot be directly inlined without matching the selectors to the elements, it isn't able to
+match the selectors appropriately.
+
+This also means some other utilities do not work either, like the [`space-*` utility](https://v3.tailwindcss.com/docs/space).
+
+The only exception for this inlining of styles is with media queries, as they are not inlinable. We do not
+do the same for `hover:` styles though, but since [their support is not best](https://www.caniemail.com/features/css-pseudo-class-hover/), you probably won't need it.
+
+In the future, we will be inlining all the styles we can by actually matching the 
+selectors *against the elements* themselves.
+  </Accordion>
+</AccordionGroup>

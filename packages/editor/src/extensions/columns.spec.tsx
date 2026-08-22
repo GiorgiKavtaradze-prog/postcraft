@@ -1,0 +1,242 @@
+import { render } from 'postcraft';
+import { DEFAULT_STYLES } from '../utils/default-styles';
+import {
+  ColumnsColumn,
+  FourColumns,
+  ThreeColumns,
+  TwoColumns,
+} from './columns';
+
+const columnsStyle = { ...DEFAULT_STYLES.reset };
+
+describe('Column Variants', () => {
+  it('renders TwoColumns with 2 column children', async () => {
+    const Parent = TwoColumns.config.renderToPostcraft;
+    const Child = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Parent
+          node={{ type: 'twoColumns', attrs: {} }}
+          style={columnsStyle}
+          extension={TwoColumns}
+        >
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column A
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column B
+          </Child>
+        </Parent>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders ThreeColumns with 3 column children', async () => {
+    const Parent = ThreeColumns.config.renderToPostcraft;
+    const Child = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Parent
+          node={{ type: 'threeColumns', attrs: {} }}
+          style={columnsStyle}
+          extension={ThreeColumns}
+        >
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column A
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column B
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column C
+          </Child>
+        </Parent>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders FourColumns with 4 column children', async () => {
+    const Parent = FourColumns.config.renderToPostcraft;
+    const Child = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Parent
+          node={{ type: 'fourColumns', attrs: {} }}
+          style={columnsStyle}
+          extension={FourColumns}
+        >
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            A
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            B
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            C
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            D
+          </Child>
+        </Parent>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders ColumnsColumn with custom width', async () => {
+    const Component = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Component
+          node={{ type: 'columnsColumn', attrs: { width: '200px' } }}
+          style={columnsStyle}
+          extension={ColumnsColumn}
+        >
+          Column content
+        </Component>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders column parent with inline styles', async () => {
+    const Component = TwoColumns.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Component
+          node={{
+            type: 'twoColumns',
+            attrs: { style: 'padding: 10px;', class: 'custom-class' },
+          }}
+          style={columnsStyle}
+          extension={TwoColumns}
+        >
+          Content
+        </Component>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders column parent with custom column spacing', async () => {
+    const Parent = TwoColumns.config.renderToPostcraft;
+    const Child = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Parent
+          node={{ type: 'twoColumns', attrs: { cellspacing: 12 } }}
+          style={columnsStyle}
+          extension={TwoColumns}
+        >
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column A
+          </Child>
+          <Child
+            node={{ type: 'columnsColumn', attrs: {} }}
+            style={columnsStyle}
+            extension={ColumnsColumn}
+          >
+            Column B
+          </Child>
+        </Parent>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('reflects column spacing in editor HTML without inventing a default gap', () => {
+    const renderHTML = TwoColumns.config.renderHTML;
+
+    const defaultHtml = renderHTML?.({
+      HTMLAttributes: {},
+    } as Parameters<NonNullable<typeof renderHTML>>[0]) as [
+      string,
+      Record<string, unknown>,
+      number,
+    ];
+    expect(defaultHtml[1]).not.toHaveProperty('style');
+
+    const spacedHtml = renderHTML?.({
+      HTMLAttributes: { cellspacing: '12', style: 'padding: 10px;' },
+    } as Parameters<NonNullable<typeof renderHTML>>[0]) as [
+      string,
+      Record<string, unknown>,
+      number,
+    ];
+
+    expect(spacedHtml[1]).toMatchObject({
+      'data-type': 'two-columns',
+      class: 'node-columns',
+      style: 'padding: 10px;gap:12px;',
+    });
+    expect(spacedHtml[1]).not.toHaveProperty('cellspacing');
+  });
+
+  it('renders ColumnsColumn with inline styles', async () => {
+    const Component = ColumnsColumn.config.renderToPostcraft;
+
+    expect(
+      await render(
+        <Component
+          node={{
+            type: 'columnsColumn',
+            attrs: { style: 'background-color: red;' },
+          }}
+          style={columnsStyle}
+          extension={ColumnsColumn}
+        >
+          Content
+        </Component>,
+        { pretty: true },
+      ),
+    ).toMatchSnapshot();
+  });
+});

@@ -1,0 +1,23 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "email-dev build",
+    "dev": "email-dev dev",
+    "start": "email-dev start",
+    "export": "email-dev export"
+  },
+  "dependencies": {
+    "postcraft": "workspace:*",
+    "email-dev": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "tailwindcss": "catalog:",
+    "tsconfig": "workspace:*",
+    "@postcraft/ui": "workspace:*",
+    "next": "catalog:"
+  }
+}

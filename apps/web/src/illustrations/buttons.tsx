@@ -1,0 +1,14 @@
+import { MousePointer2Icon } from 'lucide-react';
+
+const IllustrationButtons: React.FC = () => (
+  <div className="relative flex h-6 w-[24%] items-center justify-center rounded-md border border-[#2EBDC9] bg-[#25AEBA] p-1 shadow-xs transition-transform duration-150 ease-[cubic-bezier(.42,0,.58,1.8)] md:group-hover:rotate-3">
+    <div className="h-2 w-[80%] rounded-xs bg-black/30" />
+    <MousePointer2Icon
+      className="-bottom-4 md:group-hover:-rotate-12 absolute left-[80%] transition-transform duration-150 ease-[cubic-bezier(.42,0,.58,1.8)]"
+      fill="currentColor"
+      stroke="currentColor"
+    />
+  </div>
+);
+
+export default IllustrationButtons;

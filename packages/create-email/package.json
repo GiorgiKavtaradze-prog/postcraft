@@ -1,0 +1,38 @@
+{
+  "name": "create-email",
+  "version": "1.2.5",
+  "description": "The easiest way to get started with Postcraft",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "commander": "catalog:",
+    "fs-extra": "^11.3.3",
+    "log-symbols": "catalog:",
+    "ora": "catalog:"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/resend/postcraft.git",
+    "directory": "packages/create-email"
+  },
+  "keywords": [
+    "react",
+    "email"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "create-email": "src/index.js"
+  },
+  "devDependencies": {
+    "nypm": "catalog:",
+    "react": "catalog:",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

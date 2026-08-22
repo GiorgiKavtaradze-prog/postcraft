@@ -1,0 +1,2593 @@
+---
+title: "Changelog"
+sidebarTitle: "Changelog"
+description: "New features, bug fixes, and improvements made to each package."
+"og:image": "https://postcraft/static/covers/postcraft.png"
+icon: "list-check"
+---
+
+## April 16, 2026
+
+**Postcraft 6.0.0**
+
+- All components and rendering utilities unified into the `postcraft` package, so `@postcraft/components` and individual component packages are no longer needed
+- replace deprecated `url.parse()` with WHATWG URL API in the preview dev server
+- Updated dependencies
+    - @postcraft/render@2.0.7
+
+See [the migration guide](/getting-started/updating-postcraft)
+
+**UI 6.0.0**
+
+- Renamed from `@postcraft/preview-server` to `@postcraft/ui`, same code under a new name
+- copy toolbar insights for AI
+- remove extra margin from sending button
+
+**Render 2.0.7**
+
+- fix export map ordering between convex and node
+
+**Editor 1.0.0**
+
+- Launch! An embeddable visual editor for composing Postcraft templates, built on top of [TipTap](https://tiptap.dev/) and [ProseMirror](https://prosemirror.net/)
+- Rich text editing — paragraphs, headings, lists, code blocks, tables, and more
+- Bubble menus — floating formatting toolbars that appear on text selection
+- Slash commands — insert content blocks by typing `/`
+- Multi-column layouts — two, three, and four-column postcraft layouts
+- Postcraft theming — built-in themes with customizable CSS properties
+- HTML export — convert editor content to postcraft-ready HTML and plain text
+- Custom extensions — create your own postcraft-compatible nodes and marks
+
+See [the documentation](/editor/overview)
+
+**Create Postcraft 1.2.4**
+
+- use the new `@postcraft/ui`
+
+## April 9, 2026
+
+**Render 2.0.6**
+
+- await stream.allReady before reading renderToReadableStream output
+
+**Components 1.0.12**
+
+- Updated dependencies
+    - @postcraft/render@2.0.6
+
+## March 31, 2026
+
+**Tailwind 2.0.7**
+
+- use unpinned version for tailwindcss again
+
+**Render 2.0.5**
+
+- fix process crashes in client errors
+
+**Components 1.0.11**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.7
+    - @postcraft/render@2.0.5
+
+## March 17, 2026
+
+**Postcraft 5.2.10**
+**Preview Server 5.2.10**
+
+- fix fragment prop usage warnings
+
+**Tailwind 2.0.6**
+
+- allow for any peer version on body, button, code-block, code-inline, container, heading, hr, img, link, preview, text
+
+**Components 1.0.10**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.6
+
+## March 11, 2026
+
+**Body 0.3.0**
+
+- reset padding properties in `<body>` tag when there's any user defined padding properties
+
+**Components 1.0.9**
+
+- Updated dependencies
+    - @postcraft/body@0.3.0
+
+## February 27, 2026
+
+**Postcraft 5.2.9**
+**Preview Server 5.2.9**
+
+- manually determine esbuild binary path to avoid forcing a host version
+
+## February 18, 2026
+
+**Tailwind 2.0.5**
+
+- fix mixed pseudo selectors not being split
+- enhance CSS rule extraction and inline style handling
+
+**Components 1.0.8**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.5
+
+## February 6, 2026
+
+**Postcraft 5.2.8**
+**Preview Server 5.2.8**
+
+- update to latest Next.js
+
+## February 5, 2026
+
+**Postcraft 5.2.7**
+**Preview Server 5.2.7**
+
+- fix default imports of node modules breaking
+
+## February 4, 2026
+
+**Postcraft 5.2.6**
+
+- fix RESEND_API_KEY being overwritten in postcraft preview
+
+**Preview Server 5.2.6**
+
+- improve error messages for when an postcraft template is missing
+- fix RESEND_API_KEY being overwritten in postcraft preview
+
+**Tailwind 2.0.4**
+
+- fix non-inlined styles getting html entities in React 18
+
+**Components 1.0.7**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.4
+
+## January 20, 2026
+
+**Render 2.0.4**
+
+- fixed new ErrorBoundary breaking rendering in server components
+
+**Components 1.0.6**
+
+- Updated dependencies
+    - @postcraft/render@2.0.4
+
+## January 19, 2026
+
+**Render 2.0.3**
+
+- fixed client side rendering fallbacks
+
+**Components 1.0.5**
+
+- Updated dependencies
+    - @postcraft/render@2.0.3
+
+## January 14, 2026
+
+**Postcraft 5.2.5**
+**Preview Server 5.2.5**
+
+- revert changes to fix compatibility with alpine
+
+**Postcraft 5.2.4**
+**Preview Server 5.2.4**
+
+- fix support for alpine
+
+## January 13, 2026
+
+**Postcraft 5.2.3**
+
+- `postcraft build` always failing
+
+**Preview Server 5.2.3**
+
+- fix `postcraft dev` not working
+
+## January 12, 2026
+
+**Postcraft 5.2.2**
+**Preview Server 5.2.2**
+
+- fix intermittent (void 0) is not a function errors
+
+## January 7, 2026
+
+**Postcraft 5.2.1**
+**Preview Server 5.2.1**
+
+- fix toolbar loading spinner in the opposite direction
+- fix hot reloading on Windows
+
+**Postcraft 5.2.0**
+
+- increase timeout to 10 minutes by default, disable build workers
+
+**Preview Server 5.2.0**
+
+- bundle postcraft for preview to ESM
+- fix property access on null during dark mode inversion
+- fix compatibility checking for styles nested in other objects
+- fix instanceof not working with regexes
+
+**Render 2.0.2**
+
+- fix custom selectors overwriting the ones we defined
+- fix pipeable stream errors not being handled
+
+**Components 1.0.4**
+
+- Updated dependencies
+    - @postcraft/render@2.0.2
+    - @postcraft/body@0.2.1
+    - @postcraft/button@0.2.1
+    - @postcraft/code-block@0.2.1
+    - @postcraft/code-inline@0.0.6
+    - @postcraft/column@0.0.14
+    - @postcraft/container@0.0.16
+    - @postcraft/font@0.0.10
+    - @postcraft/head@0.0.13
+    - @postcraft/heading@0.0.16
+    - @postcraft/hr@0.0.12
+    - @postcraft/html@0.0.12
+    - @postcraft/img@0.0.12
+    - @postcraft/link@0.0.13
+    - @postcraft/markdown@0.0.18
+    - @postcraft/preview@0.0.14
+    - @postcraft/row@0.0.13
+    - @postcraft/section@0.0.17
+    - @postcraft/tailwind@2.0.3
+    - @postcraft/text@0.1.6
+
+## December 29, 2025
+
+**Postcraft 5.1.1**
+**Preview Server 5.1.1**
+
+- remove use of devEngines which npm detects
+
+**Render 2.0.1**
+
+- add fallback for m.default when importing react-dom
+- remove use of devEngines which npm detects
+
+**Tailwind 2.0.3**
+
+- remove use of devEngines which npm detects
+- Updated dependencies
+    - @postcraft/code-inline@0.0.6
+    - @postcraft/code-block@0.2.1
+    - @postcraft/container@0.0.16
+    - @postcraft/heading@0.0.16
+    - @postcraft/preview@0.0.14
+    - @postcraft/button@0.2.1
+    - @postcraft/body@0.2.1
+    - @postcraft/link@0.0.13
+    - @postcraft/text@0.1.6
+    - @postcraft/img@0.0.12
+    - @postcraft/hr@0.0.12
+
+**Components 1.0.3**
+
+- remove use of devEngines which npm detects
+- Updated dependencies
+    - @postcraft/render@2.0.1
+    - @postcraft/code-inline@0.0.6
+    - @postcraft/code-block@0.2.1
+    - @postcraft/container@0.0.16
+    - @postcraft/markdown@0.0.18
+    - @postcraft/tailwind@2.0.3
+    - @postcraft/heading@0.0.16
+    - @postcraft/preview@0.0.14
+    - @postcraft/section@0.0.17
+    - @postcraft/button@0.2.1
+    - @postcraft/column@0.0.14
+    - @postcraft/body@0.2.1
+    - @postcraft/font@0.0.10
+    - @postcraft/head@0.0.13
+    - @postcraft/html@0.0.12
+    - @postcraft/link@0.0.13
+    - @postcraft/text@0.1.6
+    - @postcraft/img@0.0.12
+    - @postcraft/row@0.0.13
+    - @postcraft/hr@0.0.12
+
+**Create Postcraft 1.2.3**
+
+- remove use of devEngines which npm detects
+
+**Markdown 0.0.18**
+
+- remove use of devEngines which npm detects
+
+**Section 0.0.17**
+
+- remove use of devEngines which npm detects
+
+**Heading 0.0.16**
+
+- remove use of devEngines which npm detects
+
+**Container 0.0.16**
+
+- remove use of devEngines which npm detects
+
+**Preview 0.0.14**
+
+- remove use of devEngines which npm detects
+
+**Column 0.0.14**
+
+- remove use of devEngines which npm detects
+
+**Link 0.0.13**
+
+- remove use of devEngines which npm detects
+
+**Head 0.0.13**
+
+- remove use of devEngines which npm detects
+
+**Row 0.0.13**
+
+- remove use of devEngines which npm detects
+
+**Html 0.0.12**
+
+- remove use of devEngines which npm detects
+
+**Img 0.0.12**
+
+- remove use of devEngines which npm detects
+
+**Hr 0.0.12**
+
+- remove use of devEngines which npm detects
+
+**Text 0.1.6**
+
+- remove use of devEngines which npm detects
+
+**Font 0.0.10**
+
+- remove use of devEngines which npm detects
+
+**Code Inline 0.0.6**
+
+- remove use of devEngines which npm detects
+
+**Code Block 0.2.1**
+
+- remove use of devEngines which npm detects
+
+**Button 0.2.1**
+
+- remove use of devEngines which npm detects
+
+**Body 0.2.1**
+
+- remove use of devEngines which npm detects
+
+## December 18, 2025
+
+**Postcraft 5.1.0**
+**Preview Server 5.1.0**
+
+- use turbo for `postcraft build`
+- buffer logs written to console.log, info, warn, error until spinner is done
+
+**Tailwind 2.0.2**
+
+- update tailwindcss, fixing camelCased colors not working
+
+**Components 1.0.2**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.2
+
+## December 12, 2025
+
+**Postcraft 5.0.8**
+**Preview Server 5.0.8**
+
+- add better feedback for when test sending is rate limited
+
+## December 10, 2025
+
+**Postcraft 5.0.7**
+**Preview Server 5.0.7**
+
+- fixed broken links to html code view tab
+- use tailwindcss v4 in the UI
+
+## December 7, 2025
+
+**Postcraft 5.0.6**
+**Preview Server 5.0.6**
+
+- add missing favicon
+- fix multiple lockfile warning during postcraft build
+
+## November 21, 2025
+
+**Postcraft 5.0.5**
+**Preview Server 5.0.5**
+
+- fixed broken links to React lines of code in the toolbar
+
+## November 13, 2025
+
+**Postcraft 5.0.4**
+**Preview Server 5.0.4**
+
+- fix file names and extensions not being used in download
+
+## November 12, 2025
+
+**Postcraft 5.0.3**
+**Preview Server 5.0.3**
+
+- move most dependencies to devDependencies
+- fix unwanted dependency installation when typescript's not installed
+
+**Tailwind 2.0.1**
+
+- unpin tailwindcss to avoid duplicate dependencies
+
+**Components 1.0.1**
+
+- Updated dependencies
+    - @postcraft/tailwind@2.0.1
+
+## November 11, 2025
+
+**Postcraft 5.0.2**
+**Preview Server 5.0.2**
+
+- fix sidebar misalignment with the topbar
+- fix scrolling not working on postcraft frame right after resizing
+
+## November 7, 2025
+
+**Postcraft 5.0.0**
+
+- Dark mode switcher emulating postcraft client color inversion
+- improved integration setup flow
+- fallback to not text coloring for Node.js < 20
+
+See [the migration guide](/getting-started/updating-postcraft)
+
+**Preview Server 5.0.0**
+
+- Integrate with Templates API so users can easily turn Postcraft templates into actual Resend templates
+- Dark mode switcher emulating postcraft client color inversion
+- only check compatibility with tailwindcss@4
+- improve color inversion code, don't remount iframe
+- advise `npx` to run postcraft setup command
+- fix compatibility checking not working with inline object styles, and not working on properties such as `justifyContent`/`justify-content`
+- improve reading flow for resend integration setup instructions
+- show separate timings for bundling/rendering an postcraft template
+- darken the canvas background when dark mode is enabled
+- ui improvements
+- reduce margins bellow buttons
+- Updated dependencies
+    - @postcraft/tailwind@2.0.0
+
+**Components 1.0.0**
+
+- tailwind: update to using tailwindcss@v4
+- code-block: deal with spark mail's compatibility issues
+- body: reset the `margin` property in the `<body>` when it has a user definition
+- markdown: fix nested lists not working
+- Updated dependencies
+    - @postcraft/markdown@0.0.17
+    - @postcraft/tailwind@2.0.0
+    - @postcraft/code-block@0.2.0
+    - @postcraft/body@0.2.0
+    - @postcraft/render@2.0.0
+    - @postcraft/button@0.2.0
+    - @postcraft/code-inline@0.0.5
+    - @postcraft/column@0.0.13
+    - @postcraft/container@0.0.15
+    - @postcraft/font@0.0.9
+    - @postcraft/head@0.0.12
+    - @postcraft/heading@0.0.15
+    - @postcraft/hr@0.0.11
+    - @postcraft/html@0.0.11
+    - @postcraft/img@0.0.11
+    - @postcraft/link@0.0.12
+    - @postcraft/preview@0.0.13
+    - @postcraft/row@0.0.12
+    - @postcraft/section@0.0.16
+    - @postcraft/text@0.1.5
+
+**Tailwind 2.0.0**
+
+- update to using tailwindcss@v4, don't inline styles on component props anymore
+- export granular APIs in a more tree shakeable way
+- expose `setupTailwind`, `sanitizeDeclarations` and `inlineStyles` for use in the preview server
+
+**Render 2.0.0**
+
+- Removes deprecated `renderAsync`
+- Remove unused `react-promise-suspense`
+
+**Code Block 0.2.0**
+
+- deal with spark mail's compatibility issues
+
+**Body 0.2.0**
+
+- reset the `margin` property in the `<body>` when it has a user definition
+
+**Button 0.2.0**
+
+- respect the order in which padding properties are defined
+
+**Markdown 0.0.17**
+
+- fix nested lists not working
+
+## October 24, 2025
+
+**Postcraft 4.3.2**
+**Preview Server 4.3.2**
+
+- fix imports of files with implicit extensions, and secondary segment like `.spec` failing to hot reload
+
+## October 17, 2025
+
+**Postcraft 4.3.1**
+
+- hot reloading errors when importing .json and other file extensions
+
+**Preview Server 4.3.1**
+
+- make everything in the global for the UI available to postcraft contexts using a Proxy
+
+**Render 1.4.0**
+
+- disable wordwrap in toPlainText by default
+
+**Markdown 0.0.16**
+
+- move out of md-to-postcraft
+
+**Components 0.5.7**
+
+- markdown: move out of md-to-postcraft
+- render: disable wordwrap in toPlainText by default
+- Updated dependencies
+    - @postcraft/markdown@0.0.16
+    - @postcraft/render@1.4.0
+
+## October 6, 2025
+
+**Postcraft 4.3.0**
+**Preview Server 4.3.0**
+
+- Added resize snapping, refined UI and improved presets
+
+## September 26, 2025
+
+**Postcraft 4.2.12**
+
+- Normalize Windows paths in generated Next.js config
+
+## September 24, 2025
+
+**Render 1.3.1**
+
+- fixed multi-byte characters causing problems during stream reading
+
+**Components 0.5.5**
+
+- render: fixed multi-byte characters causing problems during stream reading
+- Updated dependencies
+    - @postcraft/render@1.3.1
+
+## September 23, 2025
+
+**Render 1.3.0**
+
+- fix link duplication in plain text mode
+
+**Components 0.5.4** 
+
+- render: fix link duplication in plain text mode
+- Updated dependencies
+    - @postcraft/render@1.3.0
+
+## September 9, 2025
+
+**Postcraft 4.2.11**
+**Preview Server 4.2.11**
+
+- fix data-source-\* attributes in the html code view
+
+**Postcraft 4.2.10**
+**Preview Server 4.2.10**
+
+- Update nextjs to 15.5.2
+
+**Render 1.2.3**
+
+- use edge exports in convex runtime
+
+**Components 0.5.3**
+
+- Updated dependencies
+    - @postcraft/render@1.2.3
+
+## September 8, 2025
+
+**Postcraft 4.2.9**
+**Preview Server 4.2.9**
+
+- use `styleText` from `node:util` instead of `chalk`
+
+## September 5, 2025
+
+**Render 1.2.2**
+
+- fix builds failing with esbuild and react-dom@18
+
+**Components 0.5.2**
+
+- render: fix builds failing with esbuild and react-dom@18
+- Updated dependencies
+    - @postcraft/render@1.2.2
+
+## August 20, 2025
+
+**Render 1.2.1**
+
+- fix MessageChannel errors on edge environments
+
+**Components 0.5.1**
+
+- render: add toPlainText utility and deprecate plainText option on `render`
+- Updated dependencies
+    - @postcraft/render@1.2.1
+
+## August 6, 2025
+
+**Render 1.2.0**
+
+- add toPlainText utility and deprecate plainText option on `render`
+
+**Components 0.5.0**
+
+- render: add toPlainText utility and deprecate plainText option on render
+- Updated dependencies
+    - @postcraft/render@1.2.0
+
+## August 5, 2025
+
+**Postcraft 4.2.8**
+
+- fix hot reloading with circular dependencies
+
+## August 1, 2025
+
+**Postcraft 4.2.7**
+**Preview Server 4.2.7**
+
+- fix broken file tree animation on built preview server
+
+## July 31, 2025
+
+**Postcraft 4.2.6**
+**Preview Server 4.2.6**
+
+- d3cc64d: use unformmated markup to send postcraft, and to render into the iframe
+
+**Components 0.4.0**
+
+- body: apply all styles of the body to an inner table cell for them to work on Yahoo and AOL
+- Updated dependencies
+    - @postcraft/body@0.1.0
+
+**Body 0.1.0**
+
+- apply all styles of the body to an inner table cell for them to work on Yahoo and AOL
+
+## July 30, 2025
+
+**Render 1.1.4**
+
+- fix hydration markers on React canary/Next.js latest when rendering large postcraft templates
+
+**Components 0.3.3**
+
+- Updated dependencies
+    - @postcraft/render@1.1.4
+    - @postcraft/body@0.0.11
+    - @postcraft/button@0.2.0
+    - @postcraft/code-block@0.1.0
+    - @postcraft/code-inline@0.0.5
+    - @postcraft/column@0.0.13
+    - @postcraft/container@0.0.15
+    - @postcraft/font@0.0.9
+    - @postcraft/head@0.0.12
+    - @postcraft/heading@0.0.15
+    - @postcraft/hr@0.0.11
+    - @postcraft/html@0.0.11
+    - @postcraft/img@0.0.11
+    - @postcraft/link@0.0.12
+    - @postcraft/markdown@0.0.15
+    - @postcraft/preview@0.0.13
+    - @postcraft/row@0.0.12
+    - @postcraft/section@0.0.16
+    - @postcraft/tailwind@1.2.2
+    - @postcraft/text@0.1.5
+
+
+## July 29, 2025
+
+**Postcraft 4.2.5**
+
+- fix errors in `export` when without manual React import
+
+## July 23, 2025
+
+**Postcraft 4.2.4**
+**Preview Server 4.2.4**
+
+- fix custom JSX runtime trying to be run as ESM on ESM projects
+
+## July 18, 2025
+
+**Tailwind 1.2.2**
+
+- Add a warning when using safelist and force it to change no behavior
+
+**Components 0.3.2**
+
+- Updated dependencies
+    - @postcraft/tailwind@1.2.2
+
+## July 17, 2025
+
+**Postcraft 4.2.3**
+
+- fix files with extension-like suffixes (i.e. config, .spec) breaking dependency graph
+
+**Postcraft 4.2.2**
+
+- dev server erroring when trying to startup with port already being used
+
+## July 16, 2025
+
+**Postcraft 4.2.1**
+**Preview Server 4.2.1**
+
+- pin all dependencies to avoid compatibility issues of the built preview server
+
+## July 15, 2025
+
+**Postcraft 4.2.0**
+**Preview Server 4.2.0**
+
+- add custom error handling for prettier's syntax errors
+
+## July 11, 2025
+
+**Tailwind 1.2.1**
+
+- fix color-scheme media queries sometimes not getting sanitized at the className
+
+**Tailwind 1.2.0**
+
+- add pixelBasedPreset export directly
+
+**Preview Server 4.1.3**
+
+- improved method of resolving tailwind configs when checking compatibility
+
+**Preview Server 4.1.2**
+
+- fix rendering utilities exporter plugin not running for symlinks
+
+**Components 0.3.1**
+
+- Updated dependencies
+    - @postcraft/tailwind@1.2.1
+
+**Components 0.3.0**
+
+- tailwind: add pixelBasedPreset export directly
+- Updated dependencies
+    - @postcraft/tailwind@1.2.0
+
+## July 10, 2025
+
+**Postcraft 4.1.1**
+
+- fix path resolution done wrong breaking `postcraft-dev` on Windows
+
+## July 08, 2025
+
+**Postcraft 4.1.0**
+
+- use a separate package for storing the preview server (@postcraft/preview-server)
+- Use the same version for the preview-server and postcraft
+
+**Preview Server 4.1.0**
+
+- Use the same version for the preview-server and postcraft
+- fix range rounded borders, tearing when selecting different lines
+- infinite fetches due to improper effect dependency
+
+**Components 0.2.0**
+
+- tailwind: Extract tailwind pseudo classes to stylesheet
+- button: respect the order in which padding properties are defined
+- Updated dependencies
+    - @postcraft/tailwind@1.1.0
+    - @postcraft/button@0.2.0
+
+**Button 0.2.0**
+
+- respect the order in which padding properties are defined
+
+**Tailwind 1.1.0**
+
+- Extract tailwind pseudo classes to stylesheet
+
+## June 24, 2025
+
+**Postcraft 4.0.17**
+
+- fix `<svg>` not being flagged as incompatible
+- fix the forced `color-scheme: dark` for the preview
+- fix static file serving security issue with logging
+- add support for hot reloading with tsconfig path aliases
+- fix hot reloading with collapsed directories
+- fix prettier errors causing NextJS serialization error
+- pre-render postcraft templates on hover
+
+**Render 1.1.3**
+
+- fix browser version including errors in the output instead of throwing them
+
+**Components 0.1.1**
+
+- render: fix browser version including errors in the output instead of throwing them
+- Updated dependencies
+  - @postcraft/render@1.1.3
+  - @postcraft/body@0.0.11
+  - @postcraft/button@0.1.0
+  - @postcraft/code-block@0.1.0
+  - @postcraft/code-inline@0.0.5
+  - @postcraft/column@0.0.13
+  - @postcraft/container@0.0.15
+  - @postcraft/font@0.0.9
+  - @postcraft/head@0.0.12
+  - @postcraft/heading@0.0.15
+  - @postcraft/hr@0.0.11
+  - @postcraft/html@0.0.11
+  - @postcraft/img@0.0.11
+  - @postcraft/link@0.0.12
+  - @postcraft/markdown@0.0.15
+  - @postcraft/preview@0.0.13
+  - @postcraft/row@0.0.12
+  - @postcraft/section@0.0.16
+  - @postcraft/tailwind@1.0.5
+  - @postcraft/text@0.1.5
+
+## June 16, 2025
+
+**Components 0.1.0**
+
+- code-block: fix access to all `pre` properties
+- button: respect the order in which padding properties are defined
+- Updated dependencies
+  - @postcraft/code-block@0.1.0
+  - @postcraft/button@0.1.0
+  - @postcraft/tailwind@1.0.5
+
+**Button 0.1.0**
+
+- respect the order in which padding properties are defined
+
+**Code Block 0.1.0**
+
+- fix access to all `pre` properties
+
+## June 10, 2025
+
+**Components 0.0.42**
+
+- Updated dependencies
+  - @postcraft/text@0.1.5
+
+**Text 1.0.5**
+
+- fix marginTop, marginBottom losing their priority defined by order in styles
+
+## June 03, 2025
+
+**Postcraft 4.0.16**
+
+- fix mobile's sidebar broken in the preview server
+
+## May 19, 2025
+
+**Postcraft 4.0.15**
+
+- fix preview server's background gradient interferring with the user's colors
+
+**Create Postcraft 1.2.1**
+
+- fix broken node 18 support
+
+## May 16, 2025
+
+**Postcraft 4.0.14**
+
+- fix hot reloading with directories at least two levels deep
+
+## May 13, 2025
+
+**Render 1.1.2**
+
+- fix react-dom/server import for the browser and some bundlers
+- fix pretty option breaking CJS projects
+- accept React.ReactNode instead of React.ReactElement
+
+**Components 0.0.41**
+
+- Updated dependencies
+    - @postcraft/render@1.1.2
+    - @postcraft/body@0.0.11
+    - @postcraft/button@0.0.19
+    - @postcraft/code-block@0.0.13
+    - @postcraft/code-inline@0.0.5
+    - @postcraft/column@0.0.13
+    - @postcraft/container@0.0.15
+    - @postcraft/font@0.0.9
+    - @postcraft/head@0.0.12
+    - @postcraft/heading@0.0.15
+    - @postcraft/hr@0.0.11
+    - @postcraft/html@0.0.11
+    - @postcraft/img@0.0.11
+    - @postcraft/link@0.0.12
+    - @postcraft/markdown@0.0.15
+    - @postcraft/preview@0.0.13
+    - @postcraft/row@0.0.12
+    - @postcraft/section@0.0.16
+    - @postcraft/tailwind@1.0.5
+    - @postcraft/text@0.1.4
+
+## May 12, 2025
+
+**Render 1.1.1**
+
+- fix preview being rendered in plain-text
+
+**Preview 0.0.13**
+
+- fix preview being rendered in plain-text
+
+**Components 0.0.40**
+
+- Updated dependencies
+    - @postcraft/preview@0.0.13
+    - @postcraft/render@1.1.1
+    - @postcraft/body@0.0.11
+    - @postcraft/button@0.0.19
+    - @postcraft/code-block@0.0.13
+    - @postcraft/code-inline@0.0.5
+    - @postcraft/column@0.0.13
+    - @postcraft/container@0.0.15
+    - @postcraft/font@0.0.9
+    - @postcraft/head@0.0.12
+    - @postcraft/heading@0.0.15
+    - @postcraft/hr@0.0.11
+    - @postcraft/html@0.0.11
+    - @postcraft/img@0.0.11
+    - @postcraft/link@0.0.12
+    - @postcraft/markdown@0.0.15
+    - @postcraft/row@0.0.12
+    - @postcraft/section@0.0.16
+    - @postcraft/tailwind@1.0.5
+    - @postcraft/text@0.1.4
+
+## May 9, 2025
+
+**Postcraft 4.0.13**
+
+- fix hot reloading support for users with `NodeNext`-style imports
+
+**Postcraft 4.0.12**
+
+- add an explicit error when running Node with versions prior to 18
+
+**Text 0.1.4**
+
+- fix numerical margin values being overwritten by 0
+
+**Components 0.0.39**
+
+- Updated dependencies
+    - @postcraft/text@0.1.4
+
+## May 2, 2025
+
+**Text 0.1.3**
+
+- give priority to the margin in the user's style
+
+**Components 0.0.38**
+
+- Updated dependencies
+    - @postcraft/text@0.1.3
+
+## May 1, 2025
+
+**Postcraft 4.0.11**
+
+- fix improper require in postcraft export
+- update next to 15.3.1
+
+**Postcraft 4.0.10**
+
+- fix support for `import ... = require(...)` syntax
+- fix postcraft dev not working with traversal error
+
+**Postcraft 4.0.9**
+
+- add `.json` import support for hot reloading
+- add error message for when an postcraft template does not have a default export
+- ensure dependencies outside postcraft directory are completely resolved
+- fix Node 18 support
+- fix access to files outside static directory
+- fix backwards compatibility with render versions
+- fix dependent of dependents not causing hot reloads
+- fix non-postcraft files being rendered during hot reloading
+- use range of versions for dependencies
+
+**Postcraft 4.0.8**
+
+- Log out errors that happen when `export`'s esbuild fails
+
+**Components 0.0.37**
+
+- Updated dependencies
+    - @postcraft/text@0.1.2
+    - @postcraft/code-block@0.0.13
+    - @postcraft/markdown@0.0.15
+    - @postcraft/render@1.1.0
+    - @postcraft/tailwind@1.0.5
+    - @postcraft/body@0.0.11
+    - @postcraft/button@0.0.19
+    - @postcraft/code-inline@0.0.5
+    - @postcraft/column@0.0.13
+    - @postcraft/container@0.0.15
+    - @postcraft/font@0.0.9
+    - @postcraft/head@0.0.12
+    - @postcraft/heading@0.0.15
+    - @postcraft/hr@0.0.11
+    - @postcraft/html@0.0.11
+    - @postcraft/img@0.0.11
+    - @postcraft/link@0.0.12
+    - @postcraft/preview@0.0.12
+    - @postcraft/row@0.0.12
+    - @postcraft/section@0.0.16
+
+**Text 0.1.2**
+
+- Fix priority of margin styles not being kept
+
+**Tailwind 1.0.5**
+
+- Fix multiple variables in the same declaration not being replaced properly
+
+**Render 1.1.0**
+
+- Deprecate the pretty option for render in favor of standalone pretty function
+- Use range of versions for dependencies
+
+**Markdown 0.0.15**
+
+- Use caret range of versions for dependencies
+
+**Code Block 0.0.13**
+
+- Use caret range of versions for dependencies
+
+## Apr 09, 2025
+
+**Postcraft 4.0.7**
+
+- Fix deno not working as an option for postcraft build
+
+**Create Postcraft 1.1.0**
+
+- use caret for dependency on postcraft and @postcraft/components
+
+## Apr 08, 2025
+
+**Postcraft 4.0.6**
+
+- Updated dependencies 
+    - `next@15.2.4`
+
+**Create Postcraft 1.0.7**
+
+- Updated dependencies
+    - `postcraft@4.0.6`
+
+**Postcraft 4.0.5**
+
+- Add support for path aliases when linter runs tailwind config
+
+**Create Postcraft 1.0.6**
+
+- Updated dependencies
+    - `postcraft@4.0.5`
+
+## Apr 04, 2025
+
+**Postcraft 4.0.4**
+
+- Fixed support for importing modules when linter loads Tailwind config
+- Update dependencies
+    - `next@15.2.3`
+
+**Create Postcraft 1.0.5**
+
+- Updated dependencies
+    - postcraft@4.0.4
+
+**Create Postcraft 1.0.4**
+
+- Updated dependencies
+    - @postcraft/components@0.0.36
+
+**Render 1.0.6**
+
+- Update dependencies
+    - `prettier@3.5.3`
+
+**Components 0.0.36**
+
+- Update dependencies
+    - `@postcraft/code-block@0.0.12`
+    - `@postcraft/render@1.0.6`
+
+**Code Block 0.0.12**
+
+- Update dependencies
+    - `prismjs@1.30.0`
+
+## Apr 01, 2025
+
+**Postcraft 4.0.3**
+
+- update esbuild to 0.25.0
+- Fix detection of files with various export patterns
+
+**Create Postcraft 1.0.3**
+
+- fix undefined behavior when template has already been created, fix error on tree when using custom project name
+- add tsconfig for starter to work without importing React
+- Updated dependencies
+    - `@postcraft/components@0.0.35`
+    - `postcraft@4.0.3`
+
+**Text 0.1.1**
+
+- Merge all coming margin style properties into a single margin
+
+**Components 0.0.35**
+
+- Updated dependencies
+    - `@postcraft/text@0.1.1`
+
+## Mar 28, 2025
+
+**Postcraft 4.0.2**
+
+- Fix crashing when the link or image does not exist
+
+**Create Postcraft 1.0.2**
+
+- Updated template dependencies
+    - postcraft@4.0.2
+
+## Mar 27, 2025
+
+**Postcraft 4.0.1**
+
+- Fix static files regression
+- Improved classes, better borders on table, improved scrollbar colors
+
+**Create Postcraft 1.0.1**
+
+- Updated template dependencies 
+    - postcraft@4.0.1
+
+**Postcraft 4.0.0**
+
+- Add toolbar with image/link validation, compatibility checking and a spam scoring system
+- Improved overflowing for the sidebar
+- Make all line numbers in the code preview shareable
+
+**Create Postcraft 1.0.0**
+
+- Updated template dependencies 
+    - postcraft@4.0.0
+
+## Mar 17, 2025
+
+**Text 0.1.0**
+
+- Change shorthand margin property to support tailwind overwrite
+
+**Components 0.0.34**
+
+- Updated dependencies
+    - @postcraft/text@0.1.0
+
+**Create Postcraft 0.1.10**
+
+- Updated template dependencies
+    - @postcraft/components@0.0.34
+
+## Feb 10, 2025
+
+**Postcraft 3.0.7**
+
+- Use the punycode package for the static modules
+- Fixes active state for root postcraft templates on file tree
+- Respect user's NODE_ENV when previewing templates
+- Upgrade socket.io to 4.8.1
+
+**Create Postcraft 0.1.9**
+
+- Update dependencies
+    - @postcraft/components@0.0.33
+    - postcraft@3.0.7
+
+**Render 1.0.5**
+
+- Fix extra < characters being kept when rendering if mso comments under certain conditions
+- Fix pretty option breaking button components
+- Fix unstable rendering when prettifying with the Preview component
+
+**Components 0.0.33**
+
+- Updated dependencies
+  - @postcraft/render@1.0.5
+  - @postcraft/body@0.0.11
+  - @postcraft/button@0.0.19
+  - @postcraft/code-block@0.0.11
+  - @postcraft/code-inline@0.0.5
+  - @postcraft/column@0.0.13
+  - @postcraft/container@0.0.15
+  - @postcraft/font@0.0.9
+  - @postcraft/head@0.0.12
+  - @postcraft/heading@0.0.15
+  - @postcraft/hr@0.0.11
+  - @postcraft/html@0.0.11
+  - @postcraft/img@0.0.11
+  - @postcraft/link@0.0.12
+  - @postcraft/markdown@0.0.14
+  - @postcraft/preview@0.0.12
+  - @postcraft/row@0.0.12
+  - @postcraft/section@0.0.16
+  - @postcraft/tailwind@1.0.4
+  - @postcraft/text@0.0.11
+
+## Jan 09, 2025
+
+**Postcraft 3.0.6**
+
+- Fixed preview server crashing without React 19
+
+**Create Postcraft 0.1.8**
+
+- Updated template dependencies
+    - postcraft@3.0.6
+
+## Jan 07, 2025
+
+**Postcraft 3.0.5**
+
+- Fixed unwanted postcraft re-renders when switching postcraft templates
+- Updated Next.JS to 15.1.2
+
+**Create Postcraft 0.1.7**
+
+- Updated template dependencies
+    - @postcraft/components@0.0.32
+    - postcraft@3.0.5
+
+**Render 1.0.4**
+
+- Updated prettier to `3.4.2`
+
+**Components 0.0.32**
+
+- Updated dependency on `@postcraft/render` to `1.0.4`
+
+## Dec 10, 2024
+
+**Components 0.0.31**
+
+- Updated dependencies
+  - @postcraft/tailwind@1.0.4
+
+**Tailwind 1.0.4**
+
+- Fix issue with types due to improper build
+
+**Create Postcraft 0.1.6**
+
+- @postcraft/components@0.0.31
+
+## Dec 09, 2024
+
+**Postcraft 3.0.4**
+
+- Update to React 19
+
+**Create Postcraft 0.1.5**
+
+- Update to React 19
+
+## Dec 06, 2024
+
+**Components 0.0.30**
+
+- Updated dependencies
+  - @postcraft/markdown@0.0.14
+
+**Markdown 0.0.14**
+
+- Upgrade md-to-postcraft
+
+**Create Postcraft 0.1.4**
+
+- @postcraft/components@0.0.30
+
+## Dec 03, 2024
+
+**Body 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Button 0.0.19**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Code Block 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+- Fix typo in the PrismLanguage type
+
+**Code Inline 0.0.5**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Column 0.0.13**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Components 0.0.29**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+- Updated dependencies
+  - @postcraft/code-inline@0.0.5
+  - @postcraft/code-block@0.0.11
+  - @postcraft/container@0.0.15
+  - @postcraft/markdown@0.0.13
+  - @postcraft/tailwind@1.0.3
+  - @postcraft/heading@0.0.15
+  - @postcraft/preview@0.0.12
+  - @postcraft/section@0.0.16
+  - @postcraft/button@0.0.19
+  - @postcraft/column@0.0.13
+  - @postcraft/render@1.0.3
+  - @postcraft/body@0.0.11
+  - @postcraft/font@0.0.9
+  - @postcraft/head@0.0.12
+  - @postcraft/html@0.0.11
+  - @postcraft/link@0.0.12
+  - @postcraft/text@0.0.11
+  - @postcraft/img@0.0.11
+  - @postcraft/row@0.0.12
+  - @postcraft/hr@0.0.11
+
+**Container 0.0.15**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Font 0.0.9**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Head 0.0.12**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Heading 0.0.15**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Hr 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Html 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Img 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Link 0.0.12**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Markdown 0.0.13**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+- Fix memory leak by updating md-to-postcraft
+- Fixes `fontWeight` styles erroring when using numbers
+
+**Preview 0.0.12**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Postcraft 3.0.3**
+
+- Fix null byte characters being rendered in the preview server
+- Move react and react-dom to just dependencies for better DX
+- Improve error messages for all CLI commands
+
+**Render 1.0.3**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+- Use prettier's stadalone API instead of js-beautify
+- Remove unnecessary destructuring of react-dom/server
+
+**Row 0.0.12**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Section 0.0.16**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Tailwind 1.0.3**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Text 0.0.11**
+
+- Use peerDependencies for react and react-dom
+- Move react and react-dom to just dependencies for better DX
+
+**Create Postcraft 0.1.3**
+
+- Updated dependencies
+  - @postcraft/components@0.0.29
+
+## Nov 08, 2024
+
+**Tailwind 1.0.2**
+
+- Fix TailwindConfig's type being broken when `tailwindcss` is not installed
+
+**Create Postcraft 0.1.2**
+
+- Updated dependencies
+  - @postcraft/components@0.0.28
+
+**Components 0.0.28**
+
+- Updated dependencies
+  - @postcraft/code-block@0.0.10
+  - @postcraft/tailwind@1.0.2
+
+**Code Block 0.0.18**
+
+- fix improper padding on the line numbers
+- Add `fontFamily` prop that is inlined into the elements for all tokens
+
+## Nov 04, 2024
+
+**Tailwind 1.0.1**
+
+- Fix duplicate media query styles
+- Fix Promise being returned as a React Node
+
+**Create Postcraft 0.1.1**
+
+- Fix `workspace:` prefix not being removed from postcraft dev dep
+
+**Components 0.0.27**
+
+- Updated dependencies
+  - @postcraft/tailwind@1.0.1
+
+## Oct 31, 2024
+
+**Tailwind 1.0.0**
+
+- Updates `tailwindcss` to latest version, but requires use of `@postcraft/render@>=1.0.0`
+- Refactored internally to have a much smaller bundle size
+- Fixes CSS variables being replaced with `undefined`
+- Fix `css-float` being used for utilities such as `float-left`
+
+**Postcraft 3.0.2**
+
+- bump chokidar to v4
+- Add util/types as a module
+- Fix missing Request and Response globals
+- Fix NODE_ENV for postcraft as "PRODUCTION" instead of "DEVELOPMENT"
+- Update socket.io and socket.io-client
+- Add AbortSignal, Event and EventTarget
+- Add missing timers/promises Node module for `postcraft dev`
+
+**Button 0.0.18**
+
+- Fix NaN values on rendered Button HTML
+
+**Link 0.0.11**
+
+- Fix textDecoration reset being too broad
+
+**Render 1.0.2**
+
+- Fix null characters in between chunks when using high-density characters
+
+**Row 0.0.11**
+
+- Fixes default attributes overriding props
+
+**Section 0.0.15**
+
+- Fixes default attributes overriding props
+
+**Create Postcraft 0.1.0**
+
+- Move "postcraft" package to devDependencies for the template
+
+**Components 0.0.26**
+
+- Updated dependencies
+  - @postcraft/section@0.0.15
+  - @postcraft/row@0.0.11
+  - @postcraft/tailwind@1.0.0
+  - @postcraft/button@0.0.18
+  - @postcraft/render@1.0.2
+  - @postcraft/link@0.0.11
+  - @postcraft/body@0.0.10
+  - @postcraft/code-block@0.0.9
+  - @postcraft/code-inline@0.0.4
+  - @postcraft/column@0.0.12
+  - @postcraft/container@0.0.14
+  - @postcraft/font@0.0.8
+  - @postcraft/head@0.0.11
+  - @postcraft/heading@0.0.14
+  - @postcraft/hr@0.0.10
+  - @postcraft/html@0.0.10
+  - @postcraft/img@0.0.10
+  - @postcraft/markdown@0.0.12
+  - @postcraft/preview@0.0.11
+  - @postcraft/text@0.0.10
+
+## Sep 02, 2024
+
+**Create Postcraft 0.0.34**
+
+- Update dependencies
+  - @postcraft/components@0.0.25
+
+**Components 0.0.25**
+
+- Updated dependencies
+  - @postcraft/code-block@0.0.9
+
+**Code Block 0.0.9**
+
+- Fix Versper theme's background color
+
+## Aug 23, 2024
+
+**Postcraft 3.0.1**
+
+- Fixes hot reloading
+
+**Create Postcraft 0.0.32**
+
+- Update dependency `postcraft@3.0.1`
+
+## Aug 22, 2024
+
+**Postcraft 3.0.0**
+
+- Use a built version of preview app when running `postcraft dev` (major change)
+- Fixes decorators causing dependency tree babel parsing to fail
+- update socket.io/socket.io-client to 4.7.5
+- Fix sharp warning when running `postcraft dev`
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+- fix postcraft template preview failing with postcraft having spaces
+- Fixes tooltip color being black for specific theming configurations
+- Fixes root directories being hidden when they are alone at their depth
+- Updated usage of `render` to treat a returned promise for the new `@postcraft/render@1.0.0`
+
+**Create Postcraft 0.0.31**
+
+- Add `react-dom` as a dependency of the template
+- Update dependencies
+  - postcraft@3.0.0
+  - @postcraft/components@0.0.23
+
+**Tailwind 0.1.0**
+
+- Add support for proper `className` manipulation
+  - This means support for `twMerge`
+- Make inline styles override Tailwind styles.
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+- Fixes generation of unnecessary styles (ex: including `container` as text somewhere in your template)
+
+**Text 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Section 0.0.14**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Row 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Render 0.0.14**
+
+- Deprecated `renderAsync` and made `render` itself always async
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Preview 0.0.11**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Markdown 0.0.12**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Link 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Img 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Html 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Hr 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Heading 0.0.14**
+
+- Updated dependencies to allow for React 19 release candidate and React 19 itself
+
+**Head 0.0.11**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Font 0.0.8**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Container 0.0.14**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Components 0.0.23**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+- Update dependencies
+  - @postcraft/code-inline@0.0.4
+  - @postcraft/code-block@0.0.7
+  - @postcraft/container@0.0.14
+  - @postcraft/markdown@0.0.12
+  - @postcraft/tailwind@0.1.0
+  - @postcraft/heading@0.0.14
+  - @postcraft/preview@0.0.11
+  - @postcraft/section@0.0.14
+  - @postcraft/button@0.0.17
+  - @postcraft/column@0.0.12
+  - @postcraft/render@1.0.0
+  - @postcraft/body@0.0.10
+  - @postcraft/font@0.0.8
+  - @postcraft/head@0.0.11
+  - @postcraft/html@0.0.10
+  - @postcraft/link@0.0.10
+  - @postcraft/text@0.0.10
+  - @postcraft/img@0.0.10
+  - @postcraft/row@0.0.10
+  - @postcraft/hr@0.0.10
+
+**Column 0.0.12**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Code Block 0.0.7**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+**Button 0.0.7**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+- Add missing `msoPaddingAlt` to containing `<a>` tag
+
+**Body 0.0.10**
+
+- Updated peer dependencies to allow for React 19 release candidate and React 19 itself
+
+## Jul 23, 2024
+
+**Body 0.0.9**
+
+- Add forward ref
+
+**Button 0.0.16**
+
+- Add forward ref
+
+**Code Block 0.0.6**
+
+- Add forward ref
+
+**Code Inline 0.0.3**
+
+- Add forward ref
+
+**Column 0.0.11**
+
+- Add forward ref
+
+**Components 0.0.22**
+
+- Updated dependencies
+  - @postcraft/tailwind@0.0.19
+  - @postcraft/body@0.0.9
+  - @postcraft/button@0.0.16
+  - @postcraft/code-block@0.0.6
+  - @postcraft/code-inline@0.0.3
+  - @postcraft/column@0.0.11
+  - @postcraft/container@0.0.13
+  - @postcraft/font@0.0.7
+  - @postcraft/head@0.0.10
+  - @postcraft/heading@0.0.13
+  - @postcraft/hr@0.0.9
+  - @postcraft/html@0.0.9
+  - @postcraft/img@0.0.9
+  - @postcraft/link@0.0.9
+  - @postcraft/markdown@0.0.11
+  - @postcraft/preview@0.0.10
+  - @postcraft/render@0.0.17
+  - @postcraft/row@0.0.9
+  - @postcraft/section@0.0.13
+  - @postcraft/text@0.0.9
+
+**Container 0.0.13**
+
+- Add forward ref
+
+**Create Postcraft 0.0.30**
+
+- Change internal things related to how the template is versioned
+  - @postcraft/components@0.0.22
+  - postcraft@2.1.6
+
+**Font 0.0.7**
+
+- Add forward ref
+
+**Head 0.0.10**
+
+- Add forward ref
+
+**Heading 0.0.13**
+
+- Add forward ref
+
+**Hr 0.0.9**
+
+- Add forward ref
+
+**Html 0.0.9**
+
+- Add forward ref
+
+**Img 0.0.9**
+
+- Add forward ref
+
+**Link 0.0.9**
+
+- Add forward ref
+
+**Markdown 0.0.11**
+
+- Add forward ref
+
+**Preview 0.0.10**
+
+- Add forward ref
+
+**Postcraft 2.1.6**
+
+- Fixes live refresh not working with files outside `postcraft` directory
+- Fixes export failing when templates have different suffixes
+
+**Row 0.0.9**
+
+- Add forward ref
+
+**Section 0.0.13**
+
+- Add forward ref
+
+**Tailwind 0.0.19**
+
+- Changed it so, children of a component are only processed after the component is done with them
+
+**Text 0.0.9**
+
+- Add forward ref
+
+## Jul 3, 2024
+
+**Code Block 0.0.5**
+
+- Fixes display issues appearing on mobile postcraft clients with the code-block
+
+**Components 0.0.21**
+
+- Updates dependency on `@postcraft/code-block`
+
+**Create Postcraft 0.0.29**
+
+- Updates template dependencies
+
+## Jul 1, 2024
+
+**Postcraft 2.1.5**
+
+- Add missing Node modules used by the Prisma client (Thanks JP Erasmus!)
+- Fixes `postcraft build` and `postcraft start` not working properly on Windows
+
+**Create Postcraft 0.0.28**
+
+- Updates template dependencies
+
+**Render 0.0.16**
+
+- Fixes an issue with ESM when calling `renderAsync`
+
+**Components 0.0.20**
+
+- Updates dependency on `@postcraft/render`
+
+## May 24, 2024
+
+**Postcraft 2.1.4**
+
+- Fixes a Windows issue with the render resolving esbuild plugin
+- Fixes a few hot reloading rough edges
+
+**Create Postcraft 0.0.27**
+
+- Updates the template dependency on `@postcraft/components`
+- Updates the template dependency on `postcraft`
+
+**Tailwind 0.0.18**
+
+- Fixes relatively complex media queries not being parsed properly
+
+**Render 0.0.15**
+
+- Fixes an extra `<!DOCTYPE html>` that was included in a few cases
+
+**Components 0.0.19**
+
+- Updates dependency on `@postcraft/render`
+- Updates dependency on `@postcraft/tailwind`
+
+## May 20, 2024
+
+**Postcraft 2.1.3**
+
+- Fixed `postcraft export` failing when postcraft use hooks
+- Fixed different `react-dom` version being used to render postcraft templates
+- Fixed the "\_\_filanem" typo passed on the VM context for resolving postcraft components on the preview
+- Fixed possible file system race conditions
+- Redirect users back to `/` if the postcraft is not found on `/preview`
+- Show only the filename on the preview page title and on the top bar
+- Fixed the missing `Headers` on the global context for postcraft templates
+- Fixed the missing `URLSearchParams` on global context for postcraft VM
+- Improved error stack traces for the preview server
+- Fixed an issue with `postcraft dev` when there is a `browserslist` in the user's `package.json`
+
+**Create Postcraft 0.0.26**
+
+- Updated template dependencies to the latest versions
+- Fixed `Tailwind` being imported from `@postcraft/tailwind` instead of `@postcraft/components`
+
+**Tailwind 0.0.17**
+
+- Remove `react` from normal dependencies, and only keep it as a peer dependency
+- Fixed the React JSX runtime being bundled
+- Fixed types for `TailwindConfig` being basically a `Record<string, any>`
+- Fixed children always being transformed into an array
+- Fixed `React.forwardRef` components not working inside of Tailwind
+
+**Render 0.0.14**
+
+- Fixed Issue with the `await import` when using inside Next.js
+- Use the `renderToPipeableStream` instead of `renderToStaticNodeStream`
+
+**Head 0.0.9**
+
+- Added an iOS formatting meta tag as default
+
+**Components 0.0.18**
+
+- Updated dependency on `@postcraft/head` to `0.0.9`
+- Updated dependency on `@postcraft/render` to `0.0.14`
+- Updated dependency on `@postcraft/tailwind` to `0.0.17`
+
+## Apr 29, 2024
+
+|                    |                      |                       |                      |
+| ------------------ | -------------------- | --------------------- | -------------------- |
+| **Body 0.0.8**     | **Button 0.0.15**    | **Code Inline 0.0.2** | **Code block 0.0.4** |
+| **Column 0.0.10**  | **Container 0.0.12** | **Font 0.0.6**        | **Head 0.0.8**       |
+| **Heading 0.0.12** | **Hr 0.0.8**         | **Html 0.0.8**        | **Img 0.0.8**        |
+| **Link 0.0.8**     | **Markdown 0.0.10**  | **Preview 0.0.9**     | **Render 0.0.13**    |
+| **Row 0.0.8**      | **Section 0.0.12**   | **Tailwind 0.0.16**   | **Text 0.0.8**       |
+
+- Fixed the peer dependency on React to allow for all minor versions after `18.2.0`
+
+**Components 0.0.17**
+
+- Fixed the peer dependency on React to allow for all minor versions after `18.2.0`
+- Updated the version for all components
+
+**Postcraft 2.1.2**
+
+- Fixed the peer dependency on React to allow for all minor versions after `18.2.0`
+- Updated the dependencies on `@postcraft/render` and `@postcraft/components`
+
+**Create Postcraft 0.0.25**
+
+- Updated the template dependencies
+
+## Mar 28, 2024
+
+**Postcraft `2.1.1`**
+
+- Fixed links on the sidebar being broken with a custom postcraft directory
+- Upgraded dependency on `@postcraft/components` to `0.0.16`
+- Made the preview server detect changes to dependencies of postcraft templates for hot reloading
+- Remove existing `out` directory when running `postcraft export` multiple times (Thanks bennyburrito!)
+- Use internal implementation for the logged tree when running `postcraft export` for better security
+- Fixes missing URL, TextDecoder, TextEncoder and other global missing things on the preview server
+
+**Tailwind `0.0.15`**
+
+- Fixed media query selectors being escaped, which caused issues for some postcraft clients
+- Improved internal code readability and fixed key warnings
+- Fixed missing head errors being thrown after minification of the Postcraft's component code
+- Fixed not being able to use Tailwind classes on the `<html>` element
+
+**Markdown `0.0.9`**
+
+- Upgrade `md-to-postcraft` to the latest version
+  - Fixes quotes not being handled properly in the `markdownCustomStyles` property
+
+**Create Postcraft `0.0.24`**
+
+- Upgrade template dependencies to the latest versions
+- Use internal implementation for the logged tree
+
+## Feb 22, 2024
+
+**Postcraft `2.1.0`**
+
+- Fixes `postcraft build` not working with a custom postcraft directory
+- Now automatically adds `sharp` as a dependency inside `.postcraft` when running `postcraft build`
+- File extensions are now no longer forced on the slugs of the URL (i.e. `/preview/codepen-challengers.tsx` is just `/preview/codepen-challengers.tsx`)
+- For subdirectories, postcraft slugs are no longer encoded in the URL, so `/preview/newsletters%2Fcodepen-challengers` is now `/preview/newsletters/codepen-challengers`
+- Fixes an issue with static files when using custom directories
+- Issue that would happen when using Node versions that were not >= 20
+- Fixes `postcraft export` not rendering files form subdirectories properly
+- Fixes the tooltip on the sidebar's toggle rendering bellow the sidebar
+- Make the iframe inside the preview white by default
+- Fixes missing suspense boundaries which could cause issues with `postcraft build` sometimes
+- Upgrade preview app to use NextJS `14.1.0`
+- Fixes missing preloaded node modules for the postcraft VM
+- Fixes no postcraft being detected on the sidebar if a project parent directory was prefixed with `_`
+- Fixes Hot reloading not working with a custom postcraft directory
+- Fixes some minor typos (Thanks [Byrne Hollander](https://github.com/byrnehollander))
+- Fixes duplication of static files after running `postcraft export` multiple times
+- Fixes Windows issue where the location for the CLI's package could not be found
+- Fixes ESM issue with `postcraft export`
+
+**Code block `0.0.3`**
+
+- Fixes certain PrismJS tokens not being rendered at all
+
+**Create Postcraft `0.0.23`**
+
+- Template having the static directory at the root of the `postcraft-starter` instead of inside `postcraft`
+- Fixes missing obligatory dependencies on the template as of `postcraft` `2.0`
+
+**Button `0.0.14`**
+
+- Fixes our styles not being overwritten by the user's
+
+## Jan 19, 2024
+
+**Postcraft `2.0.0`**
+
+Breaking changes:
+
+- Static files for the preview server are now kept under `./postcraft/static` or
+  inside your specified postcraft directory.
+- The preview app is not downloaded anymore and it now comes alongside the CLI
+  - Monorepos are now fully supported because of this
+- Postcraft are built instead of copied
+
+Misc changes:
+
+- UI improved and icons updated
+- Added a view to see how your postcraft is going to look on mobile
+- Error overlay specific to your postcraft
+- Sub-folders are now supported, allowing for certain ones to be ignored by
+  the preview app if prefixed with `_` (ex: `_components`)
+- Improved filtering for showing postcraft on the sidebar that only shows them if they have an export default somewhere inside. This is a bit of a heuristic and can still be improved though.
+
+**Components `0.0.14`**
+
+- Bump `@postcraft/render` to `0.0.12`
+- Add `@postcraft/code-block` version `0.0.2` and export it
+- Add `@postcraft/code-inline` version `0.0.1` and export it
+
+**Create Postcraft `0.0.22`**
+
+Template Changes:
+
+- Remove `.postcraft` from template workspaces
+- Bump `@postcraft/components` to `0.0.14`
+- Bump `postcraft` to `2.0.0`
+
+**Render `0.0.12`**
+
+- Fix import for `js-beautify` breaking for ESM users
+
+**Code Inline `0.0.1`**
+
+- Create component with support for the `orange.fr` postcraft client
+
+**Code Block `0.0.2`**
+
+- Issue with import for `prismjs` due to it being commonjs
+
+## Jan 16, 2024
+
+**Render `0.0.11`**
+
+- Replace unmaintained `pretty` package for `js-beautify` (thanks [Bastien Robert](https://github.com/bastienrobert))
+- Remove link brackets surrounding links on plain text rendering (thanks [Marcus Stenbeck](https://github.com/marcusstenbeck))
+- Fix functions called from `react-dom/server` to avoid them being called and
+  causing issues on NextJS on the edge
+- Add an option for the `render` and `renderAsync` functions to customize the
+  [htmlToText](https://www.npmjs.com/package/html-to-text) options
+
+**Tailwind `0.0.14`**
+
+- Fix an error for a hack that is used on Tailwind to detect a deprecated
+  dependency that fails when it is being bundled on NextJS
+- Fix issues that were being caused by calling `renderToStaticMarkup` by doing
+  a very archaic rendering of the JSX to just run Tailwind on it
+
+**Components `0.0.13`**
+
+- Bump `@postcraft/render` to `0.0.11`
+- Bump `@postcraft/tailwind` to `0.0.14`
+
+**postcraft `1.10.1`**
+
+- Fix error thrown by Next on the preview because of `@postcraft/render` by adding it into
+  the [serverComponentsExternalPackages](https://nextjs.org/docs/app/api-reference/next-config-js/serverComponentsExternalPackages) option - See https://github.com/resend/postcraft/issues/1041
+- Ignore test files when generating postcraft previews (Thanks [Jonathan Warykowski](https://github.com/jwarykowski))
+
+**create-postcraft `0.0.21`**
+
+- Bump `postcraft` on generated template to `1.10.1`
+- Bump `@postcraft/components` on generated template to `0.0.13`
+
+## Dec 11, 2023
+
+**create-postcraft `0.0.20`**
+
+- Fix regression introduced with the wrong usage of the new `tree-cli` package
+
+## Dec 01, 2023
+
+**postcraft `1.10.0`**
+
+- Use `tree-cli` instead of `tree-node-cli` which fixes problems with using it
+  behind a corporate proxy
+- Fix problems with `jsx: 'preserve'` when trying to export postcraft by using a
+  specific tsconfig for bundling the code for the postcraft before rendering
+- Improve error messages to avoid shallow feedback to users
+
+**create-postcraft `0.0.19`**
+
+- Use `tree-cli` instead of `tree-node-cli` which fixes problems with
+  using it behind a corporate proxy
+- Update `postcraft` on the automatic setup to the latest
+
+**Tailwind `0.0.13`**
+
+The migration for this new version should be smooth sailing overall,
+the only things to consider is that if you are using media query tailwind
+styles you will need to move the Tailwind component directly above the head
+element or Head component.
+
+- Massive performance improvements
+- Fix media queries not being loaded properly
+- Fix Safari problems due to lookbehind expressions on regexes
+- Make the Head obligatorily a direct element to Tailwind instead of HTml
+  followed by Head
+- Fixed component not working with custom components that did not have
+  children
+
+**Code-block `0.0.1`**
+
+- Add code-block component
+- Use modified version of [prismjs](https://prismjs.com/)
+- Default themes from [prismjs
+  themes](https://github.com/PrismJS/prism-themes) exported [here](https://github.com/resend/postcraft/blob/canary/packages/code-block/src/themes.ts)
+
+**Components `0.0.13`**
+
+- Fix esm type exports
+- Update `@postcraft/body` to `v0.0.7`
+- Update `@postcraft/button` to `v0.0.13`
+- update `@postcraft/column` to `v0.0.9`
+- update `@postcraft/container` to `v0.0.11`
+- update `@postcraft/font` to `v0.0.5`
+- update `@postcraft/head` to `v0.0.7`
+- update `@postcraft/heading` to `v0.0.11`
+- update `@postcraft/hr` to `v0.0.7`
+- update `@postcraft/html` to `v0.0.7`
+- update `@postcraft/img` to `v0.0.7`
+- update `@postcraft/link` to `v0.0.7`
+- update `@postcraft/preview` to `v0.0.8`
+- update `@postcraft/render` to `v0.0.10`
+- update `@postcraft/row` to `v0.0.7`
+- update `@postcraft/section` to `v0.0.11`
+- Update `@postcraft/tailwind` to `v0.0.13`
+- update `@postcraft/text` to `v0.0.7`
+
+**Body `0.0.7`**
+
+- Fix esm type exports
+
+**Button `0.0.13`**
+
+- Fix esm type exports
+
+**Column `0.0.9`**
+
+- Fix esm type exports
+
+**Container `0.0.11`**
+
+- Fix esm type exports
+
+**Font `0.0.5`**
+
+- Fix esm type exports
+
+**Font `0.0.5`**
+
+- Fix esm type exports
+
+**Head `0.0.7`**
+
+- Fix esm type exports
+
+**Heading `0.0.11`**
+
+- Fix esm type exports
+
+**Hr `0.0.7`**
+
+- Fix esm type exports
+
+**Html `0.0.7`**
+
+- Fix esm type exports
+
+**Img `0.0.7`**
+
+- Fix esm type exports
+
+**Link `0.0.7`**
+
+- Fix esm type exports
+
+**Markdown `0.0.8`**
+
+- Fix esm type exports
+
+**Preview `0.0.8`**
+
+- Fix esm type exports
+
+**Render `0.0.10`**
+
+- Fix esm type exports
+
+**Row `0.0.7`**
+
+- Fix esm type exports
+
+**Section `0.0.11`**
+
+- Fix esm type exports
+
+## Nov 01, 2023
+
+**Components `0.0.11`**
+
+- Upgrade `@postcraft/render` to `v0.0.9`
+
+**Render `0.0.9`**
+
+- Fix `renderAsync` function to support Next.js 14
+
+## April 05. 2023
+
+**Button `0.0.8`**
+
+- Fix invalid CSS
+
+**Components `0.0.6`**
+
+- Upgrade components to latest version
+
+**Client `0.0.12`**
+
+- Remove nav block classname
+- Stop subprocess if an error occurs
+
+**Create Postcraft `0.0.16`**
+
+- Fix required Node 18
+- Upgrade template to use latest versions
+
+**Postcraft `1.9.1`**
+
+- Upgrade client version to `0.0.12`
+
+**Render `0.0.7`**
+
+- Add `renderAsync` function to enable edge runtime support
+
+**Preview `0.0.6`**
+
+- Fix 150 characters limit
+
+## March 21, 2023
+
+**Body `0.0.2`**
+
+- Add `data-id` attribute
+
+**Button `0.0.7`**
+
+- Add `data-id` attribute
+
+**Column `0.0.7`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `style` and `ref`
+
+**Container `0.0.8`**
+
+- Add `data-id` attribute
+- Reorder `props` to be able to override `align` and `width`
+
+**Components `0.0.4`**
+
+- Upgrade components to latest version
+
+**Head `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `ref`
+
+**Heading `0.0.8`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `style` and `ref`
+
+**Hr `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `align` and `width`
+
+**Img `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `alt`, `width`, `ref`, and `src`
+
+**Link `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `style`, `target`, and `ref`
+
+**Postcraft `1.9.0`**
+
+- Change how to handle `static` files (`static` files should live in the root, and not in the `postcraft` folder)
+- Throw error when missing `postcraft` folder
+- Removed unused script commands
+
+**Row `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to be able to override `align`
+
+**Section `0.0.9`**
+
+- Add `data-id` attribute
+- Reorder `props` to be able to override `align` and `width`
+
+**Text `0.0.5`**
+
+- Add `data-id` attribute
+- Reorder `props` to not be able to override `style` and `ref`
+
+## January 24, 2023
+
+**Section `0.0.5`**
+
+- Fix extra `<td>` elements when using `<Column>`
+
+## January 4, 2023
+
+**Postcraft `1.6.0`**
+
+- Detect package manager in command (yarn, npm, or pnpm)
+
+## December 28, 2022
+
+**Section `0.0.4`**
+
+- Ensure `<Section>` renders with `<td>` wrapper if no `<Column>` is provided
+
+**Postcraft `1.5.2`**
+
+- Fix incorrect glob pattern in postcraft export
+
+**Postcraft `1.5.1`**
+
+- Split path separator on Windows
+
+## December 22, 2022
+
+**Body `0.0.1`**
+
+- Add `<Body>` component
+
+**Create Postcraft `0.0.7`**
+
+- Move assets to static folder
+
+**Create Postcraft `0.0.6`**
+
+- Leverage new version of `postcraft`
+
+## December 21, 2022
+
+**Postcraft `1.5.0`**
+
+- Add ability to send test postcraft
+- Show file tree on successful export
+- Copy static folder when exporting
+- Add support for shared components
+
+**Postcraft `1.4.1`**
+
+- Add buttons to download and copy to clipboard
+- Fix empty static directory
+
+**Postcraft `1.4.0`**
+
+- Add components directory
+- Add static folder support
+
+## December 16, 2022
+
+**Postcraft `1.3.0`**
+
+- Cache postcraft
+- Add support for JSX files
+- Fix icon size on the sidebar
+- Add export postcraft command
+- Change route when view mode changes
+
+## December 12, 2022
+
+**Column `0.0.2`**
+
+- Fix default styling to accommodate `<Section>` component
+
+**Section `0.0.2`**
+
+- Fix default styling to accommodate `<Column>` component
+
+## December 8, 2022
+
+**Postcraft `1.2.0`**
+
+- Show React source code side-by-side
+
+## December 3, 2022
+
+**Create Postcraft `0.0.3`**
+
+- Display success message after command is run
+
+**Postcraft `1.1.1`**
+
+- Add new local development server
+
+## November 29, 2022
+
+**Heading `0.0.5`**
+
+- Add margin utilities props like `m`, `mx`, `my`, `mt`, `mr`, `mb`, and `ml`
+
+## November 17, 2022
+
+**Button `0.0.4`**
+
+- Add padding utilities props like `pX` and `pY`
+
+## November 6, 2022
+
+**Column `0.0.1`**
+
+- Add `<Column>` component
+
+**Section `0.0.1`**
+
+- Add `<Section>` component
+
+## October 13, 2022
+
+**Button `0.0.3`**
+
+- Add support for Microsoft Outlook
+
+## October 12, 2022
+
+**All `0.0.2`**
+
+- Fix README formatting
+
+## October 1, 2022
+
+**Pre `0.0.1`**
+
+- Add `<Pre>` component
+
+## September 26, 2022
+
+**Preview `0.0.1`**
+
+- Add `<Preview>` component
+
+**Ordered List `0.0.1`**
+
+- Add `<Ol>` component
+
+## September 24, 2022
+
+**Heading `0.0.1`**
+
+- Add `<Heading>` component
+
+## September 23, 2022
+
+**Container `0.0.1`**
+
+- Add `<Container>` component
+
+**Unordered List `0.0.1`**
+
+- Add `<Ul>` component
+
+## September 22, 2022
+
+**Divider `0.0.1`**
+
+- Add `<Hr>` component
+
+**HTML `0.0.1`**
+
+- Add `<Html>` component
+
+**Head `0.0.1`**
+
+- Add `<Head>` component
+
+**Code `0.0.1`**
+
+- Add `<Code>` component
+
+**Image `0.0.1`**
+
+- Add `<Img>` component
+
+**Link `0.0.1`**
+
+- Add `<Link>` component
+
+**Text `0.0.1`**
+
+- Add `<Text>` component
+
+**Render `0.0.1`**
+
+- Add render utility

@@ -1,0 +1,83 @@
+---
+title: 'Send postcraft using Mailgun'
+sidebarTitle: 'Mailgun'
+description: 'Learn how to send an postcraft using Postcraft and the Mailgun JavaScript SDK.'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+---
+
+## 1. Install dependencies
+
+Get the [postcraft](https://www.npmjs.com/package/postcraft), [mailgun.js](https://www.npmjs.com/package/mailgun.js), and [form-data](https://www.npmjs.com/package/form-data) packages.
+
+<CodeGroup>
+
+```sh npm
+npm install mailgun.js form-data postcraft
+```
+
+```sh yarn
+yarn add mailgun.js form-data postcraft
+```
+
+```sh pnpm
+pnpm add mailgun.js form-data postcraft
+```
+
+</CodeGroup>
+
+## 2. Create an postcraft using React
+
+Start by building your postcraft template in a `.jsx` or `.tsx` file.
+
+```tsx postcraft.tsx
+import { Button, Html } from 'postcraft';
+
+interface EmailProps {
+  url: string;
+}
+
+export function Postcraft({ url }: EmailProps) {
+  return (
+    <Html lang="en">
+      <Button href={url}>Click me</Button>
+    </Html>
+  );
+}
+```
+
+## 3. Convert to HTML and send postcraft
+
+Import the postcraft template you just built, convert it into an HTML string, and use the Mailgun SDK to send it.
+
+```tsx
+import { render } from 'postcraft';
+import FormData from 'form-data';
+import Mailgun from 'mailgun.js';
+import { Postcraft } from './postcraft';
+
+const mailgun = new Mailgun(FormData);
+const client = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY,
+});
+
+const emailHtml = await render(<Postcraft url="https://example.com" />);
+
+await client.messages.create(process.env.MAILGUN_DOMAIN, {
+  from: 'you@example.com',
+  to: ['user@gmail.com'],
+  subject: 'hello world',
+  html: emailHtml,
+});
+```
+
+## Try it yourself
+
+<Card
+  title="Mailgun example"
+  icon="arrow-up-right-from-square"
+  iconType="duotone"
+  href="https://github.com/resend/postcraft/tree/main/examples/mailgun"
+>
+  See the full source code.
+</Card>

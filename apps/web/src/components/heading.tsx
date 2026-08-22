@@ -1,0 +1,95 @@
+import classNames from "classnames";
+import type { As } from "../utils/as";
+import { unreachable } from "../utils/unreachable";
+
+type HeadingSize = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
+type HeadingColor = "white" | "gray" | "gradient";
+type HeadingWeight = "medium" | "bold";
+
+interface HeadingOwnProps {
+  size?: HeadingSize;
+  color?: HeadingColor;
+  weight?: HeadingWeight;
+}
+
+type HeadingProps = As<"h1", "h2", "h3", "h4", "h5", "h6"> & HeadingOwnProps;
+
+export function Heading({
+  as: Tag = "h1",
+  size = "3",
+  className,
+  color = "white",
+  children,
+  weight = "bold",
+  ref,
+  ...props
+}: HeadingProps) {
+  return (
+    <Tag
+      className={classNames(
+        className,
+        getSizesClassNames(size),
+        getColorClassNames(color),
+        getWeightClassNames(weight),
+      )}
+      {...props}
+      ref={ref}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+const getSizesClassNames = (size: HeadingSize) => {
+  switch (size) {
+    case "1":
+      return "text-xs";
+    case "2":
+      return "text-sm";
+    case "3":
+      return "text-base";
+    case "4":
+      return "text-lg";
+    case "5":
+      return "text-lg sm:text-xl tracking-[-0.16px]";
+    case "6":
+      return "text-2xl tracking-[-0.01em]";
+    case "7":
+      return "text-[28px] leading-[34px] tracking-[-0.416px]";
+    case "8":
+      return "text-[28px] leading-[38px] sm:text-[35px] sm:leading-[42px] tracking-[-0.025em]";
+    case "9":
+      return "text-6xl leading-[64px] tracking-[-0.05em]";
+    case "10":
+      return [
+        "text-[40px] leading-[48px]",
+        "md:text-[68px] md:leading-[64px] tracking-[-0.05em]",
+      ];
+    default:
+      return unreachable(size);
+  }
+};
+
+const getColorClassNames = (color: HeadingColor) => {
+  switch (color) {
+    case "gray":
+      return "text-slate-11";
+    case "white":
+      return "text-slate-12";
+    case "gradient":
+      return "bg-clip-text text-transparent bg-linear-to-br from-white/90 via-white/80 to-95% to-cyan-11/70";
+    default:
+      return unreachable(color);
+  }
+};
+
+const getWeightClassNames = (weight: HeadingWeight) => {
+  switch (weight) {
+    case "medium":
+      return "font-medium";
+    case "bold":
+      return "font-bold";
+    default:
+      return unreachable(weight);
+  }
+};

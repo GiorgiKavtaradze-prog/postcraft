@@ -1,0 +1,73 @@
+import { convertUrisIntoUrls } from './convert-uris-into-urls';
+
+describe('convertUrisIntoUrls()', () => {
+  it('works with src attributes', () => {
+    expect(
+      convertUrisIntoUrls(`
+const MyComp = () => {
+  return <Img src="/static/my-image.png"/>;
+}
+
+<html>
+  <head>...</head>
+  <body>
+    <img src="/static/my-image.png">
+  </body>
+</html>
+`),
+    ).toBe(`
+const MyComp = () => {
+  return <Img src="https://postcraft/static/my-image.png"/>;
+}
+
+<html>
+  <head>...</head>
+  <body>
+    <img src="https://postcraft/static/my-image.png">
+  </body>
+</html>
+`);
+  });
+
+  it('works with url() function calls for fonts in styles', () => {
+    expect(
+      convertUrisIntoUrls(`
+const MyComp = () => {
+  return <style dangerouslySetInnerHTML={{ __html: '
+.my-class {
+  font-family: url(/fonts/my-font);
+}
+' }}>;
+}
+
+<html>
+  <head>
+    <style>
+      .my-class {
+        font-family: url(/fonts/my-font);
+      }
+    </style>
+  </head>
+</html>
+`),
+    ).toBe(`
+const MyComp = () => {
+  return <style dangerouslySetInnerHTML={{ __html: '
+.my-class {
+  font-family: url(https://postcraft/fonts/my-font);
+}
+' }}>;
+}
+
+<html>
+  <head>
+    <style>
+      .my-class {
+        font-family: url(https://postcraft/fonts/my-font);
+      }
+    </style>
+  </head>
+</html>
+`);
+  });
+});

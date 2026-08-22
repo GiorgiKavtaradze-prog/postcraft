@@ -1,0 +1,49 @@
+---
+title: "Container"
+sidebarTitle: "Container"
+description: "A layout component that centers your content horizontally on a breaking point."
+"og:image": "https://postcraft/static/covers/container.png"
+icon: "grid"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Container, Button } from "postcraft";
+
+const Postcraft = () => {
+  return (
+    <Container>
+      <Button href="https://example.com" style={{ color: "#61dafb" }}>
+        Click me
+      </Button>
+    </Container>
+  );
+};
+```
+
+<Support/>

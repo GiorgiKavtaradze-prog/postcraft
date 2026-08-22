@@ -1,0 +1,43 @@
+---
+title: "Text"
+sidebarTitle: "Text"
+description: "A block of text separated by blank spaces."
+"og:image": "https://postcraft/static/covers/text.png"
+icon: "text-size"
+---
+
+import Support from '/snippets/support.mdx'
+
+## Install
+
+Install component from your command line.
+
+<CodeGroup>
+
+```sh npm
+npm install postcraft -E
+```
+
+```sh yarn
+yarn add postcraft -E
+```
+
+```sh pnpm
+pnpm add postcraft -E
+```
+
+</CodeGroup>
+
+## Getting started
+
+Add the component to your postcraft template. Include styles where needed.
+
+```jsx
+import { Text } from "postcraft";
+
+const Postcraft = () => {
+  return <Text>Lorem ipsum</Text>;
+};
+```
+
+<Support/>

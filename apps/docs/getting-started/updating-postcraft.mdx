@@ -1,0 +1,68 @@
+---
+title: 'Updating Postcraft'
+sidebarTitle: 'Updating Postcraft'
+description: 'How to update from previous Postcraft majors'
+'og:image': 'https://postcraft/static/covers/postcraft.png'
+icon: 'arrow-up-wide-short'
+---
+
+import NextSteps from '/snippets/next-steps.mdx';
+
+## Update from Postcraft 5.0 to 6.0
+
+All components (previously in `@postcraft/components` or individual packages like `@postcraft/button`) and rendering utilities (previously in `@postcraft/render`) are now exported directly from `postcraft`. This unifies the install and import experience into a single package.
+
+Now, what was previously `@postcraft/preview-server` was moved over to `@postcraft/ui`, so you will also need to replace that.
+
+To update:
+
+1. **Update your dependencies** -- remove `@postcraft/components` and `@postcraft/preview-server`, keep `postcraft` and add `@postcraft/ui`:
+
+   <CodeGroup>
+
+   ```sh npm
+   npm uninstall @postcraft/components @postcraft/preview-server
+   npm install postcraft@latest @postcraft/ui@latest
+   ```
+
+   ```sh yarn
+   yarn remove @postcraft/components @postcraft/preview-server
+   yarn install postcraft@latest @postcraft/ui@latest
+   ```
+
+   ```sh pnpm
+   pnpm remove @postcraft/components @postcraft/preview-server
+   pnpm install postcraft@latest @postcraft/ui@latest
+   ```
+
+   ```sh bun
+   bun remove @postcraft/components @postcraft/preview-server
+   bun install postcraft@latest @postcraft/ui@latest
+   ```
+
+   </CodeGroup>
+
+2. **Update your imports**:
+
+   ```tsx
+   import { Button, Html, Head, render } from "@postcraft/components"; // [!code --]
+   import { Button, Html, Head, render } from "postcraft"; // [!code ++]
+   ```
+
+3. The `@postcraft/ui` and `@postcraft/editor` packages are not included in `postcraft`
+
+## Update from Postcraft 4.0 to 5.0
+
+1. Update your Postcraft packages: `npm install @postcraft/components@latest postcraft@latest`.
+2. Replace all `renderAsync` uses with `render`.
+
+Make sure you update `@postcraft/components` alongside `postcraft`. The compatibility checker now only supports Tailwind 4, so you need to update both in sync.
+
+### Tailwind 4
+
+This update includes Tailwind 4 via `@postcraft/components@latest`. Some utilities have changed since Tailwind 3—review their [upgrade guide](https://tailwindcss.com/docs/upgrade-guide#changes-from-v3) to adjust your code if needed.
+
+Tailwind 4 also changes how classes are handled in components. Previously, passing `className` added an equivalent inlined `style` prop, which caused confusion and performance issues. Now, styles are only inlined on elements, not components. If you were merging utilities with the `style` prop, consider using [tailwind-merge](https://github.com/dcastil/tailwind-merge) instead.
+
+The configuration remains in the `config` prop.
+
