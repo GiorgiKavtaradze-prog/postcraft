@@ -1,27 +1,22 @@
-<div align="center">
-  <br />
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://postcraft.dev/static/logo-dark.png" />
-    <img alt="Postcraft" src="https://postcraft.dev/static/logo-light.png" height="60" />
-  </picture>
-  <br />
-  <br />
-  <h3>The next generation of writing emails.</h3>
-  <p>High-quality, unstyled components for creating beautiful, responsive emails with React and TypeScript.</p>
-</div>
+```
+██████╗  ██████╗ ███████╗████████╗ ██████╗██████╗  █████╗ ███████╗████████╗
+██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+██████╔╝██║   ██║███████╗   ██║   ██║     ██████╔╝███████║█████╗     ██║
+██╔═══╝ ██║   ██║╚════██║   ██║   ██║     ██╔══██╗██╔══██║██╔══╝     ██║
+██║     ╚██████╔╝███████║   ██║   ╚██████╗██║  ██║██║  ██║██║        ██║
+╚═╝      ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝
+```
 
-<div align="center">
+<h3>The next generation of writing emails.</h3>
+<p>High-quality, unstyled components for creating beautiful, responsive emails with React and TypeScript.</p>
 
-[![npm version](https://img.shields.io/npm/v/postcraft?style=flat-square&color=0070f3&label=postcraft)](https://www.npmjs.com/package/postcraft)
-[![npm downloads](https://img.shields.io/npm/dm/postcraft?style=flat-square&color=0070f3)](https://www.npmjs.com/package/postcraft)
+[![npm version](https://img.shields.io/npm/v/postcraft?style=flat-square\&color=0070f3\&label=postcraft)](https://www.npmjs.com/package/postcraft)
+[![npm downloads](https://img.shields.io/npm/dm/postcraft?style=flat-square\&color=0070f3)](https://www.npmjs.com/package/postcraft)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
-[![GitHub Stars](https://img.shields.io/github/stars/GiorgiKavtaradze-prog/postcraft?style=flat-square&color=yellow)](https://github.com/GiorgiKavtaradze-prog/postcraft/stargazers)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/postcraft)
+[![GitHub Stars](https://img.shields.io/github/stars/GiorgiKavtaradze-prog/postcraft?style=flat-square\&color=yellow)](https://github.com/GiorgiKavtaradze-prog/postcraft/stargazers)
 
-</div>
-
----
+***
 
 ## ✨ Overview
 
@@ -31,16 +26,75 @@
 
 ### Key Features
 
-- 🧱 **Component-based** — Build emails with reusable React components
-- 🎨 **Tailwind CSS support** — Use utility classes with email-safe pixel presets
-- 📱 **Responsive by design** — Works beautifully across all screen sizes
-- 🌙 **Dark mode aware** — Built-in dark mode handling for supporting clients
-- ✍️ **Visual editor** — Drag-and-drop email building with `@postcraft/editor`
-- 🔌 **Provider agnostic** — Send with Resend, Nodemailer, SendGrid, and more
-- 🧪 **Fully typed** — First-class TypeScript support throughout
-- 🚀 **CLI included** — `postcraft dev` for live preview, `postcraft export` for production
+* 🧱 **Component-based** — Build emails with reusable React components
+* 🎨 **Tailwind CSS support** — Use utility classes with email-safe pixel presets
+* 📱 **Responsive by design** — Works beautifully across all screen sizes
+* 🌙 **Dark mode aware** — Built-in dark mode handling for supporting clients
+* ✍️ **Visual editor** — Drag-and-drop email building with `@postcraft/editor`
+* 🔌 **Provider agnostic** — Send with Resend, Nodemailer, SendGrid, and more
+* 🧪 **Fully typed** — First-class TypeScript support throughout
+* 🚀 **CLI included** — `postcraft dev` for live preview, `postcraft export` for production
 
----
+***
+
+## 🧰 Technologies
+
+This monorepo is built with the following stack.
+
+### Languages & runtime
+
+| Technology                                    | Purpose                                            |
+| --------------------------------------------- | -------------------------------------------------- |
+| [TypeScript](https://www.typescriptlang.org/) | Typed source across packages, apps, and the CLI    |
+| [React](https://react.dev/) 19                | Email components, editor UI, preview, and websites |
+| [Node.js](https://nodejs.org/) `>= 20`        | Runtime for CLI, rendering, and local tooling      |
+
+### Email & product libraries
+
+| Technology                                                                                | Purpose                                                       |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Tailwind CSS](https://tailwindcss.com/) 4                                                | Utility styling in emails (`Tailwind` component) and apps     |
+| [TipTap](https://tiptap.dev/)                                                             | Rich text editor framework (`@postcraft/editor`)              |
+| [ProseMirror](https://prosemirror.net/)                                                   | Editor document model (via TipTap)                            |
+| [Radix UI](https://www.radix-ui.com/)                                                     | Accessible primitives (popover, tabs, tooltip, etc.)          |
+| [html-to-text](https://github.com/html-to-text/node-html-to-text)                         | Plain-text export from rendered HTML                          |
+| [Prism](https://prismjs.com/)                                                             | Syntax highlighting in `CodeBlock` and editor                 |
+| [marked](https://marked.js.org/)                                                          | Markdown rendering for emails                                 |
+| [Socket.IO](https://socket.io/)                                                           | Live preview reloads in the CLI / UI                          |
+| [Commander](https://github.com/tj/commander.js)                                           | CLI argument parsing                                          |
+| [esbuild](https://esbuild.github.io/)                                                     | Fast bundling for the preview / email pipeline                |
+| [Babel](https://babeljs.io/)                                                              | Parsing and traversing email source files                     |
+
+### Apps & sites
+
+| Technology                                                                                | Purpose                                                       |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Next.js](https://nextjs.org/)                                                            | Marketing site (`apps/web`) and preview UI (`@postcraft/ui`)  |
+| [Mintlify](https://mintlify.com/)                                                         | Documentation site (`apps/docs`)                              |
+| [Framer Motion](https://www.framer.com/motion/)                                           | Motion on the web / preview UI                                |
+| [Three.js](https://threejs.org/) / [React Three Fiber](https://r3f.docs.pmnd.rs/)         | 3D visuals on the marketing site                              |
+| [Supabase](https://supabase.com/)                                                         | Backend used by the marketing site                            |
+| [Resend](https://resend.com/)                                                             | Example sending integration and CLI helpers                   |
+| [Zod](https://zod.dev/)                                                                   | Schema validation                                             |
+| [Lucide](https://lucide.dev/)                                                             | Icons on the marketing site                                   |
+
+### Monorepo, build & quality
+
+| Technology                                                | Purpose                                    |
+| --------------------------------------------------------- | -----------------------------------------  |
+| [pnpm](https://pnpm.io/) 11                               | Workspaces, catalog versions, and installs |
+| [Turborepo](https://turbo.build/)                         | Task graph, caching, and parallel builds   |
+| [tsdown](https://tsdown.vercel.app/)                      | Library bundling for published packages    |
+| [Vite](https://vite.dev/)                                 | Test / playground bundling                 |
+| [tsx](https://tsx.is/)                                    | Run TypeScript scripts without a compile   |
+| [Biome](https://biomejs.dev/)                             | Lint and format                            |
+| [Vitest](https://vitest.dev/)                             | Unit and integration tests                 |
+| [Playwright](https://playwright.dev/)                     | Browser tests for the editor               |
+| [Testing Library](https://testing-library.com/)           | React component tests                      |
+| [Changesets](https://github.com/changesets/changesets)    | Versioning and npm releases                |
+| [GitHub Actions](https://github.com/features/actions)     | CI, releases, and automation               |
+
+***
 
 ## 📦 Packages
 
@@ -55,14 +109,14 @@ This monorepo is organized into the following packages:
 | [`@postcraft/ui`](packages/ui)                                       | [![npm](https://img.shields.io/npm/v/@postcraft/ui?style=flat-square)](https://www.npmjs.com/package/@postcraft/ui)                             | Shared UI components used across the monorepo        |
 | [`@responsive-email/postcraft`](packages/responsive-email-postcraft) | [![npm](https://img.shields.io/npm/v/@responsive-email/postcraft?style=flat-square)](https://www.npmjs.com/package/@responsive-email/postcraft) | Responsive email layout components                   |
 
----
+***
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- **Node.js** `>= 20.0.0`
-- **pnpm** `>= 11.0.0` (or npm / yarn / bun)
+* **Node.js** `>= 20.0.0`
+* **pnpm** `>= 11.0.0` (or npm / yarn / bun)
 
 ### Quick Start
 
@@ -164,7 +218,7 @@ const text = await render(
 );
 ```
 
----
+***
 
 ## 🧩 Components
 
@@ -204,7 +258,7 @@ A set of standard, cross-client compatible components to help you build beautifu
 | [`CodeBlock`](packages/postcraft/src/components/code-block)   | Syntax-highlighted code blocks    |
 | [`CodeInline`](packages/postcraft/src/components/code-inline) | Inline code formatting            |
 
----
+***
 
 ## ✍️ Visual Editor
 
@@ -258,7 +312,7 @@ export function MyEditor() {
 | `@postcraft/editor/plugins`    | ProseMirror plugins                            |
 | `@postcraft/editor/utils`      | Shared utilities                               |
 
----
+***
 
 ## 🔌 Integrations
 
@@ -294,7 +348,7 @@ const { data, error } = await resend.emails.send({
 });
 ```
 
----
+***
 
 ## 🛠️ CLI Reference
 
@@ -311,7 +365,7 @@ Postcraft ships with a powerful CLI to streamline your email development workflo
 | `postcraft resend setup`                                             | Connect CLI to Resend via API key                          |
 | `postcraft resend reset`                                             | Remove stored Resend API key                               |
 
----
+***
 
 ## 🏗️ Monorepo Structure
 
@@ -347,7 +401,7 @@ postcraft/
     └── postcraft/
 ```
 
----
+***
 
 ## 💻 Development
 
@@ -389,44 +443,28 @@ pnpm link ./dev -g
 postcraft-dev [command] [flags]
 ```
 
-### Tech Stack
-
-| Tool                                                   | Purpose                                |
-| ------------------------------------------------------ | -------------------------------------- |
-| [Turborepo](https://turbo.build/)                      | Monorepo build orchestration & caching |
-| [pnpm](https://pnpm.io/)                               | Fast, disk-efficient package manager   |
-| [Biome](https://biomejs.dev/)                          | Linting & code formatting              |
-| [Vitest](https://vitest.dev/)                          | Fast unit & integration testing        |
-| [tsdown](https://tsdown.vercel.app/)                   | TypeScript package bundling            |
-| [Changesets](https://github.com/changesets/changesets) | Semantic versioning & releases         |
-| [Next.js](https://nextjs.org/)                         | Marketing website & demo app           |
-| [TipTap](https://tiptap.dev/)                          | Rich text editor framework             |
-| [ProseMirror](https://prosemirror.net/)                | Low-level editor toolkit               |
-
----
+***
 
 ## 🤝 Contributing
 
 We welcome contributions from the community! Please read our [Contributing Guide](CONTRIBUTING.md) before getting started.
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/GiorgiKavtaradze-prog/postcraft/issues/new?template=bug_report.md)
-- 💡 **Have an idea?** [Start a discussion](https://github.com/GiorgiKavtaradze-prog/postcraft/discussions)
-- 🔧 **Want to contribute code?** Read our [Contributing Guide](CONTRIBUTING.md)
+* 🐛 **Found a bug?** [Open an issue](https://github.com/GiorgiKavtaradze-prog/postcraft/issues/new?template=bug_report.md)
+* 💡 **Have an idea?** [Start a discussion](https://github.com/GiorgiKavtaradze-prog/postcraft/discussions)
+* 🔧 **Want to contribute code?** Read our [Contributing Guide](CONTRIBUTING.md)
 
----
+***
 
 ## 🛡️ Security
 
 Please read our [Security Policy](SECURITY.md) to learn how to report security vulnerabilities responsibly.
 
----
+***
 
 ## 📄 License
 
 This project is licensed under the **MIT License** — see the [LICENSE.md](LICENSE.md) file for details.
 
----
+***
 
-<div align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/GiorgiKavtaradze-prog">Giorgi Kavtaradze</a> and the Postcraft community</sub>
-</div>
+<sub>Built with ❤️ by <a href="https://github.com/GiorgiKavtaradze-prog">Giorgi Kavtaradze</a> and the Postcraft community</sub>
