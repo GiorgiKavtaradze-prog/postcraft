@@ -164,13 +164,17 @@ interface WelcomeEmailProps {
   verificationUrl: string;
 }
 
+const tailwindConfig = {
+  presets: [pixelBasedPreset],
+};
+
 export default function WelcomeEmail({
   name,
   verificationUrl,
 }: WelcomeEmailProps) {
   return (
     <Html lang="en">
-      <Tailwind config={{ presets: [pixelBasedPreset] }}>
+      <Tailwind config={tailwindConfig}>
         <Head />
         <Body className="bg-gray-100 font-sans">
           <Preview>Welcome to Postcraft — Verify your email</Preview>
