@@ -1,10 +1,10 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
 const isFileAnEmail = async (fullPath: string): Promise<boolean> => {
   let fileHandle: fs.promises.FileHandle;
   try {
-    fileHandle = await fs.promises.open(fullPath, 'r');
+    fileHandle = await fs.promises.open(fullPath, "r");
   } catch (exception) {
     console.warn(exception);
     return false;
@@ -18,14 +18,14 @@ const isFileAnEmail = async (fullPath: string): Promise<boolean> => {
 
   const { ext } = path.parse(fullPath);
 
-  if (!['.js', '.tsx', '.jsx'].includes(ext)) {
+  if (![".js", ".tsx", ".jsx"].includes(ext)) {
     await fileHandle.close();
     return false;
   }
 
   // check with a heuristic to see if the file has at least
   // a default export (ES6) or module.exports (CommonJS) or named exports (MDX)
-  const fileContents = await fileHandle.readFile('utf8');
+  const fileContents = await fileHandle.readFile("utf8");
 
   await fileHandle.close();
 
@@ -97,7 +97,7 @@ export const getEmailsDirectoryMetadata = async (
     .map((dirent) =>
       keepFileExtensions
         ? dirent.name
-        : dirent.name.replace(path.extname(dirent.name), ''),
+        : dirent.name.replace(path.extname(dirent.name), ""),
     );
 
   const subDirectories = await Promise.all(
@@ -105,8 +105,8 @@ export const getEmailsDirectoryMetadata = async (
       .filter(
         (dirent) =>
           dirent.isDirectory() &&
-          !dirent.name.startsWith('_') &&
-          dirent.name !== 'static',
+          !dirent.name.startsWith("_") &&
+          dirent.name !== "static",
       )
       .map((dirent) => {
         const direntAbsolutePath = path.join(
