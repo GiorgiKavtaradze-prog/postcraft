@@ -281,6 +281,6 @@ By contributing to Postcraft, you agree that your contributions will be licensed
 
 ---
 
-<div align="center">
+<div>
   <sub>Thank you for helping make Postcraft better! 💙</sub>
 </div>

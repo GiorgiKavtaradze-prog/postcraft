@@ -121,6 +121,6 @@ We deeply appreciate security researchers and community members who help keep Po
 
 ---
 
-<div align="center">
+<div>
   <sub>Thank you for helping keep Postcraft and its users safe. 🛡️</sub>
 </div>
