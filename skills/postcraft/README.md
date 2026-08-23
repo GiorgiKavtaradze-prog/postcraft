@@ -1,25 +1,25 @@
-# Postcraft Agent Skill
+# 🤖 Postcraft Agent Skill
 
 An [Agent Skills](https://agentskills.io) directory that gives AI assistants specialized knowledge for building, styling, and sending emails with Postcraft.
 
 ---
 
-## What is This?
+## ❓ What is This?
 
 Agent Skills are a standardized format for giving AI coding assistants deep, structured knowledge about a specific library or framework. When an AI agent loads this skill, it gains expertise in:
 
-- Building HTML email templates with Postcraft React components
-- Styling emails with Tailwind CSS and email-safe patterns
-- Adding the `@postcraft/editor` visual editor to a React application
-- Sending emails through Resend, Nodemailer, SendGrid, and other providers
-- Implementing internationalization (i18n) for multi-language emails
-- Following email development best practices (cross-client compatibility, accessibility, performance)
+- 🧱 Building HTML email templates with Postcraft React components
+- 🎨 Styling emails with Tailwind CSS and email-safe patterns
+- ✍️ Adding the `@postcraft/editor` visual editor to a React application
+- 📤 Sending emails through Resend, Nodemailer, SendGrid, and other providers
+- 🌍 Implementing internationalization (i18n) for multi-language emails
+- ⚡ Following email development best practices (cross-client compatibility, accessibility, performance)
 
 ---
 
-## Directory Structure
+## 📂 Directory Structure
 
-```
+```text
 skills/postcraft/
 ├── SKILL.md                    # Core skill instructions (< 350 lines)
 │                               # Loaded when the skill is activated
@@ -35,12 +35,12 @@ skills/postcraft/
 
 ---
 
-## Progressive Disclosure Architecture
+## 🧠 Progressive Disclosure Architecture
 
 The skill is structured for efficient token usage. Agents load only what they need:
 
 | Layer                   | File                     | Size        | When Loaded                        |
-| ----------------------- | ------------------------ | ----------- | ---------------------------------- |
+| :---------------------- | :----------------------- | :---------- | :--------------------------------- |
 | **Metadata**            | SKILL.md frontmatter     | ~100 tokens | On skill discovery                 |
 | **Core Instructions**   | SKILL.md body            | ~3K tokens  | When skill is activated            |
 | **Component Reference** | references/COMPONENTS.md | On demand   | When working with components       |
@@ -52,7 +52,7 @@ The skill is structured for efficient token usage. Agents load only what they ne
 
 ---
 
-## Covered Email Templates & Use Cases
+## 📧 Covered Email Templates & Use Cases
 
 The skill covers production-ready patterns for:
 
@@ -67,7 +67,7 @@ The skill covers production-ready patterns for:
 
 ---
 
-## Integration with AI Tools
+## 🔗 Integration with AI Tools
 
 This skill follows the [Agent Skills specification](https://agentskills.io/specification.md). It can be used with:
 
@@ -78,10 +78,10 @@ This skill follows the [Agent Skills specification](https://agentskills.io/speci
 
 ---
 
-## Learn More
+## 📚 Learn More
 
 | Resource                    | Link                                                                       |
-| --------------------------- | -------------------------------------------------------------------------- |
+| :-------------------------- | :------------------------------------------------------------------------- |
 | Postcraft Documentation     | [postcraft.dev/docs](https://postcraft.dev/docs)                           |
 | Postcraft LLM-friendly docs | [postcraft.dev/docs/llms.txt](https://postcraft.dev/docs/llms.txt)         |
 | Agent Skills Specification  | [agentskills.io/specification.md](https://agentskills.io/specification.md) |

@@ -1,29 +1,24 @@
-<div align="center">
-  <br />
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://postcraft.dev/static/covers/postcraft-dark.png" />
-    <img alt="Postcraft" src="https://postcraft.dev/static/covers/postcraft.png" width="480" />
-  </picture>
-  <br />
-  <br />
-  <strong>postcraft</strong>
-  <p>The next generation of writing emails.<br />High-quality, unstyled components for creating beautiful, responsive emails.</p>
-</div>
+<h3 align="center">🚀 The next generation of writing emails</h3>
 
-<div align="center">
+<p align="center">
+  High-quality, unstyled components for creating beautiful, responsive emails with <b>React</b> & <b>TypeScript</b>.
+</p>
 
-[![npm version](https://img.shields.io/npm/v/postcraft?style=flat-square&color=0070f3)](https://www.npmjs.com/package/postcraft)
-[![npm downloads](https://img.shields.io/npm/dm/postcraft?style=flat-square&color=0070f3)](https://www.npmjs.com/package/postcraft)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](../../LICENSE.md)
-[![Website](https://img.shields.io/badge/Website-postcraft.dev-06BCEE?style=flat-square)](https://postcraft.dev)
+<p align="center">
 
-</div>
+[![npm version](https://img.shields.io/npm/v/postcraft?style=for-the-badge&color=0070f3&label=postcraft&logo=npm&logoColor=white)](https://www.npmjs.com/package/postcraft)
+[![npm downloads](https://img.shields.io/npm/dm/postcraft?style=for-the-badge&color=0070f3&logo=npm&logoColor=white)](https://www.npmjs.com/package/postcraft)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg?style=for-the-badge&logo=open-source-initiative&logoColor=white)](../../LICENSE.md)
+[![Website](https://img.shields.io/badge/Website-postcraft.dev-06BCEE?style=for-the-badge&logo=vercel&logoColor=white)](https://postcraft.dev)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge&logo=github&logoColor=white)](../../CONTRIBUTING.md)
+
+</p>
 
 ---
 
-## Installation
+## 📦 Installation
 
-```sh
+```bash
 npm install postcraft
 # or
 pnpm add postcraft
@@ -31,11 +26,11 @@ pnpm add postcraft
 yarn add postcraft
 ```
 
-## Quick Start
+## ⚡ Quick Start
 
 Scaffold a new project instantly:
 
-```sh
+```bash
 npx create-postcraft@latest
 cd my-email-project
 npm install
@@ -44,7 +39,7 @@ npm run dev
 
 The dev server runs at `http://localhost:3000` with a live preview interface.
 
-## Usage
+## 🧩 Usage
 
 Define your email template as a React component:
 
@@ -103,9 +98,11 @@ WelcomeEmail.PreviewProps = {
 } satisfies WelcomeEmailProps;
 ```
 
-## Components
+---
 
-### Layout
+## 🏗️ Components
+
+### 🧱 Layout
 
 | Component   | Description                                                         |
 | ----------- | ------------------------------------------------------------------- |
@@ -117,10 +114,10 @@ WelcomeEmail.PreviewProps = {
 | `Row`       | Horizontal row for multi-column layouts                             |
 | `Column`    | Column within a `Row`                                               |
 
-### Content
+### ✍️ Content
 
 | Component | Description                                                |
-| --------- | ---------------------------------------------------------- |
+| :-------- | :--------------------------------------------------------- |
 | `Preview` | Inbox preview text — always first inside `<Body>`          |
 | `Heading` | h1–h6 headings                                             |
 | `Text`    | Paragraph text                                             |
@@ -129,17 +126,19 @@ WelcomeEmail.PreviewProps = {
 | `Img`     | Responsive images                                          |
 | `Hr`      | Horizontal dividers (always include `border-solid`)        |
 
-### Specialized
+### 🧪 Specialized
 
 | Component    | Description                                  |
-| ------------ | -------------------------------------------- |
+| :----------- | :------------------------------------------- |
 | `Tailwind`   | Tailwind CSS support with email-safe presets |
 | `Font`       | Custom web font loading                      |
 | `Markdown`   | Render Markdown content in emails            |
 | `CodeBlock`  | Syntax-highlighted code blocks               |
 | `CodeInline` | Inline code snippets                         |
 
-## CLI Commands
+---
+
+## 🛠️ CLI Commands
 
 | Command                                                 | Description                                        |
 | ------------------------------------------------------- | -------------------------------------------------- |
@@ -150,7 +149,9 @@ WelcomeEmail.PreviewProps = {
 | `postcraft build`                                       | Build the preview app for production               |
 | `postcraft start`                                       | Run the production preview app                     |
 
-## Rendering to HTML
+---
+
+## 📤 Rendering to HTML
 
 Use `@postcraft/render` to convert components to an HTML string for sending:
 
@@ -164,36 +165,41 @@ const html = await render(<WelcomeEmail name="Giorgi" verificationUrl="..." />);
 // Plain text version
 const text = await render(
   <WelcomeEmail name="Giorgi" verificationUrl="..." />,
-  {
-    plainText: true,
-  },
+  { plainText: true },
 );
 ```
 
-## Linking the CLI for Development
+---
+
+## 🔗 Linking the CLI for Development
 
 When working on the CLI, avoid reinstalling on every change by linking globally:
 
-```sh
-# Link the dev version globally
+```bash
 pnpm link ./dev -g
 
 # Use it like the standard CLI
 postcraft-dev [command] [flags]
 ```
 
-## Email Best Practices
+---
 
-- ✅ Use `Tailwind` with `pixelBasedPreset` — email clients don't support `rem`
-- ✅ Always include `box-border` on `Button` components
-- ✅ Always include `border-solid` (or `border-dashed`) on `Hr` and borders
-- ✅ Place `<Preview>` as the first element inside `<Body>`
-- ✅ Define `PreviewProps` for development testing
-- ❌ Avoid flexbox / CSS grid — use `Row` / `Column` instead
-- ❌ Avoid Tailwind responsive prefixes (`sm:`, `md:`) — limited email client support
-- ❌ Avoid SVG and WebP images — use PNG or JPG
-- ❌ Avoid `dark:` / `light:` theme selectors — not supported in email
+## 💡 Email Best Practices
 
-## License
+|                                                 |                                         |
+| ----------------------------------------------- | --------------------------------------- |
+| ✅ **Use `Tailwind` with `pixelBasedPreset`**   | email clients don't support `rem`       |
+| ✅ **Add `box-border` to `Button`**             | prevents sizing issues across clients   |
+| ✅ **Add `border-solid` / `border-dashed`**     | on `Hr` and borders for Outlook         |
+| ✅ **Place `<Preview>` first in `<Body>`**      | ensures inbox preview text works        |
+| ✅ **Define `PreviewProps`**                    | realistic testing in the preview server |
+| ❌ **Avoid flexbox / CSS grid**                 | use `Row` / `Column` instead            |
+| ❌ **Avoid responsive prefixes (`sm:`, `md:`)** | limited email client support            |
+| ❌ **Avoid SVG & WebP images**                  | use PNG or JPG instead                  |
+| ❌ **Avoid `dark:` / `light:` selectors**       | not supported in email clients          |
+
+---
+
+## 📄 License
 
 [MIT](../../LICENSE.md) © [Giorgi Kavtaradze](https://github.com/GiorgiKavtaradze-prog)

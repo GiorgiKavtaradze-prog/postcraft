@@ -1,28 +1,23 @@
-<div align="center">
-  <br />
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://postcraft.dev/static/covers/render-dark.png" />
-    <img alt="@postcraft/render" src="https://postcraft.dev/static/covers/render.png" width="480" />
-  </picture>
-  <br />
-  <br />
-  <strong>@postcraft/render</strong>
-  <p>Transform React email components into HTML strings and plain text.<br />The rendering engine that powers Postcraft.</p>
-</div>
+<h3 align="center">⚙️ The rendering engine that powers Postcraft</h3>
 
-<div align="center">
+<p align="center">
+  Transform React email components into HTML strings and plain text.
+</p>
 
-[![npm version](https://img.shields.io/npm/v/@postcraft/render?style=flat-square&color=0070f3)](https://www.npmjs.com/package/@postcraft/render)
-[![npm downloads](https://img.shields.io/npm/dm/@postcraft/render?style=flat-square&color=0070f3)](https://www.npmjs.com/package/@postcraft/render)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](../../LICENSE.md)
+<p align="center">
 
-</div>
+[![npm version](https://img.shields.io/npm/v/@postcraft/render?style=for-the-badge&color=0070f3&label=@postcraft/render&logo=npm&logoColor=white)](https://www.npmjs.com/package/@postcraft/render)
+[![npm downloads](https://img.shields.io/npm/dm/@postcraft/render?style=for-the-badge&color=0070f3&logo=npm&logoColor=white)](https://www.npmjs.com/package/@postcraft/render)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg?style=for-the-badge&logo=open-source-initiative&logoColor=white)](../../LICENSE.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge&logo=github&logoColor=white)](../../CONTRIBUTING.md)
+
+</p>
 
 ---
 
-## Installation
+## 📦 Installation
 
-```sh
+```bash
 npm install @postcraft/render
 # or
 pnpm add @postcraft/render
@@ -30,9 +25,11 @@ pnpm add @postcraft/render
 yarn add @postcraft/render
 ```
 
-## Usage
+---
 
-### Render to HTML
+## 🚀 Usage
+
+### 🖥️ Render to HTML
 
 Convert a React email component into an email-ready HTML string:
 
@@ -44,7 +41,7 @@ const html = await render(<WelcomeEmail name="Giorgi" />);
 // Returns: '<!DOCTYPE html><html lang="en">...'
 ```
 
-### Render to Plain Text
+### 📝 Render to Plain Text
 
 Generate an accessible plain-text version of your email:
 
@@ -58,7 +55,7 @@ const text = await render(<WelcomeEmail name="Giorgi" />, {
 // Returns: 'Welcome, Giorgi!\n\nThanks for signing up...'
 ```
 
-### Render Options
+### ⚙️ Render Options
 
 ```tsx
 const html = await render(<MyEmail />, {
@@ -76,7 +73,9 @@ const html = await render(<MyEmail />, {
 });
 ```
 
-## Full Example
+---
+
+## 📋 Full Example
 
 ```tsx
 import {
@@ -126,16 +125,16 @@ const html = await render(
 );
 const text = await render(
   <PasswordResetEmail resetUrl="https://example.com/reset/token" />,
-  {
-    plainText: true,
-  },
+  { plainText: true },
 );
 
 console.log(html); // Full HTML string
 console.log(text); // Plain text fallback
 ```
 
-## Integration with Email Providers
+---
+
+## 🔌 Integration with Email Providers
 
 ### Resend
 
@@ -167,9 +166,7 @@ import nodemailer from "nodemailer";
 import { render } from "@postcraft/render";
 import { WelcomeEmail } from "./emails/welcome";
 
-const transporter = nodemailer.createTransport({
-  /* ... */
-});
+const transporter = nodemailer.createTransport({ /* ... */ });
 
 const html = await render(<WelcomeEmail name="Giorgi" />);
 const text = await render(<WelcomeEmail name="Giorgi" />, { plainText: true });
@@ -204,7 +201,9 @@ await sendgrid.send({
 });
 ```
 
-## API Reference
+---
+
+## 📖 API Reference
 
 ### `render(component, options?)`
 
@@ -218,6 +217,8 @@ Renders a React email component to a string.
 
 **Returns:** `Promise<string>`
 
-## License
+---
+
+## 📄 License
 
 [MIT](../../LICENSE.md) © [Giorgi Kavtaradze](https://github.com/GiorgiKavtaradze-prog)

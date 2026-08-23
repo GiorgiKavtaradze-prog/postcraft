@@ -1,15 +1,16 @@
-# Postcraft Playground
+# 🧪 Postcraft Playground
 
 An interactive playground for experimenting with Postcraft components in real-time, using direct source code imports and instant hot reloading.
 
-> **Note:** Unlike the main `postcraft dev` CLI, the playground imports components **directly from source** — perfect for testing changes to components before publishing.
+> [!NOTE]
+> Unlike the main `postcraft dev` CLI, the playground imports components **directly from source** — perfect for testing changes to components before publishing.
 
 ---
 
-## When to Use the Playground
+## 📍 When to Use the Playground
 
 | Use Case                                       | Tool                  |
-| ---------------------------------------------- | --------------------- |
+| :--------------------------------------------- | :-------------------- |
 | Building email templates for your project      | `postcraft dev` (CLI) |
 | Developing / testing core Postcraft components | This playground       |
 | Experimenting with new component ideas         | This playground       |
@@ -17,18 +18,18 @@ An interactive playground for experimenting with Postcraft components in real-ti
 
 ---
 
-## Development Workflow
+## 🛠️ Development Workflow
 
-### 1. Install dependencies
+### 1️⃣ Install dependencies
 
 From the monorepo root:
 
-```sh
+```bash
 pnpm install
 pnpm build
 ```
 
-### 2. Create an email template
+### 2️⃣ Create an email template
 
 Create a new file at `playground/emails/testing.tsx`:
 
@@ -72,14 +73,14 @@ export default function Testing() {
 }
 ```
 
-### 3. Start the playground server
+### 3️⃣ Start the playground server
 
-```sh
+```bash
 # From the playground directory
 pnpm dev
 ```
 
-### 4. Open in your browser
+### 4️⃣ Open in your browser
 
 Navigate to [http://localhost:3000](http://localhost:3000).
 
@@ -87,10 +88,10 @@ Your template will appear in the sidebar. Changes to the file are reflected imme
 
 ---
 
-## Key Differences from `postcraft dev`
+## 🔍 Key Differences from `postcraft dev`
 
 | Feature            | `postcraft dev`       | Playground            |
-| ------------------ | --------------------- | --------------------- |
+| :----------------- | :-------------------- | :-------------------- |
 | Component source   | Published npm package | Local source files    |
 | Hot reloading      | ✅                    | ✅                    |
 | Use case           | Building templates    | Developing components |
@@ -98,7 +99,7 @@ Your template will appear in the sidebar. Changes to the file are reflected imme
 
 ---
 
-## Tips
+## 💡 Tips
 
 - Create multiple templates in `playground/emails/` to test different scenarios
 - Use `PreviewProps` to test your component with different data:
@@ -109,4 +110,4 @@ Testing.PreviewProps = {
 };
 ```
 
-- Files in `playground/emails/` are **gitignored** — feel free to experiment freely
+- Files in `playground/emails/` are **gitignored** — feel free to experiment freely ✨

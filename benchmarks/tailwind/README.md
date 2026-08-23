@@ -1,24 +1,24 @@
-# Tailwind Component Benchmarks
+# ⚡ Tailwind Component Benchmarks
 
 Performance benchmarks for the Postcraft `<Tailwind>` component using [`tinybench`](https://github.com/tinylibs/tinybench). These benchmarks are used to scientifically measure and improve the rendering performance of the Tailwind component.
 
 ---
 
-## Purpose
+## 🎯 Purpose
 
 The `<Tailwind>` component processes Tailwind CSS utility classes and generates inline styles compatible with email clients. This involves CSS parsing, class resolution, and inlining — which can be computationally expensive at scale.
 
 These benchmarks help us:
 
-- Measure the performance overhead of using `<Tailwind>` vs. raw inline styles
-- Compare performance across Postcraft versions
-- Generate flame graphs to identify rendering bottlenecks
+- 📊 Measure the performance overhead of using `<Tailwind>` vs. raw inline styles
+- 🔄 Compare performance across Postcraft versions
+- 🔥 Generate flame graphs to identify rendering bottlenecks
 
 ---
 
-## Structure
+## 📂 Structure
 
-```
+```text
 benchmarks/tailwind/
 ├── src/
 │   ├── emails/                              # Sample email templates for benchmarks
@@ -34,33 +34,33 @@ Each file in `./src` (except `tailwind-render.ts`) represents a standalone bench
 
 ---
 
-## Running Benchmarks
+## 🚀 Running Benchmarks
 
 Benchmarks must be compiled with `tsup` before running (to avoid ESM issues):
 
-### With Tailwind vs. Without Tailwind
+### 📊 With Tailwind vs. Without Tailwind
 
 Measures the performance overhead of using the `<Tailwind>` component:
 
-```sh
+```bash
 pnpm with-vs-without
 # Equivalent to: pnpm compile && node ./dist/benchmark-with-vs-without.js
 ```
 
-### Previous Version vs. Current
+### 🔄 Previous Version vs. Current
 
 Compares performance between an older published version and the current local version:
 
-```sh
+```bash
 pnpm before-perf-vs-after-perf
 # Equivalent to: pnpm compile && node ./dist/benchmark-0.0.12-vs-local-version.js
 ```
 
-### Flame Graph Profiling
+### 🔥 Flame Graph Profiling
 
 Generate a flame graph to visualize the Tailwind rendering process:
 
-```sh
+```bash
 pnpm flamegraph-render-tailwind
 # Equivalent to:
 # pnpm compile
@@ -68,13 +68,14 @@ pnpm flamegraph-render-tailwind
 # node --prof-process --preprocess -j isolate*.log | flamebearer
 ```
 
-> **Note:** `flamebearer` must be installed globally: `npm install -g flamebearer`
+> [!NOTE]
+> `flamebearer` must be installed globally: `npm install -g flamebearer`
 
-### Compile Only
+### 🛠️ Compile Only
 
 Compile all benchmark files without running:
 
-```sh
+```bash
 pnpm compile
 # Equivalent to: tsup src/*.ts
 # Output: ./dist/
@@ -82,11 +83,11 @@ pnpm compile
 
 ---
 
-## Interpreting Results
+## 📖 Interpreting Results
 
 `tinybench` outputs results in the following format:
 
-```
+```text
 ┌─────────────────────────┬───────────┬─────────────┬────────────────────┐
 │ Task Name               │ ops/sec   │ Average (ns)│ Margin             │
 ├─────────────────────────┼───────────┼─────────────┼────────────────────┤
@@ -99,7 +100,7 @@ Higher `ops/sec` = better performance. The margin indicates statistical variance
 
 ---
 
-## Adding New Benchmarks
+## ➕ Adding New Benchmarks
 
 1. Create a new TypeScript file in `./src/` (e.g., `benchmark-new-feature.ts`)
 2. Add the corresponding script to `package.json`

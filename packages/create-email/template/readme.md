@@ -1,16 +1,16 @@
-# Postcraft Starter
+# 🚀 Postcraft Starter
 
-> 🚀 Scaffolded with [`create-postcraft`](https://www.npmjs.com/package/create-postcraft)
+> Generated with [`create-postcraft`](https://www.npmjs.com/package/create-postcraft)
 
-A Postcraft starter project with live email preview in your browser — no more sending real emails during development.
+A Postcraft starter project with **live email preview in your browser** — no more sending real emails during development.
 
 ---
 
-## Getting Started
+## 🏁 Getting Started
 
-### 1. Install dependencies
+### 1️⃣ Install dependencies
 
-```sh
+```bash
 npm install
 # or
 pnpm install
@@ -18,9 +18,9 @@ pnpm install
 yarn install
 ```
 
-### 2. Start the development server
+### 2️⃣ Start the development server
 
-```sh
+```bash
 npm run dev
 # or
 pnpm dev
@@ -32,9 +32,9 @@ Open [http://localhost:3000](http://localhost:3000) to see your email templates 
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 my-email-project/
 ├── emails/
 │   ├── static/          # Static assets (images, fonts)
@@ -47,24 +47,33 @@ my-email-project/
 
 ---
 
-## Available Scripts
+## 📜 Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start the live preview server at localhost:3000 |
-| `npm run export` | Export all templates to static HTML in `./out` |
-| `npm run build` | Build the preview app for production |
-| `npm start` | Start the production preview server |
+| Script           | Description                                     |
+| :--------------- | :---------------------------------------------- |
+| `npm run dev`    | Start the live preview server at localhost:3000 |
+| `npm run export` | Export all templates to static HTML in `./out`  |
+| `npm run build`  | Build the preview app for production            |
+| `npm start`      | Start the production preview server             |
 
 ---
 
-## Adding a New Email Template
+## ➕ Adding a New Email Template
 
 1. Create a new `.tsx` file in the `emails/` directory:
 
 ```tsx
 // emails/my-email.tsx
-import { Html, Head, Body, Container, Heading, Text, Tailwind, pixelBasedPreset } from "postcraft";
+import {
+  Html,
+  Head,
+  Body,
+  Container,
+  Heading,
+  Text,
+  Tailwind,
+  pixelBasedPreset,
+} from "postcraft";
 
 interface MyEmailProps {
   name: string;
@@ -95,7 +104,7 @@ MyEmail.PreviewProps = {
 
 ---
 
-## Sending Emails
+## 📤 Sending Emails
 
 When you're ready to send, use `@postcraft/render` with any email provider:
 
@@ -116,7 +125,7 @@ await resend.emails.send({
 
 ---
 
-## Documentation
+## 📚 Documentation
 
 - [Postcraft Docs](https://postcraft.dev/docs)
 - [Component Reference](https://postcraft.dev/docs/components)
@@ -124,6 +133,6 @@ await resend.emails.send({
 
 ---
 
-## License
+## 📄 License
 
 [MIT](https://opensource.org/licenses/MIT) © [Giorgi Kavtaradze](https://github.com/GiorgiKavtaradze-prog)
