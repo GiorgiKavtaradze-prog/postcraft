@@ -1,19 +1,19 @@
 // Most of this code was adapted from https://github.com/changesets/action,
 // which unfortunately doesn't support more granular usage of their code
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import * as core from '@actions/core';
-import { exec, getExecOutput } from '@actions/exec';
-import * as github from '@actions/github';
-import { readPreState } from '@changesets/pre';
-import { getPackages, type Package } from '@manypkg/get-packages';
-import { toString as mdastToString } from 'mdast-util-to-string';
-import { remark } from 'remark';
+import fs from "node:fs/promises";
+import path from "node:path";
+import * as core from "@actions/core";
+import { exec, getExecOutput } from "@actions/exec";
+import * as github from "@actions/github";
+import { readPreState } from "@changesets/pre";
+import { getPackages, type Package } from "@manypkg/get-packages";
+import { toString as mdastToString } from "mdast-util-to-string";
+import { remark } from "remark";
 
-const octokit = github.getOctokit(process.env.GITHUB_TOKEN || '');
+const octokit = github.getOctokit(process.env.GITHUB_TOKEN || "");
 
 const processor = remark();
-const LATEST_GITHUB_RELEASE_PACKAGE_NAME = 'postcraft';
+const LATEST_GITHUB_RELEASE_PACKAGE_NAME = "postcraft";
 
 export const BumpLevels = {
   dep: 0,
@@ -38,11 +38,11 @@ export function getChangelogEntry(changelog: string, version: string) {
 
   for (let i = 0; i < nodes.length; i++) {
     const node = nodes[i];
-    if (node.type === 'heading') {
+    if (node.type === "heading") {
       const stringified: string = mdastToString(node);
       const match = stringified.toLowerCase().match(/(major|minor|patch)/);
       if (match !== null) {
-        const level = BumpLevels[match[0] as 'major' | 'minor' | 'patch'];
+        const level = BumpLevels[match[0] as "major" | "minor" | "patch"];
         highestLevel = Math.max(level, highestLevel);
       }
       if (headingStartInfo === undefined && stringified === version) {
@@ -79,8 +79,8 @@ const createRelease = async ({
   tagName: string;
 }) => {
   const changelog = await fs.readFile(
-    path.join(pkg.dir, 'CHANGELOG.md'),
-    'utf8',
+    path.join(pkg.dir, "CHANGELOG.md"),
+    "utf8",
   );
   const changelogEntry = getChangelogEntry(changelog, pkg.packageJson.version);
   if (!changelogEntry) {
@@ -90,7 +90,7 @@ const createRelease = async ({
       `Could not find changelog entry for ${pkg.packageJson.name}@${pkg.packageJson.version}`,
     );
   }
-  const isPrerelease = pkg.packageJson.version.includes('-');
+  const isPrerelease = pkg.packageJson.version.includes("-");
   const shouldMarkAsLatest =
     pkg.packageJson.name === LATEST_GITHUB_RELEASE_PACKAGE_NAME &&
     !isPrerelease;
@@ -100,7 +100,7 @@ const createRelease = async ({
     tag_name: tagName,
     body: changelogEntry.content,
     prerelease: isPrerelease,
-    make_latest: shouldMarkAsLatest ? 'true' : 'false',
+    make_latest: shouldMarkAsLatest ? "true" : "false",
     ...github.context.repo,
   });
 };
@@ -114,9 +114,9 @@ const releaseAlreadyExists = async (tagName: string) => {
     return true;
   } catch (error: unknown) {
     if (
-      typeof error === 'object' &&
+      typeof error === "object" &&
       error !== null &&
-      'status' in error &&
+      "status" in error &&
       (error as { status?: number }).status === 404
     ) {
       return false;
@@ -152,14 +152,14 @@ const isTruthyEnv = (value: string | undefined) =>
 (async () => {
   if (!github.context.repo.owner || !github.context.repo.repo) {
     throw new Error(
-      'GitHub context is missing. This script must be run in a GitHub Actions workflow.',
+      "GitHub context is missing. This script must be run in a GitHub Actions workflow.",
     );
   }
 
   const skipNpmPublish =
     isTruthyEnv(process.env.SKIP_NPM_PUBLISH) ||
-    process.argv.includes('--skip-npm-publish') ||
-    process.argv.includes('--only-github-releases');
+    process.argv.includes("--skip-npm-publish") ||
+    process.argv.includes("--only-github-releases");
 
   const { packages } = await getPackages(process.cwd());
   const publishablePackages = packages.filter(
@@ -170,31 +170,31 @@ const isTruthyEnv = (value: string | undefined) =>
 
   if (skipNpmPublish) {
     console.log(
-      'SKIP_NPM_PUBLISH is set, skipping npm publish and only ensuring GitHub releases exist',
+      "SKIP_NPM_PUBLISH is set, skipping npm publish and only ensuring GitHub releases exist",
     );
     releasedPackages = publishablePackages;
   } else {
     // https://docs.npmjs.com/generating-provenance-statements#publishing-packages-with-provenance-via-github-actions
-    const npmIdToken = await core.getIDToken('npm:registry.npmjs.org');
+    const npmIdToken = await core.getIDToken("npm:registry.npmjs.org");
 
-    const isCanaryBranch = github.context.ref === 'refs/heads/canary';
-    const isMainBranch = github.context.ref === 'refs/heads/main';
+    const isCanaryBranch = github.context.ref === "refs/heads/canary";
+    const isMainBranch = github.context.ref === "refs/heads/main";
 
     if (isCanaryBranch) {
       console.log(
-        'Detected running in canary branch, checking prerelease state',
+        "Detected running in canary branch, checking prerelease state",
       );
       const preState = await readPreState(process.cwd());
-      if (preState?.mode !== 'pre') {
+      if (preState?.mode !== "pre") {
         console.log(
-          'Was not in prerelease, skipping automated release. To release this you should rebase onto main',
+          "Was not in prerelease, skipping automated release. To release this you should rebase onto main",
         );
         return;
       }
-      console.log('Is in prerelease mode, proceeding with automated release');
+      console.log("Is in prerelease mode, proceeding with automated release");
     } else if (isMainBranch) {
       console.log(
-        'Detected running in main branch, proceeding with stable release',
+        "Detected running in main branch, proceeding with stable release",
       );
     } else {
       throw new Error(
@@ -202,12 +202,12 @@ const isTruthyEnv = (value: string | undefined) =>
       );
     }
 
-    const changesetPublishOutput = await getExecOutput('pnpm', ['release'], {
+    const changesetPublishOutput = await getExecOutput("pnpm", ["release"], {
       env: {
         ...process.env,
         NPM_ID_TOKEN: npmIdToken,
         // https://docs.npmjs.com/generating-provenance-statements#using-third-party-package-publishing-tools
-        NPM_CONFIG_PROVENANCE: 'true',
+        NPM_CONFIG_PROVENANCE: "true",
       },
     });
 
@@ -217,7 +217,7 @@ const isTruthyEnv = (value: string | undefined) =>
     );
 
     releasedPackages = [];
-    for (const line of changesetPublishOutput.stdout.split('\n')) {
+    for (const line of changesetPublishOutput.stdout.split("\n")) {
       const match = line.match(newTagRegex);
       if (match === null) {
         continue;
@@ -227,17 +227,17 @@ const isTruthyEnv = (value: string | undefined) =>
       if (pkg === undefined) {
         throw new Error(
           `Package "${pkgName}" not found.` +
-            'This is probably a bug in the action, please open an issue',
+            "This is probably a bug in the action, please open an issue",
         );
       }
       releasedPackages.push(pkg);
     }
   }
 
-  await exec('git', ['config', 'user.name', `"github-actions[bot]"`]);
-  await exec('git', [
-    'config',
-    'user.email',
+  await exec("git", ["config", "user.name", `"github-actions[bot]"`]);
+  await exec("git", [
+    "config",
+    "user.email",
     `"41898282+github-actions[bot]@users.noreply.github.com"`,
   ]);
   for (const pkg of releasedPackages) {
