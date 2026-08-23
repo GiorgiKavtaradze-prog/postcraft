@@ -7,7 +7,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from 'postcraft';
+} from "postcraft";
 
 export default function Example() {
   return (

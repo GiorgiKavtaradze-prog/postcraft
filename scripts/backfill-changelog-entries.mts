@@ -1,35 +1,35 @@
-import { execFile as execFileCb } from 'node:child_process';
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { promisify } from 'node:util';
-import { Octokit } from '@octokit/core';
+import { execFile as execFileCb } from "node:child_process";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { promisify } from "node:util";
+import { Octokit } from "@octokit/core";
 
 const execFile = promisify(execFileCb);
 
-const REPO_OWNER = 'resend';
-const REPO_NAME = 'postcraft';
+const REPO_OWNER = "resend";
+const REPO_NAME = "postcraft";
 
 const CHANGELOG_PATH = path.resolve(
   import.meta.dirname,
-  '../apps/docs/changelog.mdx',
+  "../apps/docs/changelog.mdx",
 );
 
 const token = process.env.GITHUB_TOKEN;
 if (!token) {
-  console.error('Set GITHUB_TOKEN env var.');
+  console.error("Set GITHUB_TOKEN env var.");
   process.exit(1);
 }
 
 let sinceDate: string | undefined;
 const args = process.argv.slice(2);
 for (let i = 0; i < args.length; i++) {
-  if (args[i] === '--since' && args[i + 1]) {
+  if (args[i] === "--since" && args[i + 1]) {
     sinceDate = args[++i];
   }
 }
 
 if (!sinceDate) {
-  console.error('Missing --since flag. Usage: --since YYYY-MM-DD');
+  console.error("Missing --since flag. Usage: --since YYYY-MM-DD");
   process.exit(1);
 }
 
@@ -40,11 +40,11 @@ if (Number.isNaN(CUTOFF.getTime())) {
 }
 
 function toDisplayName(packageName: string): string {
-  const name = packageName.replace('@postcraft/', '');
+  const name = packageName.replace("@postcraft/", "");
   return name
-    .split('-')
+    .split("-")
     .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join(' ');
+    .join(" ");
 }
 
 function toDateKey(date: Date): string {
@@ -52,12 +52,12 @@ function toDateKey(date: Date): string {
 }
 
 function formatDateHeading(dateKey: string): string {
-  const [year, month, day] = dateKey.split('-').map(Number);
+  const [year, month, day] = dateKey.split("-").map(Number);
   const date = new Date(year, month - 1, day);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
 
@@ -68,14 +68,14 @@ interface ReleaseEntry {
 }
 
 function buildRawEntry(dateKey: string, entries: ReleaseEntry[]): string {
-  const lines: string[] = [`## ${formatDateHeading(dateKey)}`, ''];
+  const lines: string[] = [`## ${formatDateHeading(dateKey)}`, ""];
 
   for (const entry of entries) {
-    lines.push(`**${entry.displayName} ${entry.version}**`, '');
-    lines.push('GitHub release body:', '```', entry.body, '```', '');
+    lines.push(`**${entry.displayName} ${entry.version}**`, "");
+    lines.push("GitHub release body:", "```", entry.body, "```", "");
   }
 
-  return lines.join('\n');
+  return lines.join("\n");
 }
 
 async function polishWithClaude(rawEntry: string): Promise<string> {
@@ -159,21 +159,21 @@ Use indented sub-items under an "Updated dependencies" bullet:
 
 ${rawEntry}`;
 
-  const { stdout } = await execFile('claude', ['-p', prompt], {
+  const { stdout } = await execFile("claude", ["-p", prompt], {
     maxBuffer: 1024 * 1024,
   });
 
   const trimmed = stdout.trim();
-  const headingIndex = trimmed.indexOf('## ');
+  const headingIndex = trimmed.indexOf("## ");
   if (headingIndex > 0) return trimmed.slice(headingIndex);
   return trimmed;
 }
 
 async function insertEntry(polishedEntry: string) {
-  const content = await fs.readFile(CHANGELOG_PATH, 'utf8');
+  const content = await fs.readFile(CHANGELOG_PATH, "utf8");
 
-  const frontmatterEnd = content.indexOf('---', content.indexOf('---') + 3);
-  const insertPos = content.indexOf('\n', frontmatterEnd) + 1;
+  const frontmatterEnd = content.indexOf("---", content.indexOf("---") + 3);
+  const insertPos = content.indexOf("\n", frontmatterEnd) + 1;
 
   const before = content.slice(0, insertPos);
   const after = content.slice(insertPos);
@@ -185,12 +185,12 @@ async function commitWithDate(dateKey: string) {
   const commitDate = `${dateKey}T12:00:00`;
   const heading = formatDateHeading(dateKey);
 
-  await execFile('git', ['add', CHANGELOG_PATH]);
-  await execFile('git', [
-    'commit',
-    '--date',
+  await execFile("git", ["add", CHANGELOG_PATH]);
+  await execFile("git", [
+    "commit",
+    "--date",
     commitDate,
-    '-m',
+    "-m",
     `docs: add changelog entry for ${heading}`,
   ]);
 }
@@ -201,7 +201,7 @@ let page = 1;
 let done = false;
 
 while (!done) {
-  const { data } = await octokit.request('GET /repos/{owner}/{repo}/releases', {
+  const { data } = await octokit.request("GET /repos/{owner}/{repo}/releases", {
     owner: REPO_OWNER,
     repo: REPO_NAME,
     per_page: 100,
@@ -221,8 +221,8 @@ while (!done) {
     }
 
     const tagName = release.tag_name;
-    const atIndex = tagName.lastIndexOf('@');
-    if (atIndex <= 0 && !tagName.includes('@')) continue;
+    const atIndex = tagName.lastIndexOf("@");
+    if (atIndex <= 0 && !tagName.includes("@")) continue;
 
     const packageName = tagName.substring(0, atIndex);
     const version = tagName.substring(atIndex + 1);
@@ -232,7 +232,7 @@ while (!done) {
     entries.push({
       displayName: toDisplayName(packageName),
       version,
-      body: release.body || '',
+      body: release.body || "",
     });
     byDate.set(dateKey, entries);
   }
@@ -256,14 +256,14 @@ for (const dateKey of sortedDates) {
   console.error(`Polishing ${formatDateHeading(dateKey)}...`);
   const polished = await polishWithClaude(raw);
 
-  console.error('\n--- Claude output ---');
+  console.error("\n--- Claude output ---");
   console.error(polished);
-  console.error('--- end ---\n');
+  console.error("--- end ---\n");
 
-  console.error('Inserting into changelog...');
+  console.error("Inserting into changelog...");
   await insertEntry(polished);
 
-  console.error('Committing...');
+  console.error("Committing...");
   await commitWithDate(dateKey);
 
   console.error(`Done: ${formatDateHeading(dateKey)}\n`);

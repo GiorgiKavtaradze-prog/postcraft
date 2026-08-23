@@ -1,31 +1,31 @@
-import { spawn } from 'node:child_process';
-import fs from 'node:fs';
-import path from 'node:path';
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 
-const previewServerRoot = path.resolve(import.meta.dirname, '../');
+const previewServerRoot = path.resolve(import.meta.dirname, "../");
 
-const nextBuildProcess = spawn('pnpm next build', {
+const nextBuildProcess = spawn("pnpm next build", {
   shell: true,
-  stdio: 'inherit',
+  stdio: "inherit",
   cwd: previewServerRoot,
 });
 
-process.on('SIGINT', () => {
-  nextBuildProcess.kill('SIGINT');
+process.on("SIGINT", () => {
+  nextBuildProcess.kill("SIGINT");
 });
 
-nextBuildProcess.on('exit', (code) => {
+nextBuildProcess.on("exit", (code) => {
   if (code !== 0) {
     console.error(`next build failed with exit code ${code}`);
     process.exit(code);
   }
 
-  fs.rmSync(path.join(previewServerRoot, '.next', 'cache'), {
+  fs.rmSync(path.join(previewServerRoot, ".next", "cache"), {
     recursive: true,
     force: true,
   });
 
-  const nodeModules = path.join(previewServerRoot, '.next', 'node_modules');
+  const nodeModules = path.join(previewServerRoot, ".next", "node_modules");
   if (!fs.existsSync(nodeModules)) {
     return;
   }

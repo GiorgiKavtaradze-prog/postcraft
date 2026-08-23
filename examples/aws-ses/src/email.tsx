@@ -1,5 +1,5 @@
-import type * as React from 'react';
-import { Button, Html } from 'postcraft';
+import type * as React from "react";
+import { Button, Html } from "postcraft";
 
 interface EmailProps {
   url: string;

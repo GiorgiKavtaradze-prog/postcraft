@@ -12,6 +12,7 @@
       "tailwindDirectives": true
     }
   },
+
   "vcs": {
     "enabled": true,
     "clientKind": "git",

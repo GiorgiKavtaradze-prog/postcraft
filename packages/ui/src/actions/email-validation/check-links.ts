@@ -1,30 +1,30 @@
-'use server';
+"use server";
 
-import type { IncomingMessage } from 'node:http';
-import { parse } from 'node-html-parser';
+import type { IncomingMessage } from "node:http";
+import { parse } from "node-html-parser";
 import {
   type CodeLocation,
   getCodeLocationFromAstElement,
-} from './get-code-location-from-ast-element';
-import { quickFetch } from './quick-fetch';
+} from "./get-code-location-from-ast-element";
+import { quickFetch } from "./quick-fetch";
 
 export type LinkCheck = { passed: boolean } & (
   | {
-      type: 'fetch_attempt';
+      type: "fetch_attempt";
       metadata: {
         fetchStatusCode: number | undefined;
       };
     }
   | {
-      type: 'syntax';
+      type: "syntax";
     }
   | {
-      type: 'security';
+      type: "security";
     }
 );
 
 export interface LinkCheckingResult {
-  status: 'success' | 'warning' | 'error';
+  status: "success" | "warning" | "error";
   link: string;
   codeLocation: CodeLocation;
   checks: LinkCheck[];
@@ -35,16 +35,16 @@ export const checkLinks = async (code: string) => {
 
   const readableStream = new ReadableStream<LinkCheckingResult>({
     async start(controller) {
-      const anchors = ast.querySelectorAll('a');
+      const anchors = ast.querySelectorAll("a");
       for await (const anchor of anchors) {
         const link = anchor.attributes.href;
         if (!link) continue;
-        if (link.startsWith('mailto:')) continue;
+        if (link.startsWith("mailto:")) continue;
 
         const result: LinkCheckingResult = {
           link,
           codeLocation: getCodeLocationFromAstElement(anchor, code),
-          status: 'success',
+          status: "success",
           checks: [],
         };
 
@@ -52,19 +52,19 @@ export const checkLinks = async (code: string) => {
           const url = new URL(link);
           result.checks.push({
             passed: true,
-            type: 'syntax',
+            type: "syntax",
           });
 
-          if (link.startsWith('http://')) {
+          if (link.startsWith("http://")) {
             result.checks.push({
               passed: false,
-              type: 'security',
+              type: "security",
             });
-            result.status = 'warning';
+            result.status = "warning";
           } else {
             result.checks.push({
               passed: true,
-              type: 'security',
+              type: "security",
             });
           }
 
@@ -72,36 +72,36 @@ export const checkLinks = async (code: string) => {
           try {
             res = await quickFetch(url);
             const hasSucceeded =
-              res.statusCode?.toString().startsWith('2') ?? false;
+              res.statusCode?.toString().startsWith("2") ?? false;
             res.resume();
             result.checks.push({
-              type: 'fetch_attempt',
+              type: "fetch_attempt",
               passed: hasSucceeded,
               metadata: {
                 fetchStatusCode: res.statusCode,
               },
             });
             if (!hasSucceeded) {
-              result.status = res.statusCode?.toString().startsWith('3')
-                ? 'warning'
-                : 'error';
+              result.status = res.statusCode?.toString().startsWith("3")
+                ? "warning"
+                : "error";
             }
           } catch (_exception) {
             result.checks.push({
-              type: 'fetch_attempt',
+              type: "fetch_attempt",
               passed: false,
               metadata: {
                 fetchStatusCode: undefined,
               },
             });
-            result.status = 'error';
+            result.status = "error";
           }
         } catch (_exception) {
           result.checks.push({
             passed: false,
-            type: 'syntax',
+            type: "syntax",
           });
-          result.status = 'error';
+          result.status = "error";
         }
 
         controller.enqueue(result);

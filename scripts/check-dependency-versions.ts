@@ -1,6 +1,6 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { getPackages } from '@manypkg/get-packages';
+import fs from "node:fs/promises";
+import path from "node:path";
+import { getPackages } from "@manypkg/get-packages";
 
 type PackageJson = {
   name?: string;
@@ -16,13 +16,13 @@ type PackageCheck = {
 const allErrors: string[] = [];
 
 function isPinned(version: string) {
-  if (version.startsWith('workspace:')) {
+  if (version.startsWith("workspace:")) {
     return true;
   }
-  if (version.startsWith('catalog:')) {
+  if (version.startsWith("catalog:")) {
     return true;
   }
-  if (version.startsWith('npm:')) {
+  if (version.startsWith("npm:")) {
     return true;
   }
   if (/^\d+\.\d+\.\d+(-\S+)?$/.test(version)) {
@@ -36,9 +36,9 @@ function isPinned(version: string) {
 
 async function checkPackageJson(packageJsonPath: string, onlyDevDeps: boolean) {
   const content = await fs
-    .readFile(packageJsonPath, 'utf8')
+    .readFile(packageJsonPath, "utf8")
     .catch((error: NodeJS.ErrnoException) => {
-      if (error.code === 'ENOENT') return null;
+      if (error.code === "ENOENT") return null;
       throw error;
     });
   if (content === null) return;
@@ -46,8 +46,8 @@ async function checkPackageJson(packageJsonPath: string, onlyDevDeps: boolean) {
   const pkg: PackageJson = JSON.parse(content);
   const label = pkg.name ?? packageJsonPath;
   const checkScope = onlyDevDeps
-    ? 'dev dependencies only'
-    : 'dependencies + dev dependencies';
+    ? "dev dependencies only"
+    : "dependencies + dev dependencies";
 
   console.log(`Checking ${label} (${checkScope})`);
 
@@ -71,14 +71,14 @@ async function checkPackageJson(packageJsonPath: string, onlyDevDeps: boolean) {
 }
 
 function isDirectWorkspaceChild(relativeDir: string, parentDir: string) {
-  const segments = relativeDir.split('/');
+  const segments = relativeDir.split("/");
   return segments.length === 2 && segments[0] === parentDir;
 }
 
 function getPackageChecks(rootDir: string, packageDirs: string[]) {
   const checks: PackageCheck[] = [
     {
-      packageJsonPath: path.join(rootDir, 'package.json'),
+      packageJsonPath: path.join(rootDir, "package.json"),
       onlyDevDeps: false,
     },
   ];
@@ -88,23 +88,23 @@ function getPackageChecks(rootDir: string, packageDirs: string[]) {
     const relativeDir = path
       .relative(rootDir, packageDir)
       .split(path.sep)
-      .join('/');
+      .join("/");
 
     if (
-      relativeDir === 'playground' ||
-      isDirectWorkspaceChild(relativeDir, 'apps') ||
-      isDirectWorkspaceChild(relativeDir, 'benchmarks')
+      relativeDir === "playground" ||
+      isDirectWorkspaceChild(relativeDir, "apps") ||
+      isDirectWorkspaceChild(relativeDir, "benchmarks")
     ) {
       checks.push({
-        packageJsonPath: path.join(packageDir, 'package.json'),
+        packageJsonPath: path.join(packageDir, "package.json"),
         onlyDevDeps: false,
       });
       continue;
     }
 
-    if (isDirectWorkspaceChild(relativeDir, 'packages')) {
+    if (isDirectWorkspaceChild(relativeDir, "packages")) {
       checks.push({
-        packageJsonPath: path.join(packageDir, 'package.json'),
+        packageJsonPath: path.join(packageDir, "package.json"),
         onlyDevDeps: true,
       });
     }
@@ -124,9 +124,9 @@ function getPackageChecks(rootDir: string, packageDirs: string[]) {
   }
 
   if (allErrors.length > 0) {
-    console.error(`\n${allErrors.join('\n')}\n`);
+    console.error(`\n${allErrors.join("\n")}\n`);
     process.exit(1);
   } else {
-    console.log('All dependencies are pinned.');
+    console.log("All dependencies are pinned.");
   }
 })();
