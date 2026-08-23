@@ -59,19 +59,19 @@
 
 ### ✨ Feature Matrix
 
-<div>
-<table>
+<div style="margin:0; padding:0;">
+<table width="100%" cellpadding="0" cellspacing="0" style="margin:0; padding:0; border-collapse:collapse; width:100%;">
   <tr>
-    <td align="center" width="25%"><b>🧱</b><br/><b>Component-based</b><br/><small>Reusable React<br/>components</small></td>
-    <td align="center" width="25%"><b>🎨</b><br/><b>Tailwind CSS</b><br/><small>Email-safe utility<br/>presets</small></td>
-    <td align="center" width="25%"><b>📱</b><br/><b>Responsive</b><br/><small>Works on every<br/>screen size</small></td>
-    <td align="center" width="25%"><b>🌙</b><br/><b>Dark mode aware</b><br/><small>Automatic theme<br/>handling</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🧱</b><br/><b>Component-based</b><br/><small>Reusable React<br/>components</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🎨</b><br/><b>Tailwind CSS</b><br/><small>Email-safe utility<br/>presets</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>📱</b><br/><b>Responsive</b><br/><small>Works on every<br/>screen size</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🌙</b><br/><b>Dark mode aware</b><br/><small>Automatic theme<br/>handling</small></td>
   </tr>
   <tr>
-    <td align="center" width="25%"><b>✍️</b><br/><b>Visual Editor</b><br/><small>Drag-and-drop<br/>@postcraft/editor</small></td>
-    <td align="center" width="25%"><b>🔌</b><br/><b>Provider Ready</b><br/><small>Resend, Nodemailer,<br/>SendGrid, & more</small></td>
-    <td align="center" width="25%"><b>🧪</b><br/><b>Fully Typed</b><br/><small>First-class<br/>TypeScript support</small></td>
-    <td align="center" width="25%"><b>🚀</b><br/><b>CLI Included</b><br/><small>postcraft dev /<br/>postcraft export</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>✍️</b><br/><b>Visual Editor</b><br/><small>Drag-and-drop<br/>@postcraft/editor</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🔌</b><br/><b>Provider Ready</b><br/><small>Resend, Nodemailer,<br/>SendGrid, & more</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🧪</b><br/><b>Fully Typed</b><br/><small>First-class<br/>TypeScript support</small></td>
+    <td align="center" width="25%" style="margin:0; padding:0;"><b>🚀</b><br/><b>CLI Included</b><br/><small>postcraft dev /<br/>postcraft export</small></td>
   </tr>
 </table>
 </div>

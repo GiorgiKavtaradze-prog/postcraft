@@ -1,26 +1,21 @@
-<div align="center">
-  <br />
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://postcraft.dev/static/covers/editor-dark.png" />
-    <img alt="@postcraft/editor" src="https://postcraft.dev/static/covers/editor.png" width="480" />
-  </picture>
-  <br />
-  <br />
-  <strong>@postcraft/editor</strong>
-  <p>A rich text visual email editor built on TipTap & ProseMirror.<br />Drag-and-drop email building that exports email-ready HTML.</p>
-</div>
+<h3 align="center">✍️ A rich text visual email editor</h3>
 
-<div align="center">
+<p align="center">
+  Built on <b>TipTap</b> & <b>ProseMirror</b> — drag-and-drop email building that exports email-ready HTML.
+</p>
 
-[![npm version](https://img.shields.io/npm/v/@postcraft/editor?style=flat-square&color=0070f3)](https://www.npmjs.com/package/@postcraft/editor)
-[![npm downloads](https://img.shields.io/npm/dm/@postcraft/editor?style=flat-square&color=0070f3)](https://www.npmjs.com/package/@postcraft/editor)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](../../LICENSE.md)
+<p align="center">
 
-</div>
+[![npm version](https://img.shields.io/npm/v/@postcraft/editor?style=for-the-badge&color=0070f3&label=@postcraft/editor&logo=npm&logoColor=white)](https://www.npmjs.com/package/@postcraft/editor)
+[![npm downloads](https://img.shields.io/npm/dm/@postcraft/editor?style=for-the-badge&color=0070f3&logo=npm&logoColor=white)](https://www.npmjs.com/package/@postcraft/editor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg?style=for-the-badge&logo=open-source-initiative&logoColor=white)](../../LICENSE.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge&logo=github&logoColor=white)](../../CONTRIBUTING.md)
+
+</p>
 
 ---
 
-## Features
+## ✨ Features
 
 | Feature               | Description                                                      |
 | --------------------- | ---------------------------------------------------------------- |
@@ -33,11 +28,11 @@
 | 📤 **Email Export**   | `composeEmail()` exports editor content to email-ready HTML      |
 | 🖼️ **Image Upload**   | Built-in image upload with drag & drop support                   |
 | 🧩 **35+ Extensions** | TipTap extensions tailored for email elements                    |
-| 📝 **Serialization**  | Serializes editor content to Postcraft React component tree      |
+| 🔁 **Serialization**  | Serializes editor content to Postcraft React component tree      |
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install @postcraft/editor
@@ -49,7 +44,7 @@ yarn add @postcraft/editor
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```tsx
 import { EmailEditor, type EmailEditorRef } from "@postcraft/editor";
@@ -86,9 +81,9 @@ export function MyEmailEditor() {
 
 ---
 
-## Package Structure
+## 📂 Package Structure
 
-```
+```text
 packages/editor/src/
 ├── core/               # Hooks, serializer, event bus, types
 │   ├── serializer.ts   # Converts editor state to Postcraft component tree
@@ -111,22 +106,22 @@ packages/editor/src/
 
 ---
 
-## Entry Points
+## 🚪 Entry Points
 
 The package exposes multiple granular entry points to optimize bundle size:
 
-| Import Path                       | Contents                                                          |
-| --------------------------------- | ----------------------------------------------------------------- |
-| `@postcraft/editor`               | `EmailEditor` component, `EmailEditorRef`, top-level API          |
-| `@postcraft/editor/core`          | Serializer, types, event bus — for custom integrations            |
-| `@postcraft/editor/extensions`    | All 35+ TipTap extensions for email elements                      |
-| `@postcraft/editor/ui`            | Bubble menus, slash command palette, inspector UI                 |
-| `@postcraft/editor/plugins`       | ProseMirror plugins                                               |
-| `@postcraft/editor/utils`         | Shared utility functions                                          |
+| Import Path                    | Contents                                                 |
+| ------------------------------ | -------------------------------------------------------- |
+| `@postcraft/editor`            | `EmailEditor` component, `EmailEditorRef`, top-level API |
+| `@postcraft/editor/core`       | Serializer, types, event bus — for custom integrations   |
+| `@postcraft/editor/extensions` | All 35+ TipTap extensions for email elements             |
+| `@postcraft/editor/ui`         | Bubble menus, slash command palette, inspector UI        |
+| `@postcraft/editor/plugins`    | ProseMirror plugins                                      |
+| `@postcraft/editor/utils`      | Shared utility functions                                 |
 
 ---
 
-## API Reference
+## 📖 API Reference
 
 ### `<EmailEditor>`
 
@@ -170,7 +165,7 @@ ref.current.clearContent();
 ref.current.focus();
 ```
 
-### Theming
+### 🎨 Theming
 
 Customize the editor appearance with CSS custom properties:
 
@@ -198,7 +193,7 @@ import { EmailEditor } from "@postcraft/editor";
 
 ---
 
-## Advanced: Custom Extensions
+## 🧩 Advanced: Custom Extensions
 
 Extend the editor with custom email nodes:
 
@@ -231,7 +226,7 @@ const CustomBannerNode = EmailNode.create({
 
 ---
 
-## Development
+## 🛠️ Development
 
 ```bash
 # Build the package
@@ -255,12 +250,12 @@ pnpm test:watch
 
 ---
 
-## Documentation
+## 📚 Documentation
 
 For the complete usage guide and API reference, see the [Editor Documentation](https://postcraft.dev/docs/editor/overview).
 
 ---
 
-## License
+## 📄 License
 
 [MIT](../../LICENSE.md) © [Giorgi Kavtaradze](https://github.com/GiorgiKavtaradze-prog)

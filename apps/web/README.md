@@ -1,14 +1,14 @@
-# Postcraft Marketing Website
+# 🌐 Postcraft Marketing Website
 
 The official Postcraft marketing website, built with **Next.js** and deployed on **Vercel**.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://postcraft.dev)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://postcraft.dev)
 
 ---
 
-## Development
+## 🛠️ Development
 
-### Prerequisites
+### ✅ Prerequisites
 
 Before running the web app, install and build workspace dependencies from the **monorepo root**:
 
@@ -18,8 +18,7 @@ pnpm install
 pnpm build
 ```
 
-### Start the Development Server
-
+### ▶️ Start the Development Server
 
 ```bash
 # From apps/web
@@ -32,9 +31,9 @@ The page hot-reloads automatically as you edit files.
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 apps/web/
 ├── app/                # Next.js App Router pages and layouts
 │   ├── layout.tsx      # Root layout with metadata
@@ -49,11 +48,11 @@ apps/web/
 
 ---
 
-## Deployment
+## 🚀 Deployment
 
 The website is automatically deployed to [Vercel](https://vercel.com) on every push to the `main` branch.
 
-### Manual Deployment
+### 🏗️ Manual Deployment
 
 ```bash
 # Build for production
@@ -63,17 +62,17 @@ pnpm build
 pnpm start
 ```
 
-### Deploy to Vercel
+### ☁️ Deploy to Vercel
 
 The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new):
 
-1. Connect your GitHub repository to Vercel
-2. Set the root directory to `apps/web`
-3. Vercel will automatically detect Next.js and configure the build
+1. 🔗 Connect your GitHub repository to Vercel
+2. 📂 Set the root directory to `apps/web`
+3. ⚙️ Vercel will automatically detect Next.js and configure the build
 
 ---
 
-## Environment Variables
+## 🔐 Environment Variables
 
 Create a `.env.local` file in `apps/web/` for local development:
 
@@ -87,7 +86,7 @@ NEXT_PUBLIC_API_URL=https://postcraft.dev
 
 ---
 
-## Learn More
+## 📚 Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Next.js App Router](https://nextjs.org/docs/app)
